@@ -1,4 +1,4 @@
-import { Contract, nativeToScVal, scValToNative, Networks, TransactionBuilder, BASE_FEE, Account, Horizon } from "@stellar/stellar-sdk";
+import { Contract, nativeToScVal, scValToNative, Networks, TransactionBuilder, BASE_FEE, Account, Horizon, xdr } from "@stellar/stellar-sdk";
 import { Server, Api } from "@stellar/stellar-sdk/rpc";
 
 export const CONTRACT_ID = process.env.NEXT_PUBLIC_CROWDFUND_CONTRACT_ID!;
@@ -87,3 +87,67 @@ export function classifyError(err: unknown): DonateError {
     return { type: "insufficient_balance", message: "Insufficient balance to make donation." };
   return { type: "network_error", message: msg };
 }
+
+export type ParsedTx = {
+  id: string;
+  hash: string;
+  createdAt: string;
+  functionName: string;
+  donor: string;
+  amount: number | null;
+};
+
+export async function getRecentTransactions(contractId: string): Promise<ParsedTx[]> {
+  try {
+    const res = await fetch(`${HORIZON_URL}/operations?order=desc&limit=100`);
+    if (!res.ok) return [];
+    const data = await res.json();
+    const records = data._embedded?.records || [];
+    
+    const parsed: ParsedTx[] = [];
+    for (const op of records) {
+      if (op.type === "invoke_host_function" && op.parameters && op.parameters.length > 0) {
+        try {
+          const val = xdr.ScVal.fromXDR(op.parameters[0].value, "base64");
+          const targetContract = scValToNative(val);
+          if (targetContract === contractId) {
+            const funcVal = xdr.ScVal.fromXDR(op.parameters[1].value, "base64");
+            const functionName = scValToNative(funcVal);
+            
+            let donor = op.source_account;
+            let amount: number | null = null;
+            
+            if (functionName === "fund" && op.parameters.length >= 4) {
+              const donorVal = xdr.ScVal.fromXDR(op.parameters[2].value, "base64");
+              donor = scValToNative(donorVal);
+              
+              const amtVal = xdr.ScVal.fromXDR(op.parameters[3].value, "base64");
+              const amtStroops = scValToNative(amtVal);
+              amount = Number(amtStroops) / 10_000_000;
+            } else if (functionName === "initialize" && op.parameters.length >= 4) {
+              const amtVal = xdr.ScVal.fromXDR(op.parameters[3].value, "base64");
+              const amtStroops = scValToNative(amtVal);
+              amount = Number(amtStroops) / 10_000_000;
+            }
+            
+            parsed.push({
+              id: op.id,
+              hash: op.transaction_hash,
+              createdAt: op.created_at,
+              functionName,
+              donor,
+              amount,
+            });
+          }
+        } catch {
+          // Ignore invalid XDR
+        }
+      }
+    }
+    return parsed.slice(0, 5);
+  } catch (err) {
+    console.error("Error fetching transactions:", err);
+    return [];
+  }
+}
+
