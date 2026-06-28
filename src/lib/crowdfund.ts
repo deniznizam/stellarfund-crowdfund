@@ -1,4 +1,4 @@
-import { Contract, nativeToScVal, scValToNative, Networks, TransactionBuilder, BASE_FEE } from "@stellar/stellar-sdk";
+import { Contract, nativeToScVal, scValToNative, Networks, TransactionBuilder, BASE_FEE, Account, Horizon } from "@stellar/stellar-sdk";
 import { Server, Api } from "@stellar/stellar-sdk/rpc";
 
 export const CONTRACT_ID = process.env.NEXT_PUBLIC_CROWDFUND_CONTRACT_ID!;
@@ -25,12 +25,12 @@ const DUMMY = "GAIH3ULLFQ4DGSECF2AR555KZ4KNDGEKN4AFI4SU2M96VKTA365PFB";
 
 export async function getCampaign(): Promise<Campaign> {
   const server = new Server(RPC_URL);
-  const { Horizon } = await import("@stellar/stellar-sdk");
-  const h = new Horizon.Server(HORIZON_URL);
-  const account = await h.loadAccount(DUMMY);
+  // Avoid network roundtrip: Instantiate dummy Account locally
+  const account = new Account(DUMMY, "0");
   const tx = new TransactionBuilder(account, { fee: BASE_FEE, networkPassphrase: NETWORK_PASSPHRASE })
     .addOperation(new Contract(CONTRACT_ID).call("get_campaign"))
     .setTimeout(30).build();
+  
   const sim = await server.simulateTransaction(tx);
   if (Api.isSimulationError(sim)) throw new Error(sim.error);
   if (!Api.isSimulationSuccess(sim) || !sim.result) throw new Error("Simulation failed or no result");
@@ -48,7 +48,6 @@ export async function getCampaign(): Promise<Campaign> {
 }
 
 export async function buildDonateXdr(donor: string, xlmAmount: number): Promise<string> {
-  const { Horizon } = await import("@stellar/stellar-sdk");
   const account = await new Horizon.Server(HORIZON_URL).loadAccount(donor);
   const stroops = BigInt(Math.round(xlmAmount * 10_000_000));
   const tx = new TransactionBuilder(account, { fee: String(Number(BASE_FEE) * 10), networkPassphrase: NETWORK_PASSPHRASE })
@@ -63,9 +62,9 @@ export async function buildDonateXdr(donor: string, xlmAmount: number): Promise<
 }
 
 export async function submitSignedXdr(signedXdr: string): Promise<{ hash: string; explorerUrl: string }> {
-  const { Transaction } = await import("@stellar/stellar-sdk");
   const server = new Server(RPC_URL);
-  const result = await server.sendTransaction(new Transaction(signedXdr, NETWORK_PASSPHRASE));
+  const tx = TransactionBuilder.fromXDR(signedXdr, NETWORK_PASSPHRASE);
+  const result = await server.sendTransaction(tx);
   if (result.status === "ERROR") throw new Error("Transaction failed");
   const hash = result.hash;
   for (let i = 0; i < 20; i++) {
@@ -79,7 +78,8 @@ export async function submitSignedXdr(signedXdr: string): Promise<{ hash: string
 
 export function classifyError(err: unknown): DonateError {
   const msg = err instanceof Error ? err.message : String(err);
-  if (/not installed|not found/i.test(msg))
+  // Narrow wallet regex detection to avoid overlapping with Horizon 404 HTTP errors
+  if (/freighter|xbull|lobstr|wallet|extension|not installed/i.test(msg))
     return { type: "wallet_not_found", message: "Selected wallet extension is not installed." };
   if (/reject|decline|cancel/i.test(msg))
     return { type: "user_rejected", message: "Transaction rejected by user." };
