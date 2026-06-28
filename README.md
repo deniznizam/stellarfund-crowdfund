@@ -103,4 +103,34 @@ Open [http://localhost:3000/fund](http://localhost:3000/fund).
 - [x] Deployed contract address & TX hash in README
 - [x] Live demo link (Vercel)
 - [x] Screenshot of wallet options attached
-- [x] Public GitHub repository
+- [ ] Public GitHub repository
+
+---
+
+## 📈 Future Roadmap / Gelecek Yol Haritası
+
+Based on blockchain crowdfunding research and donor motivation analysis, the future iterations (Blue & Black Belt milestones) of StellarFund will address the following areas:
+
+### 1. Proof-of-Execution & Trust Verification
+- **Concept:** To mitigate the "trust gap," campaign owners will not be able to freely withdraw milestone funds.
+- **Implementation:** The `claim_milestone` contract method will require an IPFS hash parameter representing proof-of-work (invoices, code repository updates, or project evidence): `claim_milestone(milestone_num, proof_hash)`.
+
+### 2. Social Impact & Soulbound NFTs (SBTs)
+- **Concept:** Donors contributing above a specific threshold (e.g., 50 XLM) will receive non-transferable Soulbound Tokens (SBTs) directly minted from the Soroban contract.
+- **Implementation:** Acts as verifiable digital proof of social support, providing game-like status upgrades (social proof).
+
+### 3. Outflow & Expense Ledger
+- **Concept:** Visualizing spent funds alongside raised funds to provide complete transparency.
+- **Implementation:** An interactive timeline showing where and when claimed funds were spent on-chain.
+
+---
+
+> **TR:** Akademik rapor bulguları ve bağışçı motivasyonu analizlerine dayanarak, StellarFund projesinin gelecek sürümleri (Mavi ve Siyah Kuşak aşamaları) şu stratejik geliştirmeleri içerecektir:
+>
+> 1. **Proof-of-Execution (Yürütme Kanıtı):** Kampanya sahibi hedeflenen aşama fonunu çekerken, IPFS üzerinde saklanan fatura veya kanıt dökümanının hash değerini parametre olarak zincire sunmak zorunda kalacak: `claim_milestone(milestone_num, proof_hash)`.
+> 2. **Soulbound NFT (SBT) Başarı Rozetleri:** Belirli bir barajın (Örn: 50 XLM) üzerinde bağış yapan destekçilere Soroban sözleşmesinden doğrudan devredilemez başarı rozetleri (SBT) mint edilecek (Sosyal statü ve oyunlaştırma desteği).
+> 3. **Giden Para / Harcama Akışı:** Arayüzde sadece toplanan değil, kontrattan çekilen paraların nereye ve ne zaman harcandığını gösteren akışkan bir harcama tüneli sunulacak.
+
+---
+
+## License
