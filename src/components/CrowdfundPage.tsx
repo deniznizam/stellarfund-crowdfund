@@ -1255,11 +1255,11 @@ export function CrowdfundPage() {
                     {/* Cyber Grid Base Line */}
                     <line x1="30" y1="160" x2="170" y2="160" stroke="#d97706" strokeWidth="1.5" strokeDasharray="5 3" strokeOpacity="0.4" />
                     
-                    {/* Floating vertical uniform speed particles */}
-                    {progressPercent >= 15 && <circle cx="70" cy="100" r="2" fill="#f59e0b" className="animate-particle-rise" style={{ animationDelay: "0s" }} />}
-                    {progressPercent >= 40 && <circle cx="100" cy="85" r="2.5" fill="#fbbf24" className="animate-particle-rise" style={{ animationDelay: "0.8s" }} />}
-                    {progressPercent >= 65 && <circle cx="130" cy="95" r="2" fill="#fef08a" className="animate-particle-rise" style={{ animationDelay: "1.6s" }} />}
-                    {progressPercent >= 85 && <circle cx="85" cy="70" r="3" fill="#fbbf24" className="animate-particle-rise" style={{ animationDelay: "0.4s" }} />}
+                    {/* Floating vertical uniform speed binary particles */}
+                    {progressPercent >= 15 && <text x="70" y="100" fill="#f59e0b" fontSize="8" className="animate-particle-rise font-mono font-bold" style={{ animationDelay: "0s", opacity: 0.6 }}>0</text>}
+                    {progressPercent >= 40 && <text x="100" y="85" fill="#fbbf24" fontSize="9" className="animate-particle-rise font-mono font-bold" style={{ animationDelay: "0.8s", opacity: 0.7 }}>1</text>}
+                    {progressPercent >= 65 && <text x="130" y="95" fill="#fef08a" fontSize="7" className="animate-particle-rise font-mono font-bold" style={{ animationDelay: "1.6s", opacity: 0.5 }}>0</text>}
+                    {progressPercent >= 85 && <text x="85" y="70" fill="#fbbf24" fontSize="10" className="animate-particle-rise font-mono font-bold" style={{ animationDelay: "0.4s", opacity: 0.8 }}>1</text>}
 
                     {/* Hologram Light Beams fanning out from the spine */}
                     {progressPercent > 0 && (
@@ -1317,6 +1317,13 @@ export function CrowdfundPage() {
                     {/* High-fidelity ECG Grid Monitor Lines */}
                     <path d="M20 50 L180 50 M20 90 L180 90 M20 130 L180 130 M20 170 L180 170" stroke="#881337" strokeWidth="0.5" strokeOpacity="0.15" />
                     <path d="M50 20 L50 180 M90 20 L90 180 M130 20 L130 180 M170 20 L170 180" stroke="#881337" strokeWidth="0.5" strokeOpacity="0.15" />
+
+                    {/* Biometric Monitor Readout */}
+                    <g className="font-mono text-[9px] fill-rose-400/80 font-bold select-none">
+                      <text x="25" y="38">SYS: 118</text>
+                      <text x="25" y="48">DIA: 79</text>
+                      <text x="25" y="58">BPM: {72 + Math.min(48, Math.round(progressPercent * 0.48))}</text>
+                    </g>
 
                     {/* ECG grid background line */}
                     <path
