@@ -946,9 +946,6 @@ export function CrowdfundPage() {
         {/* TOP HEADER */}
         <header className="mb-12 flex flex-col gap-5 sm:flex-row sm:items-center sm:justify-between border-b border-white/5 pb-8">
           <div className="flex flex-col gap-1.5">
-            <Link href="/" className="text-xs font-bold text-cyan-400 hover:text-cyan-300 transition-all mb-1 inline-flex items-center gap-1.5 font-display tracking-widest uppercase">
-              {t.backToSplitPay}
-            </Link>
             <div className="flex items-center gap-4">
               <div className={`relative flex h-12 w-12 items-center justify-center rounded-2xl shadow-[0_8px_32px_rgba(6,182,212,0.25)] animate-glow-pulse transition-all duration-700 ${
                 activeTab === "environment" 
@@ -1986,6 +1983,18 @@ export function CrowdfundPage() {
           </div>
 
         </div>
+
+        {/* Subtle promo advertisement footer pointing to SplitPay */}
+        <footer className="mt-20 border-t border-white/5 pt-8 pb-4 text-center">
+          <Link 
+            href="/" 
+            className="text-[10px] font-mono text-slate-600 hover:text-cyan-400/50 transition-all duration-300 tracking-widest uppercase"
+          >
+            {locale === "tr" 
+              ? "⚡ SplitPay ile hesaplarınızı kolayca bölüştürmeyi deneyin!" 
+              : "⚡ Try SplitPay to split your bills and expenses easily!"}
+          </Link>
+        </footer>
 
       </div>
     </div>
