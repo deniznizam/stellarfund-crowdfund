@@ -8,16 +8,15 @@ StellarFund is a design-first crowdfunding dApp on Stellar Testnet. It visualize
 
 ## Live Demo
 
-**[https://stellarfund-crowdfund.vercel.app](https://stellarfund-crowdfund.vercel.app)**  
-*(Vercel deploy sonrası URL'inizi buraya da ekleyebilirsiniz)*
+**[https://stellarfund-crowdfund-git-main-denizzs.vercel.app/fund](https://stellarfund-crowdfund-git-main-denizzs.vercel.app/fund)**
 
 ---
 
 ## 🛠️ On-Chain Contract Information
 
-- **Contract ID:** `CB7XVTKGOV6R3YG3C4J47Q6H4FHNOVO7MKNGW4HM3RHVDHQGZCCAITT3`
-- **Initial Tx (Goal set to 100 XLM):** [`3c10ebaec1b4592c1cbe99fc719430de5e5d43da455f01a78c3558054096d963`](https://stellar.expert/explorer/testnet/tx/3c10ebaec1b4592c1cbe99fc719430de5e5d43da455f01a78c3558054096d963)
-- **Stellar Expert Explorer:** [View Contract on Stellar Expert](https://stellar.expert/explorer/testnet/contract/CB7XVTKGOV6R3YG3C4J47Q6H4FHNOVO7MKNGW4HM3RHVDHQGZCCAITT3)
+- **Contract ID:** `CCNY74O274PDPMGDS2PU34SYQMIYQWZYCUE4WNM6L4B6AQMXGWXCRIFY`
+- **Initial Tx (Goal set to 100 XLM):** [`1864ad3f893eff3bcd572e53f081ccfb9233911c9295c14153cbc2084488e145`](https://stellar.expert/explorer/testnet/tx/1864ad3f893eff3bcd572e53f081ccfb9233911c9295c14153cbc2084488e145)
+- **Stellar Expert Explorer:** [View Contract on Stellar Expert](https://stellar.expert/explorer/testnet/contract/CCNY74O274PDPMGDS2PU34SYQMIYQWZYCUE4WNM6L4B6AQMXGWXCRIFY)
 
 ---
 
@@ -57,6 +56,7 @@ flowchart TD
 - **Akışkan İlerleme Çizelgesi (Fluid Progress SVG):** Yuvarlak kartlar yerine, hedefe giden neon bir elektrik hattı çizilmiştir. %25 (Planlama), %50 (Geliştirme) ve %100 (Üretim) hedefleri aşıldıkça bu hat parlayarak ilerler.
 - **On-Chain Liderlik Tablosu (Leaderboard):** En yüksek bağış yapan ilk 3 kişi akıllı sözleşme (Rust) içerisinde sıralanarak en tepedeki bağışçıya 👑 rozeti atanır.
 - **Canlı İşlem Akışı (Live Tx Feed):** Horizon API taranarak en son yapılan 5 bağış işlemi on-chain hash kodlarıyla beraber her 5 saniyede bir sayfada akar.
+- **On-Chain Milestone Talebi (claim_milestone):** Akıllı sözleşme üzerinde sadece kampanya sahibi (owner) hedefler aşıldığında aşama fonunu çekebilir. Çekilen bu milestone'lar ön yüzde şeffaf bir şekilde yansıtılır.
 - **3 Tip Hata Yönetimi:**
   1. `wallet_not_found` (Cüzdan eklentisi bulunamadığında Freighter indirme linki çıkarır).
   2. `user_rejected` (Kullanıcı imzayı iptal ettiğinde uyarı verir).
@@ -83,7 +83,7 @@ flowchart TD
 
 ### Run locally
 ```bash
-git clone <your-new-repository-url>
+git clone https://github.com/deniznizam/stellarfund-crowdfund.git
 cd stellarfund-crowdfund
 npm install
 npm run dev
@@ -103,34 +103,10 @@ Open [http://localhost:3000/fund](http://localhost:3000/fund).
 - [x] Deployed contract address & TX hash in README
 - [x] Live demo link (Vercel)
 - [x] Screenshot of wallet options attached
-- [ ] Public GitHub repository
-
----
-
-## 📈 Future Roadmap / Gelecek Yol Haritası
-
-Based on blockchain crowdfunding research and donor motivation analysis, the future iterations (Blue & Black Belt milestones) of StellarFund will address the following areas:
-
-### 1. Proof-of-Execution & Trust Verification
-- **Concept:** To mitigate the "trust gap," campaign owners will not be able to freely withdraw milestone funds.
-- **Implementation:** The `claim_milestone` contract method will require an IPFS hash parameter representing proof-of-work (invoices, code repository updates, or project evidence): `claim_milestone(milestone_num, proof_hash)`.
-
-### 2. Social Impact & Soulbound NFTs (SBTs)
-- **Concept:** Donors contributing above a specific threshold (e.g., 50 XLM) will receive non-transferable Soulbound Tokens (SBTs) directly minted from the Soroban contract.
-- **Implementation:** Acts as verifiable digital proof of social support, providing game-like status upgrades (social proof).
-
-### 3. Outflow & Expense Ledger
-- **Concept:** Visualizing spent funds alongside raised funds to provide complete transparency.
-- **Implementation:** An interactive timeline showing where and when claimed funds were spent on-chain.
-
----
-
-> **TR:** Akademik rapor bulguları ve bağışçı motivasyonu analizlerine dayanarak, StellarFund projesinin gelecek sürümleri (Mavi ve Siyah Kuşak aşamaları) şu stratejik geliştirmeleri içerecektir:
->
-> 1. **Proof-of-Execution (Yürütme Kanıtı):** Kampanya sahibi hedeflenen aşama fonunu çekerken, IPFS üzerinde saklanan fatura veya kanıt dökümanının hash değerini parametre olarak zincire sunmak zorunda kalacak: `claim_milestone(milestone_num, proof_hash)`.
-> 2. **Soulbound NFT (SBT) Başarı Rozetleri:** Belirli bir barajın (Örn: 50 XLM) üzerinde bağış yapan destekçilere Soroban sözleşmesinden doğrudan devredilemez başarı rozetleri (SBT) mint edilecek (Sosyal statü ve oyunlaştırma desteği).
-> 3. **Giden Para / Harcama Akışı:** Arayüzde sadece toplanan değil, kontrattan çekilen paraların nereye ve ne zaman harcandığını gösteren akışkan bir harcama tüneli sunulacak.
+- [x] Public GitHub repository -> https://github.com/deniznizam/stellarfund-crowdfund
 
 ---
 
 ## License
+
+MIT
