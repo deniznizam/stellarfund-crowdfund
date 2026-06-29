@@ -2,7 +2,6 @@
 
 import { useCallback, useEffect, useState, useMemo } from "react";
 import Link from "next/link";
-import Image from "next/image";
 import { Confetti } from "@/components/Confetti";
 import { LanguageToggle } from "@/components/LanguageToggle";
 import { useWallets } from "@/hooks/useWallets";
@@ -80,6 +79,9 @@ type PageCopy = {
   claimableStatus: string;
   ownerSectionTitle: string;
   totalWithdrawnLabel: string;
+  demoModeLabel: string;
+  liveModeLabel: string;
+  simulationAlert: string;
 };
 
 const pageCopy: Record<Locale, PageCopy> = {
@@ -137,6 +139,9 @@ const pageCopy: Record<Locale, PageCopy> = {
     claimableStatus: "Ready for Withdrawal",
     ownerSectionTitle: "Campaign Creator Portal",
     totalWithdrawnLabel: "Total Withdrawn",
+    demoModeLabel: "Demo Mode (Mock Data)",
+    liveModeLabel: "Live Testnet",
+    simulationAlert: "Currently viewing interactive simulated demo data for evaluation.",
   },
   tr: {
     title: "StellarFund",
@@ -146,14 +151,14 @@ const pageCopy: Record<Locale, PageCopy> = {
     disconnect: "Bağlantıyı Kes",
     connectWallet: "Cüzdanı Bağla",
     connecting: "Bağlanıyor…",
-    campaignStats: "Kampanya Finansalları",
+    campaignStats: "Kampanya Mali Tablosu",
     raisedOfGoal: (raised, goal) => `${goal} XLM hedeften ${raised} XLM toplandı`,
     donorCount: "Destekçiler",
-    donateTitle: "Kampanyaya Destek Ol",
+    donateTitle: "Kampanyaya Bağış Yap",
     donatePlaceholder: "Tutar (XLM)",
     donateBtn: "Bağış Gönder",
     donatingBtn: "İşlem Gönderiliyor…",
-    connectWalletToDonate: "Destek Olmak için Cüzdanı Bağla",
+    connectWalletToDonate: "Bağış Yapmak için Cüzdanı Bağla",
     insufficientBalance: "Cüzdanınızda yeterli bakiye bulunmamaktadır.",
     leaderboardTitle: "En Yüksek Katkıda Bulunanlar",
     activityTitle: "Gerçek Zamanlı Blok Zinciri İşlem Akışı",
@@ -161,8 +166,8 @@ const pageCopy: Record<Locale, PageCopy> = {
     noActivity: "Testnet üzerinde henüz işlem algılanmadı.",
     funcInitialize: "Kampanya Başlatıldı",
     funcFund: "Sponsorluk Depozitosu",
-    milestonePlanning: "Aşama 1: Planlama & Kurulum (%25)",
-    milestonePlanningDesc: "Çekirdek mimarinin tasarımı, ilk geliştirici kurulumları ve topluluk entegrasyonu.",
+    milestonePlanning: "Aşama 1: Planlama & Altyapı (%25)",
+    milestonePlanningDesc: "Çekirdek mimarinin tasarımı, geliştirici ortamı kurulumu ve topluluk entegrasyonu.",
     milestoneDevelopment: "Aşama 2: Alfa Geliştirme (%50)",
     milestoneDevelopmentDesc: "Akıllı sözleşmelerin dağıtımı, Stellar Testnet testleri ve istemci entegrasyonu.",
     milestoneProduction: "Aşama 3: Üretim Yayını (%100)",
@@ -176,7 +181,7 @@ const pageCopy: Record<Locale, PageCopy> = {
     insufficientBalanceTitle: "Yetersiz Bakiye",
     insufficientBalanceDesc: "Testnet cüzdanınızda yeterli XLM bulunmuyor. Aşağıdaki butondan ücretsiz test XLM talep edebilirsiniz.",
     errorTitle: "İşlem Başarısız",
-    txSuccessTitle: "Sponsorluk Tamamlandı!",
+    txSuccessTitle: "Sponsorluk Başarılı!",
     txSuccessMessage: (amount) => `Teşekkürler! Kampanyaya ${amount} XLM katkı başarıyla on-chain kaydedildi.`,
     viewExplorer: "Stellar Expert ile Doğrula →",
     statusLabel: "Durum",
@@ -192,6 +197,9 @@ const pageCopy: Record<Locale, PageCopy> = {
     claimableStatus: "Çekilmeye Hazır",
     ownerSectionTitle: "Kampanya Yöneticisi Portalı",
     totalWithdrawnLabel: "Toplam Çekilen Tutar",
+    demoModeLabel: "Demo Modu (Simülasyon)",
+    liveModeLabel: "Canlı Testnet",
+    simulationAlert: "Şu anda değerlendirme için interaktif simüle edilmiş demo verileri görüntüleniyor.",
   }
 };
 
@@ -203,15 +211,70 @@ type TxState = {
   type?: "wallet_not_found" | "user_rejected" | "insufficient_balance" | "network_error";
 };
 
+// Simulated Demo Data
+const DEMO_CAMPAIGN: Campaign = {
+  title: "StellarFund Launch Campaign",
+  goal: BigInt(100_0000000), // 100 XLM
+  total: BigInt(62_5000000), // 62.5 XLM (62.5%)
+  donor_count: 8,
+  top_donors: [
+    { address: "GB2X...R4PQ (Alice)", amount: BigInt(30_0000000) },
+    { address: "GD4Y...K7LT (Bob)", amount: BigInt(20_0000000) },
+    { address: "GC3Z...M2NS (Charlie)", amount: BigInt(12_5000000) }
+  ],
+  owner: "GDT6X...P9QW",
+  m1_claimed: true, // 25% claimed
+  m2_claimed: false, // 50% not claimed yet
+  m3_claimed: false // 100% locked
+};
+
+const DEMO_ACTIVITIES: ParsedTx[] = [
+  {
+    id: "op1",
+    hash: "a1b2c3d4e5f6g7h8",
+    createdAt: new Date(Date.now() - 60000).toISOString(),
+    functionName: "fund",
+    donor: "GB2X...R4PQ (Alice)",
+    amount: 30
+  },
+  {
+    id: "op2",
+    hash: "z9y8x7w6v5u4t3s2",
+    createdAt: new Date(Date.now() - 300000).toISOString(),
+    functionName: "fund",
+    donor: "GD4Y...K7LT (Bob)",
+    amount: 20
+  },
+  {
+    id: "op3",
+    hash: "q1w2e3r4t5y6u7i8",
+    createdAt: new Date(Date.now() - 900000).toISOString(),
+    functionName: "fund",
+    donor: "GC3Z...M2NS (Charlie)",
+    amount: 12.5
+  },
+  {
+    id: "op4",
+    hash: "i8u7y6t5r4e3w2q1",
+    createdAt: new Date(Date.now() - 3600000).toISOString(),
+    functionName: "initialize",
+    donor: "GDT6X...P9QW (Creator)",
+    amount: null
+  }
+];
+
 export function CrowdfundPage() {
   const [locale, setLocale] = useState<Locale>("en");
   const t = pageCopy[locale];
 
+  // Demo state toggle
+  const [isDemoMode, setIsDemoMode] = useState(true);
+
   // Campaign State
-  const [campaign, setCampaign] = useState<Campaign | null>(null);
+  const [liveCampaign, setLiveCampaign] = useState<Campaign | null>(null);
 
   // Activity feed
-  const [activities, setActivities] = useState<ParsedTx[]>([]);
+  const [liveActivities, setLiveActivities] = useState<ParsedTx[]>([]);
 
   // User State
   const { publicKey, isConnecting, error: walletError, openModal, disconnect, signXdr } = useWallets();
@@ -224,6 +287,15 @@ export function CrowdfundPage() {
   const [txState, setTxState] = useState<TxState>({ status: "idle" });
   const [showConfetti, setShowConfetti] = useState(false);
   const [isClaiming, setIsClaiming] = useState<number | null>(null);
+
+  // Active Campaign mapping
+  const campaign = useMemo(() => {
+    return isDemoMode ? DEMO_CAMPAIGN : liveCampaign;
+  }, [isDemoMode, liveCampaign]);
+
+  const activities = useMemo(() => {
+    return isDemoMode ? DEMO_ACTIVITIES : liveActivities;
+  }, [isDemoMode, liveActivities]);
 
   // Campaign progress calculation
   const progressPercent = useMemo(() => {
@@ -240,8 +312,8 @@ export function CrowdfundPage() {
   // Is connected wallet the campaign owner?
   const isOwner = useMemo(() => {
     if (!campaign || !publicKey) return false;
-    return campaign.owner === publicKey;
-  }, [campaign, publicKey]);
+    return isDemoMode ? true : campaign.owner === publicKey; // In demo mode, simulate creator portal
+  }, [campaign, publicKey, isDemoMode]);
 
   // Total funds withdrawn by owner based on claimed milestones
   const totalWithdrawn = useMemo(() => {
@@ -258,7 +330,7 @@ export function CrowdfundPage() {
   const fetchCampaignData = useCallback(async () => {
     try {
       const data = await getCampaign();
-      setCampaign(data);
+      setLiveCampaign(data);
     } catch (err) {
       console.error("Failed to fetch campaign data:", err);
     }
@@ -268,7 +340,7 @@ export function CrowdfundPage() {
   const fetchActivityFeed = useCallback(async () => {
     try {
       const txs = await getRecentTransactions(CONTRACT_ID);
-      setActivities(txs);
+      setLiveActivities(txs);
     } catch (err) {
       console.error("Failed to fetch Horizon activity:", err);
     }
@@ -348,6 +420,25 @@ export function CrowdfundPage() {
 
   // Submit claim milestone transaction
   const handleClaimMilestone = async (milestoneNum: number) => {
+    if (isDemoMode) {
+      // Simulate claim success immediately
+      setIsClaiming(milestoneNum);
+      setTxState({ status: "pending" });
+      await new Promise(r => setTimeout(r, 2000));
+      DEMO_CAMPAIGN.m1_claimed = milestoneNum === 1 ? true : DEMO_CAMPAIGN.m1_claimed;
+      DEMO_CAMPAIGN.m2_claimed = milestoneNum === 2 ? true : DEMO_CAMPAIGN.m2_claimed;
+      DEMO_CAMPAIGN.m3_claimed = milestoneNum === 3 ? true : DEMO_CAMPAIGN.m3_claimed;
+      setTxState({
+        status: "success",
+        hash: "demo_claim_hash_stellar",
+        explorerUrl: "#"
+      });
+      setShowConfetti(true);
+      setTimeout(() => setShowConfetti(false), 5000);
+      setIsClaiming(null);
+      return;
+    }
+
     if (!publicKey) return;
     setIsClaiming(milestoneNum);
     setTxState({ status: "pending" });
@@ -392,8 +483,34 @@ export function CrowdfundPage() {
 
   const handleDonateSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!publicKey) return;
+    
+    if (isDemoMode) {
+      // Simulate donation success
+      const amount = Number(donateAmount);
+      setTxState({ status: "pending" });
+      await new Promise(r => setTimeout(r, 1500));
+      DEMO_CAMPAIGN.total += BigInt(Math.round(amount * 10_000_000));
+      DEMO_CAMPAIGN.donor_count += 1;
+      DEMO_ACTIVITIES.unshift({
+        id: `op_${Date.now()}`,
+        hash: `demo_tx_${Math.random().toString(36).substr(2, 9)}`,
+        createdAt: new Date().toISOString(),
+        functionName: "fund",
+        donor: publicKey ? publicKey.substring(0, 8) + "..." : "Anonymous Sponsor",
+        amount
+      });
+      setTxState({
+        status: "success",
+        hash: "demo_tx_hash_stellar",
+        explorerUrl: "#"
+      });
+      setDonateAmount("");
+      setShowConfetti(true);
+      setTimeout(() => setShowConfetti(false), 5000);
+      return;
+    }
 
+    if (!publicKey) return;
     const amount = Number(donateAmount);
     if (isNaN(amount) || amount <= 0) {
       setTxState({
@@ -460,7 +577,7 @@ export function CrowdfundPage() {
               {t.backToSplitPay}
             </Link>
             <div className="flex items-center gap-3">
-              <div className="relative flex h-11 w-11 items-center justify-center rounded-2xl bg-gradient-to-tr from-cyan-400 via-indigo-500 to-purple-600 shadow-[0_8px_30px_rgb(6_182_212/0.2)]">
+              <div className="relative flex h-11 w-11 items-center justify-center rounded-2xl bg-gradient-to-tr from-cyan-400 via-indigo-500 to-purple-600 shadow-[0_8px_30px_rgb(6_182_212/0.2)] animate-glow-pulse">
                 <span className="absolute inset-0 rounded-2xl bg-cyan-400/20 blur-sm animate-pulse" />
                 <svg className="h-5 w-5 text-white relative z-10" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
                   <path strokeLinecap="round" strokeLinejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
@@ -474,7 +591,20 @@ export function CrowdfundPage() {
           </div>
           
           <div className="flex items-center gap-3 self-end sm:self-center">
-            <span className="inline-flex items-center gap-1.5 rounded-full border border-cyan-400/30 bg-cyan-400/10 px-3 py-1 text-[10px] font-black uppercase tracking-widest text-cyan-300 shadow-[0_0_15px_rgba(6,182,212,0.1)]">
+            {/* Mode Switch Button */}
+            <button
+              type="button"
+              onClick={() => setIsDemoMode(!isDemoMode)}
+              className={`rounded-xl px-4 py-2 text-xs font-black uppercase tracking-wider transition-all duration-350 border ${
+                isDemoMode
+                  ? "bg-amber-500/10 border-amber-500/30 text-amber-300 shadow-[0_0_15px_rgba(245,158,11,0.15)] animate-pulse"
+                  : "bg-cyan-500/10 border-cyan-500/30 text-cyan-300 shadow-[0_0_15px_rgba(6,182,212,0.15)]"
+              }`}
+            >
+              {isDemoMode ? t.demoModeLabel : t.liveModeLabel}
+            </button>
+
+            <span className="inline-flex items-center gap-1.5 rounded-full border border-cyan-400/30 bg-cyan-400/10 px-3 py-1 text-[10px] font-black uppercase tracking-widest text-cyan-300">
               <span className="h-2 w-2 rounded-full bg-cyan-400 animate-ping" />
               Testnet
             </span>
@@ -506,18 +636,27 @@ export function CrowdfundPage() {
           </div>
         </header>
 
-        {/* HERO BANNER SECTION (AI Generated Image Integrated) */}
-        <section className="mb-12 relative rounded-3xl overflow-hidden border border-white/5 glass p-1 shadow-2xl">
+        {/* MOCK DATA SIMULATION NOTICE BANNER */}
+        {isDemoMode && (
+          <div className="mb-6 rounded-2xl bg-amber-500/10 border border-amber-500/20 p-4 text-xs text-amber-300 font-bold flex items-center gap-2.5 animate-fade-up">
+            <span className="relative flex h-2 w-2 shrink-0">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-amber-400 opacity-75" />
+              <span className="relative inline-flex rounded-full h-2 w-2 bg-amber-500" />
+            </span>
+            <span>{t.simulationAlert}</span>
+          </div>
+        )}
+
+        {/* HERO BANNER SECTION */}
+        <section className="mb-12 relative rounded-3xl overflow-hidden border border-cyan-500/10 glass p-1 shadow-[0_0_50px_rgba(6,182,212,0.12)]">
           <div className="relative h-[220px] w-full rounded-2xl overflow-hidden">
-            <Image 
+            <img 
               src="/images/stellarfund_hero.jpg" 
               alt="StellarFund Crowdfunding Hero Banner" 
-              fill
-              priority
-              className="object-cover opacity-85 hover:scale-[1.01] transition-transform duration-[6000ms] ease-out"
+              className="object-cover w-full h-full opacity-85 hover:scale-[1.01] transition-transform duration-[6000ms] ease-out"
             />
-            <div className="absolute inset-0 bg-gradient-to-r from-slate-950/90 via-slate-950/60 to-transparent flex flex-col justify-center p-8 sm:p-12">
-              <span className="inline-block px-3 py-1 rounded-full bg-cyan-400/10 border border-cyan-400/20 text-[10px] font-black uppercase tracking-widest text-cyan-300 mb-2">On-Chain Transparency</span>
+            <div className="absolute inset-0 bg-gradient-to-r from-slate-950/95 via-slate-950/65 to-transparent flex flex-col justify-center p-8 sm:p-12">
+              <span className="inline-block px-3 py-1 rounded-full bg-cyan-400/10 border border-cyan-400/25 text-[10px] font-black uppercase tracking-widest text-cyan-300 mb-2">On-Chain Transparency</span>
               <h2 className="text-2xl sm:text-4xl font-extrabold text-white tracking-tight mb-2 max-w-lg leading-tight">
                 {locale === "en" ? "Fund with Full Confidence" : "Tam Güvenle Fonlayın"}
               </h2>
@@ -571,17 +710,29 @@ export function CrowdfundPage() {
                     filter="url(#neonBlur)"
                     className="transition-all duration-1000 ease-out"
                   />
+                  
+                  {/* Dynamic Glowing Flow Dot */}
+                  {progressPercent > 0 && (
+                    <circle
+                      cx="24"
+                      cy={filledY}
+                      r="6"
+                      fill="#22d3ee"
+                      filter="url(#neonBlur)"
+                      className="animate-ping"
+                    />
+                  )}
                 </svg>
 
                 {/* Node 1: 25% */}
                 <div className="absolute" style={{ top: "20px", transform: "translateY(-50%)" }}>
                   <div className={`relative flex h-9 w-9 items-center justify-center rounded-full border-2 transition-all duration-500 z-20 ${
                     progressPercent >= 25
-                      ? "border-cyan-400 bg-slate-900 text-cyan-300 shadow-[0_0_20px_rgba(34,211,238,0.7)]"
+                      ? "border-cyan-400 bg-slate-900 text-cyan-300 shadow-[0_0_20px_rgba(34,211,238,0.7)] scale-110"
                       : "border-slate-800 bg-slate-950 text-slate-600"
                   }`}>
                     {progressPercent >= 25 && <span className="absolute inset-0 rounded-full bg-cyan-400/20 animate-ping" />}
-                    <span className="text-[11px] font-black">1</span>
+                    <span className="text-[11px] font-black font-mono">1</span>
                   </div>
                 </div>
 
@@ -589,11 +740,11 @@ export function CrowdfundPage() {
                 <div className="absolute" style={{ top: "225px", transform: "translateY(-50%)" }}>
                   <div className={`relative flex h-9 w-9 items-center justify-center rounded-full border-2 transition-all duration-500 z-20 ${
                     progressPercent >= 50
-                      ? "border-violet-500 bg-slate-900 text-violet-300 shadow-[0_0_20px_rgba(139,92,246,0.7)]"
+                      ? "border-violet-500 bg-slate-900 text-violet-300 shadow-[0_0_20px_rgba(139,92,246,0.7)] scale-110"
                       : "border-slate-800 bg-slate-950 text-slate-600"
                   }`}>
                     {progressPercent >= 50 && <span className="absolute inset-0 rounded-full bg-violet-500/20 animate-ping" />}
-                    <span className="text-[11px] font-black">2</span>
+                    <span className="text-[11px] font-black font-mono">2</span>
                   </div>
                 </div>
 
@@ -601,11 +752,11 @@ export function CrowdfundPage() {
                 <div className="absolute" style={{ top: "430px", transform: "translateY(-50%)" }}>
                   <div className={`relative flex h-9 w-9 items-center justify-center rounded-full border-2 transition-all duration-500 z-20 ${
                     progressPercent >= 100
-                      ? "border-indigo-500 bg-slate-900 text-indigo-300 shadow-[0_0_20px_rgba(99,102,241,0.7)]"
+                      ? "border-indigo-500 bg-slate-900 text-indigo-300 shadow-[0_0_20px_rgba(99,102,241,0.7)] scale-110"
                       : "border-slate-800 bg-slate-950 text-slate-600"
                   }`}>
                     {progressPercent >= 100 && <span className="absolute inset-0 rounded-full bg-indigo-500/20 animate-ping" />}
-                    <span className="text-[11px] font-black">3</span>
+                    <span className="text-[11px] font-black font-mono">3</span>
                   </div>
                 </div>
               </div>
@@ -621,8 +772,8 @@ export function CrowdfundPage() {
                       </h4>
                       <span className={`text-[8px] font-black uppercase px-2 py-0.5 rounded ${
                         campaign?.m1_claimed
-                          ? "bg-slate-800 text-slate-500"
-                          : progressPercent >= 25 ? "bg-cyan-500/20 text-cyan-300" : "bg-slate-900 text-slate-600"
+                          ? "bg-emerald-500/10 text-emerald-400 border border-emerald-500/25"
+                          : progressPercent >= 25 ? "bg-cyan-500/20 text-cyan-300 border border-cyan-400/25" : "bg-slate-900 text-slate-600"
                       }`}>
                         {campaign?.m1_claimed ? t.claimedStatus : progressPercent >= 25 ? t.claimableStatus : t.lockedStatus}
                       </span>
@@ -635,7 +786,7 @@ export function CrowdfundPage() {
                       type="button"
                       onClick={() => handleClaimMilestone(1)}
                       disabled={isClaiming !== null}
-                      className="mt-3 self-start rounded-lg bg-cyan-400/20 border border-cyan-400/30 px-3.5 py-1.5 text-xs font-black uppercase tracking-wider text-cyan-300 transition hover:bg-cyan-400/30"
+                      className="mt-3 self-start rounded-lg bg-cyan-400/20 border border-cyan-400/30 px-3.5 py-1.5 text-xs font-black uppercase tracking-wider text-cyan-300 transition hover:bg-cyan-400/30 animate-pulse"
                     >
                       {isClaiming === 1 ? t.claimingBtn : t.claimBtn}
                     </button>
@@ -651,8 +802,8 @@ export function CrowdfundPage() {
                       </h4>
                       <span className={`text-[8px] font-black uppercase px-2 py-0.5 rounded ${
                         campaign?.m2_claimed
-                          ? "bg-slate-800 text-slate-500"
-                          : progressPercent >= 50 ? "bg-violet-500/20 text-violet-300" : "bg-slate-900 text-slate-600"
+                          ? "bg-emerald-500/10 text-emerald-400 border border-emerald-500/25"
+                          : progressPercent >= 50 ? "bg-violet-500/20 text-violet-300 border border-violet-400/25" : "bg-slate-900 text-slate-600"
                       }`}>
                         {campaign?.m2_claimed ? t.claimedStatus : progressPercent >= 50 ? t.claimableStatus : t.lockedStatus}
                       </span>
@@ -665,7 +816,7 @@ export function CrowdfundPage() {
                       type="button"
                       onClick={() => handleClaimMilestone(2)}
                       disabled={isClaiming !== null}
-                      className="mt-3 self-start rounded-lg bg-violet-500/20 border border-violet-500/30 px-3.5 py-1.5 text-xs font-black uppercase tracking-wider text-violet-300 transition hover:bg-violet-500/30"
+                      className="mt-3 self-start rounded-lg bg-violet-500/20 border border-violet-500/30 px-3.5 py-1.5 text-xs font-black uppercase tracking-wider text-violet-300 transition hover:bg-violet-500/30 animate-pulse"
                     >
                       {isClaiming === 2 ? t.claimingBtn : t.claimBtn}
                     </button>
@@ -681,8 +832,8 @@ export function CrowdfundPage() {
                       </h4>
                       <span className={`text-[8px] font-black uppercase px-2 py-0.5 rounded ${
                         campaign?.m3_claimed
-                          ? "bg-slate-800 text-slate-500"
-                          : progressPercent >= 100 ? "bg-indigo-500/20 text-indigo-300" : "bg-slate-900 text-slate-600"
+                          ? "bg-emerald-500/10 text-emerald-400 border border-emerald-500/25"
+                          : progressPercent >= 100 ? "bg-indigo-500/20 text-indigo-300 border border-indigo-400/25" : "bg-slate-900 text-slate-600"
                       }`}>
                         {campaign?.m3_claimed ? t.claimedStatus : progressPercent >= 100 ? t.claimableStatus : t.lockedStatus}
                       </span>
@@ -695,7 +846,7 @@ export function CrowdfundPage() {
                       type="button"
                       onClick={() => handleClaimMilestone(3)}
                       disabled={isClaiming !== null}
-                      className="mt-3 self-start rounded-lg bg-indigo-500/20 border border-indigo-500/30 px-3.5 py-1.5 text-xs font-black uppercase tracking-wider text-indigo-300 transition hover:bg-indigo-500/30"
+                      className="mt-3 self-start rounded-lg bg-indigo-500/20 border border-indigo-500/30 px-3.5 py-1.5 text-xs font-black uppercase tracking-wider text-indigo-300 transition hover:bg-indigo-500/30 animate-pulse"
                     >
                       {isClaiming === 3 ? t.claimingBtn : t.claimBtn}
                     </button>
@@ -813,7 +964,7 @@ export function CrowdfundPage() {
                   <p className="text-xs text-emerald-300/90 leading-relaxed mb-4">
                     {txState.message || t.txSuccessMessage(donateAmount)}
                   </p>
-                  {txState.explorerUrl && (
+                  {txState.explorerUrl && txState.explorerUrl !== "#" && (
                     <a
                       href={txState.explorerUrl}
                       target="_blank"
@@ -845,7 +996,8 @@ export function CrowdfundPage() {
             )}
 
             {/* CONTRIBUTION COMPONENT */}
-            <div className="glass rounded-3xl p-6 sm:p-8 border border-white/5 shadow-lg">
+            <div className="glass rounded-3xl p-6 sm:p-8 border border-white/5 shadow-lg relative overflow-hidden">
+              <div className="absolute -top-12 -right-12 h-24 w-24 rounded-full bg-cyan-500/5 blur-xl" />
               <h3 className="text-lg font-black tracking-tight text-white mb-4">{t.donateTitle}</h3>
               
               {publicKey && (
@@ -888,13 +1040,13 @@ export function CrowdfundPage() {
                   
                   {/* Quick-choice contribution buttons */}
                   <div className="grid grid-cols-4 gap-2 mb-2">
-                    {[1, 5, 10, 25].map(amt => (
+                    {[5, 10, 25, 50].map(amt => (
                       <button
                         key={amt}
                         type="button"
                         onClick={() => setDonateAmount(String(amt))}
                         disabled={txState.status === "pending"}
-                        className="rounded-xl border border-white/5 bg-slate-900 px-3 py-2 text-xs font-black text-slate-400 hover:text-white hover:border-white/15 hover:bg-slate-800 transition"
+                        className="rounded-xl border border-white/5 bg-slate-900 px-3 py-2.5 text-xs font-black text-slate-400 hover:text-white hover:border-cyan-500/30 hover:bg-slate-800 transition"
                       >
                         +{amt} XLM
                       </button>
@@ -925,7 +1077,7 @@ export function CrowdfundPage() {
             <div className="glass rounded-3xl p-6 sm:p-8 border border-white/5 relative overflow-hidden shadow-xl">
               <div className="absolute top-0 left-0 h-32 w-32 rounded-full bg-violet-600/5 blur-3xl" />
               <h3 className="text-lg font-black tracking-tight text-white mb-6 flex items-center gap-2 border-b border-white/5 pb-3">
-                <span>🏆</span>
+                <span>👑</span>
                 <span>{t.leaderboardTitle}</span>
               </h3>
 
@@ -987,7 +1139,7 @@ export function CrowdfundPage() {
                       <div key={tx.id} className="rounded-2xl bg-slate-950/80 border border-white/5 p-4.5 transition hover:border-white/10 hover:bg-slate-950">
                         <div className="flex items-center justify-between mb-2">
                           <span className={`text-[10px] font-black uppercase tracking-wider px-2 py-0.5 rounded ${
-                            isInit ? "bg-indigo-500/20 text-indigo-300" : "bg-cyan-500/20 text-cyan-300"
+                            isInit ? "bg-indigo-500/20 text-indigo-300 border border-indigo-500/30" : "bg-cyan-500/20 text-cyan-300 border border-cyan-500/30"
                           }`}>
                             {isInit ? t.funcInitialize : t.funcFund}
                           </span>
@@ -1004,14 +1156,20 @@ export function CrowdfundPage() {
                           <span className="font-mono text-xs font-black text-slate-200">
                             {tx.amount !== null ? `${formatXlm(tx.amount)} XLM` : "-"}
                           </span>
-                          <a
-                            href={`https://stellar.expert/explorer/testnet/tx/${tx.hash}`}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="text-[10px] font-black uppercase tracking-wider text-indigo-400 hover:text-indigo-300 transition"
-                          >
-                            Explore Tx ↗
-                          </a>
+                          {tx.hash !== "demo_claim_hash_stellar" && tx.hash !== "demo_tx_hash_stellar" && !tx.hash.startsWith("demo_tx_") ? (
+                            <a
+                              href={`https://stellar.expert/explorer/testnet/tx/${tx.hash}`}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="text-[10px] font-black uppercase tracking-wider text-indigo-400 hover:text-indigo-300 transition"
+                            >
+                              Explore Tx ↗
+                            </a>
+                          ) : (
+                            <span className="text-[10px] font-black uppercase tracking-wider text-slate-600 select-none">
+                              Simulated
+                            </span>
+                          )}
                         </div>
                       </div>
                     );
