@@ -155,17 +155,17 @@ const pageCopy: Record<Locale, PageCopy> = {
     disconnect: "Disconnect",
     connectWallet: "Connect Wallet",
     connecting: "Connecting…",
-    campaignStats: "On-Chain Financial Ledger",
+    campaignStats: "Campaign Wallet Ledger",
     raisedOfGoal: (raised, goal) => `${raised} XLM raised of ${goal} XLM target`,
-    donorCount: "Backers",
-    donateTitle: "Sponsor Project Development",
+    donorCount: "Generous Backers",
+    donateTitle: "Support This Worthy Cause",
     donatePlaceholder: "Enter contribution (XLM)",
-    donateBtn: "Authorize Donation",
-    donatingBtn: "Broadcasting to Ledger…",
-    connectWalletToDonate: "Connect Wallet to Donate",
+    donateBtn: "Confirm Donation",
+    donatingBtn: "Sending to Smart Contract…",
+    connectWalletToDonate: "Connect Wallet to Support",
     insufficientBalance: "Insufficient balance in your wallet.",
     leaderboardTitle: "Top Benefactors Podium",
-    activityTitle: "Real-time Blockchain Transaction Logs",
+    activityTitle: "Transparent Ledger Timeline",
     noDonors: "No transactions processed yet. Be the first to back this project!",
     noActivity: "No ledger transactions detected yet on Testnet.",
     funcInitialize: "Campaign Deployed",
@@ -203,18 +203,18 @@ const pageCopy: Record<Locale, PageCopy> = {
     totalWithdrawnLabel: "Withdrawn Funds",
     demoModeLabel: "Demo Simulation Mode",
     liveModeLabel: "Live Smart Contract",
-    simulationAlert: "Displaying interactive simulation data. You can mock donations and withdraw milestone funds.",
+    simulationAlert: "You are currently exploring the interactive simulation dashboard. You can mock donations and withdraw milestone funds.",
     
     // Custom Redesign Copy values
     heroTitle: "Let your donation truly reach its goal",
     heroDesc: "With StellarFund, your funds remain securely locked in the smart contract escrow. The project owner can only withdraw funds sequentially as they prove actual milestones. Complete transparency, zero trust issues.",
-    howItWorksTitle: "How StellarFund Works",
-    howItWorksStep1Title: "1. Connect & Donate",
-    howItWorksStep1Desc: "Connect your Stellar wallet and send XLM. All contributions are recorded directly on-chain.",
+    howItWorksTitle: "How StellarFund Protects Your Giving",
+    howItWorksStep1Title: "1. Connect & Give",
+    howItWorksStep1Desc: "Securely link your Stellar wallet and choose your support amount. Your donation is immediately recorded.",
     howItWorksStep2Title: "2. Escrow Locking",
-    howItWorksStep2Desc: "Funds are securely locked in the smart contract vault, completely transparent and visible to all.",
-    howItWorksStep3Title: "3. Milestone Verification",
-    howItWorksStep3Desc: "The creator can only withdraw funds sequentially as they achieve development goals (%25, %50, %100).",
+    howItWorksStep2Desc: "Funds are locked inside a secure on-chain contract vault, visible and auditable by everyone.",
+    howItWorksStep3Title: "3. Milestone-Based Payouts",
+    howItWorksStep3Desc: "The creator receives funds only after verifying progress milestones, ensuring your money goes exactly where intended.",
     outflowTunnelTitle: "Transparent Money Flow",
     outflowTunnelDesc: "Track where, when, and why the withdrawn project budget is spent, with proof of execution.",
     outflowM1Expense: "Hosting infrastructure setup, domain registration, and API keys activation.",
@@ -226,10 +226,10 @@ const pageCopy: Record<Locale, PageCopy> = {
     overdraftWarning: "⚠️ This donation amount exceeds your current wallet balance.",
     invalidAmountWarning: "⚠️ Please enter an amount greater than 0.",
     milestoneLabel: "Kilometre Taşı Progress",
-    goalTargetLabel: "Hedef Bütçe",
-    catEnvLabel: "🌲 Reforestation Campaign",
+    goalTargetLabel: "Goal Target",
+    catEnvLabel: "🌲 Nature & Forests",
     catEduLabel: "📚 Tech Books for Schools",
-    catHealthLabel: "❤️ Medical Tech Supplies",
+    catHealthLabel: "❤️ Medical Tech Support",
     treeTitle: "Cybernetic Reforestation Tree",
     bookTitle: "Holographic Knowledge Book",
     heartTitle: "Neon Heartbeat Vitality Monitor",
@@ -241,16 +241,16 @@ const pageCopy: Record<Locale, PageCopy> = {
     victoryTitleHealth: "Heartbeats Strengthen! ❤️",
     victoryDescHealth: "Your donation has vitalized the digital health monitor on-chain log.",
     closeBtn: "Close Dashboard",
-    actorLabel: "Actor",
-    liveFeedLabel: "Live Feed",
+    actorLabel: "From Address",
+    liveFeedLabel: "Live Ledger Activity",
     signatureRequiredTitle: "Signature Required",
     signatureRequiredDesc: "Please review and authorize the transaction signing request in your connected wallet.",
     phase1Release: "Phase 1 Budget Release (25%)",
     phase2Release: "Phase 2 Budget Release (25%)",
     phase3Release: "Phase 3 Budget Release (50%)",
-    receiverLabel: "Receiver",
-    disbursedAmountLabel: "Disbursed Amount",
-    totalRaisedLabel: "Total Raised",
+    receiverLabel: "Receiver Address",
+    disbursedAmountLabel: "Amount Disbursed",
+    totalRaisedLabel: "Total Contributions",
     envTitle: "Reforestation and Cyber-Forestry Campaign",
     eduTitle: "Tech Books and Hardware for Underprivileged Schools",
     healthTitle: "Medical Diagnostic Equipment and Patient Supplies",
@@ -260,27 +260,27 @@ const pageCopy: Record<Locale, PageCopy> = {
   },
   tr: {
     title: "StellarFund",
-    tagline: "Blokzinciri Güvenceli Otonom Proje Fonlama",
+    tagline: "Hayalleri Gerçeğe Dönüştüren Adım Adım Güvenli Fon Sistemi",
     backToSplitPay: "← SplitPay Hesaplayıcısına Dön",
     connected: "Bağlandı",
     disconnect: "Bağlantıyı Kes",
     connectWallet: "Cüzdanı Bağla",
     connecting: "Bağlanıyor…",
-    campaignStats: "Blokzinciri Mali Tablosu",
-    raisedOfGoal: (raised, goal) => `${goal} XLM hedeften ${raised} XLM toplandı`,
-    donorCount: "Destekçiler",
-    donateTitle: "Projeye Bağış Yap",
-    donatePlaceholder: "Bağış tutarını girin (XLM)",
-    donateBtn: "Bağışı Onayla",
-    donatingBtn: "Blokzincirine Aktarılıyor…",
-    connectWalletToDonate: "Bağış Yapmak için Cüzdanı Bağla",
+    campaignStats: "Şeffaf Kampanya Kumbarası",
+    raisedOfGoal: (raised, goal) => `${goal} XLM hedeften ${raised} XLM sevgiyle toplandı`,
+    donorCount: "Gönüllü Destekçilerimiz",
+    donateTitle: "Geleceğe Katkıda Bulun",
+    donatePlaceholder: "Destek miktarını girin (XLM)",
+    donateBtn: "Bağışımı Gönder",
+    donatingBtn: "Blokzincirine Güvenle Aktarılıyor…",
+    connectWalletToDonate: "Destek Olmak için Cüzdanı Bağla",
     insufficientBalance: "Cüzdanınızda yeterli bakiye bulunmamaktadır.",
-    leaderboardTitle: "Liderlik Kürsüsü (En Çok Bağış Yapanlar)",
-    activityTitle: "Canlı Blokzincir İşlem Defteri (Horizon API)",
-    noDonors: "Henüz bağış yapılmadı. İlk destekçimiz siz olun!",
+    leaderboardTitle: "En Çok Katkı Sağlayan Kahramanlar",
+    activityTitle: "Şeffaf ve Güvenilir Bağış Geçmişi",
+    noDonors: "Henüz bağış yapılmadı. Bu iyilik hareketini başlatan ilk kahraman siz olun!",
     noActivity: "Testnet üzerinde henüz işlem algılanmadı.",
-    funcInitialize: "Kampanya Başlatıldı",
-    funcFund: "Bağış",
+    funcInitialize: "Kampanya Yayında",
+    funcFund: "Destek Gönderimi",
     milestonePlanning: "Planlama & Altyapı Kurulumu (%25)",
     milestonePlanningDesc: "Çekirdek proje mimarisinin tasarımı, geliştirici ortamı kurulumu ve API entegrasyonu.",
     milestoneDevelopment: "Akıllı Sözleşme Alfa Sürümü (%50)",
@@ -291,77 +291,77 @@ const pageCopy: Record<Locale, PageCopy> = {
     inactiveStatus: "Kilitli",
     walletNotFoundTitle: "Cüzdan Eklentisi Eksik",
     walletNotFoundDesc: "Freighter, xBull veya Lobstr eklentisi bulunamadı. Devam etmek için lütfen birini yükleyin.",
-    userRejectedTitle: "İmza Talebi Reddedildi",
-    userRejectedDesc: "Cüzdanınızdaki imzalama işlemi reddedildi. Hazır olduğunuzda tekrar deneyebilirsiniz.",
+    userRejectedTitle: "İmza Talebi İptal Edildi",
+    userRejectedDesc: "Cüzdanınızdaki imzalama işlemi iptal edildi. Hazır olduğunuzda tekrar deneyebilirsiniz.",
     insufficientBalanceTitle: "Yetersiz Bakiye",
-    insufficientBalanceDesc: "Testnet cüzdanınızda yeterli XLM bulunmuyor. Aşağıdaki butondan ücretsiz test XLM talep edebilirsiniz.",
-    errorTitle: "İşlem Başarısız",
-    txSuccessTitle: "Bağış Tamamlandı!",
-    txSuccessMessage: (amount) => `Teşekkürler! Kampanyaya ${amount} XLM katkı başarıyla on-chain kaydedildi.`,
-    viewExplorer: "Stellar Expert Gezgininde Görüntüle →",
+    insufficientBalanceDesc: "Cüzdanınızda yeterli XLM bulunmuyor. Aşağıdaki butondan anında ücretsiz test XLM yükleyebilirsiniz.",
+    errorTitle: "İşlem Gerçekleşemedi",
+    txSuccessTitle: "İyilik Yolunu Buldu!",
+    txSuccessMessage: (amount) => `Gönülden teşekkür ederiz! Kampanyaya ${amount} XLM katkınız blokzincirine güvenle işlendi.`,
+    viewExplorer: "İşlemi Stellar Gezgininde Doğrula →",
     statusLabel: "Durum",
     addressLabel: "Adres",
     amountLabel: "Tutar",
-    fundWalletBtn: "Friendbot ile Bakiye Yükle",
-    fundingWalletBtn: "Bakiye Yükleniyor…",
-    balanceLabel: "Cüzdan Bakiyesi",
-    claimBtn: "Kilometre Taşı Fonunu Çek",
-    claimingBtn: "Fonlar Çekiliyor…",
-    claimedStatus: "Fon Çekildi ve Harcandı",
-    lockedStatus: "Akıllı Sözleşme Kasasında Kilitli",
+    fundWalletBtn: "Cüzdana Ücretsiz XLM Yükle",
+    fundingWalletBtn: "XLM Yükleniyor…",
+    balanceLabel: "Hesap Bakiyeniz",
+    claimBtn: "Hak Edilen Bütçeyi Çek",
+    claimingBtn: "Bütçe Çekiliyor…",
+    claimedStatus: "Çekildi ve Amacına Harcandı",
+    lockedStatus: "Akıllı Sözleşme Kasasında Güvende",
     claimableStatus: "Çekilmeye Hazır",
-    ownerSectionTitle: "Kampanya Yöneticisi Portalı",
+    ownerSectionTitle: "Kampanya Yönetim Masası",
     totalWithdrawnLabel: "Çekilen Bütçe",
     demoModeLabel: "Simülasyon Modu",
     liveModeLabel: "Canlı Akıllı Sözleşme",
-    simulationAlert: "Değerlendirme için simülasyon modundasınız. Yapay bağış yapabilir ve bütçeleri çekebilirsiniz.",
+    simulationAlert: "Şu anda etkileşimli simülasyon modundasınız. Gerçek para harcamadan bağış yapmayı ve bütçe çekmeyi deneyimleyebilirsiniz.",
     
     // Custom Redesign Copy values
-    heroTitle: "Bağışın gerçekten amacına ulaşsın",
-    heroDesc: "StellarFund ile paranız akıllı sözleşme kasasında kilitli kalır. Proje sahibi ancak kilometre taşlarını kanıtladığında parayı aşama aşama alabilir. Tam şeffaflık, sıfır güven sorunu.",
-    howItWorksTitle: "StellarFund Nasıl Çalışır?",
-    howItWorksStep1Title: "1. Bağlan & Bağış Yap",
-    howItWorksStep1Desc: "Stellar cüzdanını bağla ve XLM gönder. Tüm bağışlar doğrudan blokzinciri üzerine işlenir.",
-    howItWorksStep2Title: "2. Akıllı Sözleşme Koruması",
-    howItWorksStep2Desc: "Toplanan tüm fonlar Soroban akıllı sözleşme kasasında şeffaf şekilde kilitlenir.",
-    howItWorksStep3Title: "3. Güvenli Yol Haritası",
-    howItWorksStep3Desc: "Geliştirici, fonları toplu çekemez. Sadece kilometre taşı hedeflerine (%25, %50, %100) ulaştıkça çeker.",
-    outflowTunnelTitle: "Şeffaf Para Akışı",
-    outflowTunnelDesc: "Akıllı sözleşmeden çekilen geliştirici bütçelerinin nereye, ne zaman ve hangi kanıt belgesiyle harcandığını görün.",
+    heroTitle: "Bağışınızın tam amacına ulaştığından emin olun",
+    heroDesc: "StellarFund ile yaptığınız bağışlar akıllı sözleşme kasasında tamamen güvendedir. Proje sahibi, bütçeyi ancak kilometre taşlarını şeffaf bir şekilde kanıtladığında aşamalı olarak alabilir. Sıfır suistimal riski, tam şeffaflık!",
+    howItWorksTitle: "Güvenli Bağış Sistemi Nasıl Çalışır?",
+    howItWorksStep1Title: "1. Kolayca Bağlan ve Destek Ol",
+    howItWorksStep1Desc: "Stellar cüzdanınızı tek tıkla bağlayıp destek miktarını seçin. Katkınız anında blokzincirine yazılır.",
+    howItWorksStep2Title: "2. Akıllı Sözleşme Kasası",
+    howItWorksStep2Desc: "Toplanan tüm fonlar, kimsenin tek başına harcayamayacağı güvenli ve şeffaf bir akıllı sözleşmede kilitli kalır.",
+    howItWorksStep3Title: "3. Kanıta Dayalı Aşamalı Teslimat",
+    howItWorksStep3Desc: "Proje yöneticisi fonları tek seferde çekemez. Sadece belirlediği hedeflere ulaşıp kanıtlarını sundukça bütçe dilimlerini alabilir.",
+    outflowTunnelTitle: "Paranın Yolculuğu (Şeffaf Harcama Tüneli)",
+    outflowTunnelDesc: "Kasadan çekilen geliştirici bütçelerinin tam olarak neye, ne zaman ve hangi kanıt belgesiyle harcandığını takip edin.",
     outflowM1Expense: "Hosting sunucu kurulumları, alan adı tescili ve API sunucu kiralama masrafları.",
     outflowM2Expense: "Akıllı sözleşme bağımsız denetim (audit) ücretleri, entegrasyon testleri ve hata ödül bütçeleri.",
     outflowM3Expense: "Mainnet dağıtım maliyetleri, pazarlama kampanyaları, lisanslama ve yayın masrafları.",
-    proofLabel: "Yürütme Kanıtı IPFS Hash'i (Proof-of-Execution)",
-    remainingBalanceLabel: "Bağış Sonrası Tahmini Cüzdan Bakiyesi",
+    proofLabel: "Yapılan İşin Kanıt Belgesi (IPFS)",
+    remainingBalanceLabel: "Katkı Sonrası Kalan Tahmini Bakiyeniz",
     remainingBalanceValue: (val) => `${val} XLM`,
-    overdraftWarning: "⚠️ Bu bağış tutarı cüzdan bakiyenizi aşmaktadır.",
-    invalidAmountWarning: "⚠️ Lütfen 0'dan büyük geçerli bir bakiye girin.",
-    milestoneLabel: "Kilometre Taşları Yol Haritası",
-    goalTargetLabel: "Hedef Bütçe",
-    catEnvLabel: "🌲 Ağaçlandırma Kampanyası",
-    catEduLabel: "📚 Okullara Teknolojik Kitap",
-    catHealthLabel: "❤️ Tıbbi Cihaz ve Sağlık Desteği",
-    treeTitle: "Siber-Ağaç (Yenilenme Animasyonu)",
-    bookTitle: "Holografik Kitap (Sayfa Yayılımı)",
-    heartTitle: "Neon Kalp Atışı (Hayati Monitor)",
-    activeCampaignLabel: "Seçili Kampanya Bilgisi",
+    overdraftWarning: "⚠️ Girmek istediğiniz miktar cüzdan bakiyenizi aşmaktadır.",
+    invalidAmountWarning: "⚠️ Lütfen sıfırdan büyük geçerli bir miktar girin.",
+    milestoneLabel: "Yol Haritası Durumu",
+    goalTargetLabel: "Hedef Miktar",
+    catEnvLabel: "🌲 Doğa ve Orman",
+    catEduLabel: "📚 Eğitime Destek",
+    catHealthLabel: "❤️ Sağlık ve Tıp",
+    treeTitle: "Canlanan Siber Orman Ağacı",
+    bookTitle: "Işıldayan Holografik Bilgi Kitabı",
+    heartTitle: "Neon Nabız ve Sağlık Monitörü",
+    activeCampaignLabel: "Aktif Destek Kategorisi",
     victoryTitleEnv: "Doğa Canlanıyor! 🌲",
-    victoryDescEnv: "Katkınız blokzinciri üzerindeki siber ağaç ormanına yeni neon yapraklar ekledi.",
-    victoryTitleEdu: "Bilgi Işıldıyor! 📚",
-    victoryDescEdu: "Katkınız dijital kütüphaneye yeni holografik bilgi dalgaları kazandırdı.",
-    victoryTitleHealth: "Kalp Atışları Güçleniyor! ❤️",
-    victoryDescHealth: "Katkınız on-chain nabız monitöründeki yaşam ritmini güçlendirdi.",
-    closeBtn: "Kapat",
-    actorLabel: "Aktör",
-    liveFeedLabel: "Canlı Akış",
+    victoryDescEnv: "Katkınız sayesinde siber ağacımızda yepyeni yapraklar filizlendi. Doğaya can verdiniz!",
+    victoryTitleEdu: "Gelecek Işıldıyor! 📚",
+    victoryDescEdu: "Katkınız dijital kütüphanemizde yeni sayfaların açılmasını sağladı. Eğitime ışık oldunuz!",
+    victoryTitleHealth: "Kalpler Birlikte Atıyor! ❤️",
+    victoryDescHealth: "Gönderdiğiniz destek on-chain tıp cihazımızın nabız dalgalarını güçlendirdi. Yaşama el verdiniz!",
+    closeBtn: "Kapat ve Paneli İncele",
+    actorLabel: "Gönderen",
+    liveFeedLabel: "Anlık Akış Günlüğü",
     signatureRequiredTitle: "İmza Talebi Bekleniyor",
     signatureRequiredDesc: "Lütfen cüzdanınızda açılan pencereden işlem imzalama talebini gözden geçirin ve onaylayın.",
     phase1Release: "1. Aşama Bütçe Dağıtımı (%25)",
     phase2Release: "2. Aşama Bütçe Dağıtımı (%25)",
     phase3Release: "3. Aşama Bütçe Dağıtımı (%50)",
-    receiverLabel: "Alıcı",
-    disbursedAmountLabel: "Çekilen Tutar",
-    totalRaisedLabel: "Toplam Toplanan",
+    receiverLabel: "Alıcı Adresi",
+    disbursedAmountLabel: "Ödenen Bütçe",
+    totalRaisedLabel: "Toplanan Toplam Katkı",
     envTitle: "Siber Orman ve Ağaçlandırma Kampanyası",
     eduTitle: "Dezavantajlı Okullara Teknolojik Kitap ve Donanım",
     healthTitle: "Tıbbi Teşhis Cihazları ve Hasta Sağlık Ekipmanları",
@@ -897,31 +897,37 @@ export function CrowdfundPage() {
         </div>
       )}
 
-      {/* Background radial overlays */}
-      <div className="pointer-events-none fixed inset-0" aria-hidden>
-        <div className={`absolute top-[-10%] left-[-10%] h-[60%] w-[60%] rounded-full blur-[150px] animate-pulse transition-all duration-700 ${
-          activeTab === "environment" ? "bg-emerald-500/10" : activeTab === "education" ? "bg-amber-500/10" : "bg-rose-500/10"
-        }`} style={{ animationDuration: "12s" }} />
-        <div className="absolute bottom-[-10%] right-[-10%] h-[50%] w-[50%] rounded-full bg-violet-600/8 blur-[130px] animate-pulse" style={{ animationDuration: "16s" }} />
-        <div className="absolute inset-0 opacity-20"
-          style={{ backgroundImage: "radial-gradient(rgba(148,163,184,0.15) 1px, transparent 1px)", backgroundSize: "40px 40px" }} />
+      {/* Background kinetic grid + floating orbs */}
+      <div className="pointer-events-none fixed inset-0 z-0 overflow-hidden" aria-hidden>
+        {/* Animated ambient orbs */}
+        <div className={`absolute top-[-10%] left-[-10%] h-[60%] w-[60%] rounded-full blur-[150px] transition-all duration-1000 animate-float-slow opacity-60 ${
+          activeTab === "environment" 
+            ? "bg-emerald-500/20" 
+            : activeTab === "education" 
+              ? "bg-amber-500/20" 
+              : "bg-rose-500/20"
+        }`} />
+        <div className="absolute bottom-[-15%] right-[-10%] h-[55%] w-[55%] rounded-full bg-violet-600/15 blur-[160px] animate-float-slow-reverse opacity-50" />
+        
+        {/* Grid pattern */}
+        <div className="absolute inset-0 cyber-grid-dot opacity-60" />
       </div>
 
-      <div className="relative z-10 mx-auto max-w-6xl px-4 pt-6 sm:px-8">
+      <div className="relative z-10 mx-auto max-w-6xl px-4 pt-8 sm:px-8">
         
         {/* TOP HEADER */}
-        <header className="mb-10 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between border-b border-white/5 pb-6">
-          <div className="flex flex-col gap-1">
-            <Link href="/" className="text-xs font-semibold text-cyan-400/80 hover:text-cyan-300 transition-all mb-1 inline-flex items-center gap-1">
+        <header className="mb-12 flex flex-col gap-5 sm:flex-row sm:items-center sm:justify-between border-b border-white/5 pb-8">
+          <div className="flex flex-col gap-1.5">
+            <Link href="/" className="text-xs font-bold text-cyan-400 hover:text-cyan-300 transition-all mb-1 inline-flex items-center gap-1.5 font-display tracking-widest uppercase">
               {t.backToSplitPay}
             </Link>
-            <div className="flex items-center gap-3">
-              <div className={`relative flex h-11 w-11 items-center justify-center rounded-2xl shadow-[0_8px_30px_rgba(6,182,212,0.2)] animate-glow-pulse transition-all duration-500 ${
+            <div className="flex items-center gap-4">
+              <div className={`relative flex h-12 w-12 items-center justify-center rounded-2xl shadow-[0_8px_32px_rgba(6,182,212,0.25)] animate-glow-pulse transition-all duration-700 ${
                 activeTab === "environment" 
-                  ? "bg-gradient-to-tr from-emerald-400 via-teal-500 to-cyan-600" 
+                  ? "bg-gradient-to-tr from-emerald-500 via-teal-400 to-cyan-500" 
                   : activeTab === "education" 
-                    ? "bg-gradient-to-tr from-amber-400 via-orange-500 to-red-600" 
-                    : "bg-gradient-to-tr from-rose-400 via-purple-500 to-indigo-600"
+                    ? "bg-gradient-to-tr from-amber-500 via-orange-400 to-red-500" 
+                    : "bg-gradient-to-tr from-rose-500 via-pink-400 to-purple-600"
               }`}>
                 <span className="absolute inset-0 rounded-2xl bg-cyan-400/20 blur-sm animate-pulse" />
                 <svg className="h-5 w-5 text-white relative z-10" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
@@ -929,41 +935,41 @@ export function CrowdfundPage() {
                 </svg>
               </div>
               <div>
-                <h1 className="text-3xl font-black tracking-tight leading-none text-gradient">{t.title}</h1>
-                <span className="block text-[11px] font-bold text-slate-500 tracking-wider uppercase mt-1">{t.tagline}</span>
+                <h1 className="text-3xl sm:text-4xl font-black tracking-tight leading-none text-gradient font-display">{t.title}</h1>
+                <span className="block text-[10px] font-black text-slate-500 tracking-widest uppercase mt-1.5 font-mono">{t.tagline}</span>
               </div>
             </div>
           </div>
           
-          <div className="flex items-center gap-3 self-end sm:self-center">
+          <div className="flex items-center gap-3.5 self-end sm:self-center">
             {/* Simulation/Live Switcher */}
             <button
               type="button"
               onClick={() => setIsDemoMode(!isDemoMode)}
-              className={`rounded-xl px-4 py-2 text-xs font-black uppercase tracking-wider transition-all duration-300 border ${
+              className={`rounded-xl px-4 py-2.5 text-xs font-black uppercase tracking-wider transition-all duration-300 border font-display ${
                 isDemoMode
-                  ? "bg-amber-500/15 border-amber-500/30 text-amber-300 shadow-[0_0_15px_rgba(245,158,11,0.2)] animate-pulse"
-                  : "bg-cyan-500/10 border-cyan-500/30 text-cyan-300 shadow-[0_0_15px_rgba(6,182,212,0.15)]"
+                  ? "bg-amber-500/10 border-amber-500/40 text-amber-300 shadow-[0_0_20px_rgba(245,158,11,0.25)] animate-pulse"
+                  : "bg-cyan-500/10 border-cyan-500/40 text-cyan-300 shadow-[0_0_20px_rgba(6,182,212,0.2)]"
               }`}
             >
               {isDemoMode ? t.demoModeLabel : t.liveModeLabel}
             </button>
 
-            <span className="inline-flex items-center gap-1.5 rounded-full border border-cyan-400/30 bg-cyan-400/10 px-3 py-1 text-[10px] font-black uppercase tracking-widest text-cyan-300">
+            <span className="inline-flex items-center gap-1.5 rounded-full border border-cyan-400/30 bg-cyan-400/10 px-3.5 py-1.5 text-[10px] font-black uppercase tracking-widest text-cyan-300 font-mono">
               <span className="h-2 w-2 rounded-full bg-cyan-400 animate-ping" />
               Testnet
             </span>
             <LanguageToggle locale={locale} onChange={setLocale} />
             
             {publicKey ? (
-              <div className="flex items-center gap-2">
-                <code className="rounded-xl bg-slate-900/80 border border-white/5 px-4 py-2.5 text-xs text-slate-200 font-mono font-bold">
+              <div className="flex items-center gap-2.5">
+                <code className="rounded-xl bg-slate-950 border border-white/5 px-4.5 py-2.5 text-xs text-slate-200 font-mono font-bold">
                   {formatAddress(publicKey, 6, 6)}
                 </code>
                 <button
                   type="button"
                   onClick={disconnect}
-                  className="rounded-xl border border-rose-500/30 bg-rose-500/10 px-4 py-2.5 text-xs font-black uppercase tracking-wider text-rose-300 transition hover:bg-rose-500/20"
+                  className="rounded-xl border border-rose-500/40 bg-rose-500/10 px-4.5 py-2.5 text-xs font-black uppercase tracking-wider text-rose-300 transition hover:bg-rose-500/25"
                 >
                   {t.disconnect}
                 </button>
@@ -973,7 +979,7 @@ export function CrowdfundPage() {
                 type="button"
                 onClick={openModal}
                 disabled={isConnecting}
-                className="rounded-xl bg-gradient-to-r from-cyan-400 via-indigo-500 to-purple-600 px-6 py-3 text-xs font-black uppercase tracking-widest text-white shadow-lg shadow-cyan-500/15 transition hover:scale-[1.02] hover:brightness-110 disabled:opacity-60"
+                className="rounded-xl bg-gradient-to-r from-cyan-400 via-indigo-500 to-purple-600 px-7 py-3.5 text-xs font-black uppercase tracking-widest text-white shadow-lg shadow-cyan-500/15 transition hover:scale-[1.02] hover:brightness-110 disabled:opacity-60 font-display"
               >
                 {isConnecting ? t.connecting : t.connectWallet}
               </button>
@@ -983,7 +989,7 @@ export function CrowdfundPage() {
 
         {/* SIMULATOR ALERT */}
         {isDemoMode && (
-          <div className="mb-8 rounded-3xl bg-amber-500/10 border border-amber-500/20 p-5 text-xs text-amber-300 font-bold flex items-center gap-3 animate-fade-up shadow-[0_4px_20px_rgba(245,158,11,0.05)]">
+          <div className="mb-10 rounded-3xl bg-amber-500/5 border border-amber-500/20 p-5 text-xs text-amber-300 font-bold flex items-center gap-3 animate-fade-up shadow-[0_4px_25px_rgba(245,158,11,0.04)]">
             <span className="relative flex h-2.5 w-2.5 shrink-0">
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-amber-400 opacity-75" />
               <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-amber-500" />
@@ -993,242 +999,109 @@ export function CrowdfundPage() {
         )}
 
         {/* HERO HEADER AREA (Explanation in first 8 seconds) */}
-        <section className="mb-10 text-center max-w-2xl mx-auto animate-fade-up">
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight mb-4 leading-tight">
+        <section className="mb-12 text-center max-w-3xl mx-auto animate-fade-up relative z-10">
+          <h2 className="text-4xl sm:text-5xl font-black text-white tracking-tight mb-5 leading-tight font-display text-gradient">
             {t.heroTitle}
           </h2>
-          <p className="text-sm text-slate-400 leading-relaxed">
+          <p className="text-sm sm:text-base text-slate-400 leading-relaxed max-w-2xl mx-auto">
             {t.heroDesc}
           </p>
         </section>
 
         {/* CATEGORY TABS (Çevre / Eğitim / Sağlık) */}
-        <div className="mb-10 flex flex-wrap justify-center gap-4">
+        <div className="mb-12 flex flex-wrap justify-center gap-5 relative z-10">
           <button
             type="button"
             onClick={() => setActiveTab("environment")}
-            className={`rounded-2xl px-6 py-4 text-xs sm:text-sm font-extrabold transition-all duration-300 flex items-center gap-3 border ${
+            className={`rounded-2xl px-8 py-5 text-xs sm:text-sm font-black tracking-widest uppercase transition-all duration-500 flex items-center gap-3.5 border font-display ${
               activeTab === "environment"
-                ? "bg-emerald-500/10 border-emerald-500/40 text-emerald-300 shadow-[0_0_25px_rgba(16,185,129,0.2)]"
-                : "bg-slate-900/40 border-white/5 text-slate-400 hover:text-slate-200"
+                ? "bg-emerald-500/10 border-emerald-500/50 text-emerald-300 shadow-[0_0_35px_rgba(16,185,129,0.25)] scale-[1.03]"
+                : "bg-slate-950/40 border-white/5 text-slate-400 hover:text-slate-200 hover:border-white/10"
             }`}
           >
-            <span>🌲</span>
+            <span className="text-lg">🌲</span>
             <span>{t.catEnvLabel}</span>
           </button>
           
           <button
             type="button"
             onClick={() => setActiveTab("education")}
-            className={`rounded-2xl px-6 py-4 text-xs sm:text-sm font-extrabold transition-all duration-300 flex items-center gap-3 border ${
+            className={`rounded-2xl px-8 py-5 text-xs sm:text-sm font-black tracking-widest uppercase transition-all duration-500 flex items-center gap-3.5 border font-display ${
               activeTab === "education"
-                ? "bg-amber-500/10 border-amber-500/40 text-amber-300 shadow-[0_0_25px_rgba(245,158,11,0.2)]"
-                : "bg-slate-900/40 border-white/5 text-slate-400 hover:text-slate-200"
+                ? "bg-amber-500/10 border-amber-500/50 text-amber-300 shadow-[0_0_35px_rgba(245,158,11,0.25)] scale-[1.03]"
+                : "bg-slate-950/40 border-white/5 text-slate-400 hover:text-slate-200 hover:border-white/10"
             }`}
           >
-            <span>📚</span>
+            <span className="text-lg">📚</span>
             <span>{t.catEduLabel}</span>
           </button>
 
           <button
             type="button"
             onClick={() => setActiveTab("health")}
-            className={`rounded-2xl px-6 py-4 text-xs sm:text-sm font-extrabold transition-all duration-300 flex items-center gap-3 border ${
+            className={`rounded-2xl px-8 py-5 text-xs sm:text-sm font-black tracking-widest uppercase transition-all duration-500 flex items-center gap-3.5 border font-display ${
               activeTab === "health"
-                ? "bg-rose-500/10 border-rose-500/40 text-rose-300 shadow-[0_0_25px_rgba(244,63,94,0.2)]"
-                : "bg-slate-900/40 border-white/5 text-slate-400 hover:text-slate-200"
+                ? "bg-rose-500/10 border-rose-500/50 text-rose-300 shadow-[0_0_35px_rgba(244,63,94,0.25)] scale-[1.03]"
+                : "bg-slate-950/40 border-white/5 text-slate-400 hover:text-slate-200 hover:border-white/10"
             }`}
           >
-            <span>❤️</span>
+            <span className="text-lg">❤️</span>
             <span>{t.catHealthLabel}</span>
           </button>
         </div>
 
         {/* HOW IT WORKS SIMPLE 3-STEP ONBOARDING */}
-        <section className="mb-10 glass p-6 sm:p-8 rounded-3xl border border-white/5 shadow-xl relative overflow-hidden">
+        <section className="mb-12 glass p-8 sm:p-10 rounded-3xl border border-white/5 shadow-2xl relative overflow-hidden z-10">
           <div className="absolute top-0 right-0 h-48 w-48 rounded-full bg-cyan-500/5 blur-3xl" />
-          <h3 className="text-lg font-black tracking-tight text-white mb-6 border-b border-white/5 pb-3">
+          <h3 className="text-sm font-black tracking-widest uppercase text-slate-400 mb-6 border-b border-white/5 pb-3 font-display">
             {t.howItWorksTitle}
           </h3>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div className="flex flex-col gap-2">
-              <h4 className="text-sm font-extrabold text-cyan-300">{t.howItWorksStep1Title}</h4>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div className="flex flex-col gap-2.5 relative pl-4 border-l-2 border-cyan-500/30">
+              <span className="text-xs font-black text-cyan-400 font-mono">01 / DISCOVERY</span>
+              <h4 className="text-sm font-bold text-white font-display">{t.howItWorksStep1Title}</h4>
               <p className="text-xs text-slate-400 leading-relaxed">{t.howItWorksStep1Desc}</p>
             </div>
-            <div className="flex flex-col gap-2">
-              <h4 className="text-sm font-extrabold text-violet-300">{t.howItWorksStep2Title}</h4>
+            <div className="flex flex-col gap-2.5 relative pl-4 border-l-2 border-violet-500/30">
+              <span className="text-xs font-black text-violet-400 font-mono">02 / PROTECTION</span>
+              <h4 className="text-sm font-bold text-white font-display">{t.howItWorksStep2Title}</h4>
               <p className="text-xs text-slate-400 leading-relaxed">{t.howItWorksStep2Desc}</p>
             </div>
-            <div className="flex flex-col gap-2">
-              <h4 className="text-sm font-extrabold text-indigo-300">{t.howItWorksStep3Title}</h4>
+            <div className="flex flex-col gap-2.5 relative pl-4 border-l-2 border-indigo-500/30">
+              <span className="text-xs font-black text-indigo-400 font-mono">03 / TRUST</span>
+              <h4 className="text-sm font-bold text-white font-display">{t.howItWorksStep3Title}</h4>
               <p className="text-xs text-slate-400 leading-relaxed">{t.howItWorksStep3Desc}</p>
             </div>
           </div>
         </section>
 
         {/* MAIN ROW CONTAINERS */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start relative z-10">
           
           {/* LEFT SIDE: DYNAMIC CATEGORY ANIMATION GRID */}
           <div className="lg:col-span-5 flex flex-col gap-6">
             
             {/* SVG ANIMATED PORTRAIT CONTAINER */}
-            <div className="glass p-6 sm:p-8 rounded-3xl border border-white/5 relative flex flex-col items-center">
-              <h3 className="text-md font-black tracking-tight text-white mb-6 border-b border-white/5 pb-3 w-full text-center">
+            <div className="glass p-6 rounded-3xl border border-white/5 relative flex flex-col items-center shadow-xl">
+              <h3 className="text-xs font-black tracking-widest text-slate-400 uppercase mb-4 border-b border-white/5 pb-2.5 w-full text-center font-display">
                 {activeTab === "environment" && t.treeTitle}
                 {activeTab === "education" && t.bookTitle}
                 {activeTab === "health" && t.heartTitle}
               </h3>
               
-              <div className="relative w-full h-[280px] flex items-center justify-center bg-slate-950/40 rounded-2xl border border-white/5 shadow-inner overflow-hidden">
+              <div className="relative w-full h-[320px] flex items-center justify-center bg-slate-950/70 rounded-2xl border border-white/10 shadow-inner overflow-hidden">
+                <div className="absolute inset-0 cyber-grid-dot opacity-40" />
                 
                 {/* SVG 1: Cyber Reforestation Tree (Green) */}
                 {activeTab === "environment" && (
-                  <svg className="w-full h-full p-4" viewBox="0 0 200 200" fill="none">
+                  <svg className="w-full h-full p-6 relative z-10" viewBox="0 0 200 200" fill="none">
                     <defs>
                       <linearGradient id="treeGrad" x1="0" y1="1" x2="0" y2="0">
-                        <stop offset="0%" stopColor="#047857" />
+                        <stop offset="0%" stopColor="#065f46" />
                         <stop offset="50%" stopColor="#10b981" />
                         <stop offset="100%" stopColor="#34d399" />
                       </linearGradient>
                       <filter id="treeGlow">
-                        <feGaussianBlur stdDeviation="3.5" result="blur" />
-                        <feMerge>
-                          <feMergeNode in="blur" />
-                          <feMergeNode in="SourceGraphic" />
-                        </feMerge>
-                      </filter>
-                    </defs>
-
-                    <line x1="40" y1="170" x2="160" y2="170" stroke="#064e3b" strokeWidth="2" strokeDasharray="3 3" />
-                    <path
-                      d="M100 170 L100 80"
-                      stroke="url(#treeGrad)"
-                      strokeWidth="6"
-                      strokeLinecap="round"
-                      strokeDasharray="90"
-                      strokeDashoffset={90 - (90 * Math.max(progressPercent, 10)) / 100}
-                      className="transition-all duration-1000 ease-out"
-                    />
-
-                    {progressPercent >= 25 && (
-                      <path
-                        d="M100 130 C80 120, 70 100, 60 100"
-                        stroke="url(#treeGrad)"
-                        strokeWidth="4"
-                        strokeLinecap="round"
-                        className="animate-fade-up"
-                      />
-                    )}
-
-                    {progressPercent >= 50 && (
-                      <path
-                        d="M100 110 C120 100, 130 90, 140 90"
-                        stroke="url(#treeGrad)"
-                        strokeWidth="4"
-                        strokeLinecap="round"
-                        className="animate-fade-up"
-                      />
-                    )}
-
-                    {progressPercent >= 10 && (
-                      <circle cx="100" cy="74" r="10" fill="#10b981" fillOpacity="0.8" filter="url(#treeGlow)" className="animate-pulse" />
-                    )}
-                    {progressPercent >= 35 && (
-                      <circle cx="58" cy="98" r="8" fill="#34d399" fillOpacity="0.8" filter="url(#treeGlow)" />
-                    )}
-                    {progressPercent >= 60 && (
-                      <circle cx="142" cy="88" r="8" fill="#6ee7b7" fillOpacity="0.8" filter="url(#treeGlow)" />
-                    )}
-
-                    {progressPercent > 0 && (
-                      <circle
-                        cx="100"
-                        cy="110"
-                        r={10 + (progressPercent / 2.2)}
-                        stroke="#10b981"
-                        strokeWidth="1.5"
-                        strokeOpacity={0.6 - (progressPercent / 200)}
-                        className="animate-ping"
-                        style={{ animationDuration: "3s" }}
-                      />
-                    )}
-                  </svg>
-                )}
-
-                {/* SVG 2: Holographic Knowledge Book (Amber) */}
-                {activeTab === "education" && (
-                  <svg className="w-full h-full p-4" viewBox="0 0 200 200" fill="none">
-                    <defs>
-                      <linearGradient id="bookGrad" x1="0" y1="1" x2="1" y2="0">
-                        <stop offset="0%" stopColor="#d97706" />
-                        <stop offset="50%" stopColor="#f59e0b" />
-                        <stop offset="100%" stopColor="#fbbf24" />
-                      </linearGradient>
-                      <filter id="bookGlow">
-                        <feGaussianBlur stdDeviation="3" result="blur" />
-                        <feMerge>
-                          <feMergeNode in="blur" />
-                          <feMergeNode in="SourceGraphic" />
-                        </feMerge>
-                      </filter>
-                    </defs>
-
-                    <line x1="40" y1="150" x2="160" y2="150" stroke="#78350f" strokeWidth="2" strokeDasharray="4 2" />
-                    <path d="M70 148 L100 156 L130 148" stroke="#78350f" strokeWidth="4" strokeLinecap="round" />
-
-                    <path
-                      d={`M100 154 C90 ${150 - (progressPercent * 0.2)}, 75 140, ${100 - (40 * Math.max(progressPercent, 10)) / 100} ${140 - (15 * progressPercent) / 100}`}
-                      stroke="url(#bookGrad)"
-                      strokeWidth="3.5"
-                      strokeLinecap="round"
-                      className="transition-all duration-1000 ease-out"
-                    />
-
-                    <path
-                      d={`M100 154 C110 ${150 - (progressPercent * 0.2)}, 125 140, ${100 + (40 * Math.max(progressPercent, 10)) / 100} ${140 - (15 * progressPercent) / 100}`}
-                      stroke="url(#bookGrad)"
-                      strokeWidth="3.5"
-                      strokeLinecap="round"
-                      className="transition-all duration-1000 ease-out"
-                    />
-
-                    {progressPercent >= 25 && (
-                      <g className="animate-pulse" style={{ animationDuration: "1.5s" }}>
-                        <circle cx="85" cy="110" r="2.5" fill="#f59e0b" filter="url(#bookGlow)" />
-                        <line x1="85" y1="120" x2="85" y2="114" stroke="#fbbf24" strokeWidth="1" />
-                      </g>
-                    )}
-                    {progressPercent >= 50 && (
-                      <g className="animate-pulse" style={{ animationDuration: "2s" }}>
-                        <circle cx="115" cy="95" r="3" fill="#fbbf24" filter="url(#bookGlow)" />
-                        <line x1="115" y1="110" x2="115" y2="100" stroke="#f59e0b" strokeWidth="1" />
-                      </g>
-                    )}
-
-                    {progressPercent > 0 && (
-                      <path
-                        d="M100 145 L80 60 M100 145 L100 50 M100 145 L120 60"
-                        stroke="#fbbf24"
-                        strokeWidth="1.5"
-                        strokeOpacity={(progressPercent / 180)}
-                        strokeDasharray="4 4"
-                        filter="url(#bookGlow)"
-                      />
-                    )}
-                  </svg>
-                )}
-
-                {/* SVG 3: Cyber Pulse Heart (Health - Rose Red) */}
-                {activeTab === "health" && (
-                  <svg className="w-full h-full p-4" viewBox="0 0 200 200" fill="none">
-                    <defs>
-                      <linearGradient id="heartGrad" x1="0" y1="0" x2="1" y2="1">
-                        <stop offset="0%" stopColor="#e11d48" />
-                        <stop offset="50%" stopColor="#f43f5e" />
-                        <stop offset="100%" stopColor="#fda4af" />
-                      </linearGradient>
-                      <filter id="heartGlow">
                         <feGaussianBlur stdDeviation="4" result="blur" />
                         <feMerge>
                           <feMergeNode in="blur" />
@@ -1237,48 +1110,228 @@ export function CrowdfundPage() {
                       </filter>
                     </defs>
 
+                    {/* Cybernetic soil grid line */}
+                    <line x1="20" y1="175" x2="180" y2="175" stroke="#047857" strokeWidth="2.5" strokeDasharray="6 3" strokeOpacity="0.4" />
+                    
+                    {/* Main Trunk */}
+                    <path
+                      d="M100 175 L100 75"
+                      stroke="url(#treeGrad)"
+                      strokeWidth="6"
+                      strokeLinecap="round"
+                      strokeDasharray="100"
+                      strokeDashoffset={100 - (100 * Math.max(progressPercent, 5)) / 100}
+                      className="transition-all duration-1000 ease-out"
+                    />
+
+                    {/* Left Branch (Sprouts at 20%) */}
+                    {progressPercent >= 20 && (
+                      <path
+                        d="M100 135 C80 125, 65 110, 55 110"
+                        stroke="url(#treeGrad)"
+                        strokeWidth="3.5"
+                        strokeLinecap="round"
+                        strokeDasharray="50"
+                        strokeDashoffset={50 - (50 * Math.max(progressPercent - 20, 0)) / 80}
+                        className="transition-all duration-700 ease-out"
+                      />
+                    )}
+
+                    {/* Right Branch (Sprouts at 45%) */}
+                    {progressPercent >= 45 && (
+                      <path
+                        d="M100 115 C120 105, 135 90, 145 90"
+                        stroke="url(#treeGrad)"
+                        strokeWidth="3.5"
+                        strokeLinecap="round"
+                        strokeDasharray="50"
+                        strokeDashoffset={50 - (50 * Math.max(progressPercent - 45, 0)) / 55}
+                        className="transition-all duration-700 ease-out"
+                      />
+                    )}
+
+                    {/* Left Upper Twig (Sprouts at 70%) */}
+                    {progressPercent >= 70 && (
+                      <path
+                        d="M100 95 C85 85, 75 75, 70 75"
+                        stroke="url(#treeGrad)"
+                        strokeWidth="2"
+                        strokeLinecap="round"
+                        className="animate-fade-up"
+                      />
+                    )}
+
+                    {/* Leaf node signals */}
+                    {progressPercent >= 10 && (
+                      <circle cx="100" cy="69" r="9" fill="#10b981" fillOpacity="0.8" filter="url(#treeGlow)" className="animate-pulse" />
+                    )}
+                    {progressPercent >= 30 && (
+                      <circle cx="53" cy="108" r="8" fill="#34d399" fillOpacity="0.8" filter="url(#treeGlow)" />
+                    )}
+                    {progressPercent >= 55 && (
+                      <circle cx="147" cy="88" r="8" fill="#6ee7b7" fillOpacity="0.8" filter="url(#treeGlow)" />
+                    )}
+                    {progressPercent >= 80 && (
+                      <circle cx="68" cy="74" r="7" fill="#a7f3d0" fillOpacity="0.9" filter="url(#treeGlow)" />
+                    )}
+
+                    {/* Interactive glowing expanding rings */}
+                    {progressPercent > 0 && (
+                      <circle
+                        cx="100"
+                        cy="110"
+                        r={15 + (progressPercent / 1.8)}
+                        stroke="#34d399"
+                        strokeWidth="1.5"
+                        strokeOpacity={0.7 - (progressPercent / 160)}
+                        className="animate-ping"
+                        style={{ animationDuration: "2.5s", transformOrigin: "100px 110px" }}
+                      />
+                    )}
+                  </svg>
+                )}
+
+                {/* SVG 2: Holographic Knowledge Book (Amber) */}
+                {activeTab === "education" && (
+                  <svg className="w-full h-full p-6 relative z-10" viewBox="0 0 200 200" fill="none">
+                    <defs>
+                      <linearGradient id="bookGrad" x1="0" y1="1" x2="1" y2="0">
+                        <stop offset="0%" stopColor="#b45309" />
+                        <stop offset="50%" stopColor="#f59e0b" />
+                        <stop offset="100%" stopColor="#fef08a" />
+                      </linearGradient>
+                      <filter id="bookGlow">
+                        <feGaussianBlur stdDeviation="3.5" result="blur" />
+                        <feMerge>
+                          <feMergeNode in="blur" />
+                          <feMergeNode in="SourceGraphic" />
+                        </feMerge>
+                      </filter>
+                    </defs>
+
+                    {/* Cyber Grid Base Line */}
+                    <line x1="30" y1="160" x2="170" y2="160" stroke="#d97706" strokeWidth="2" strokeDasharray="6 3" strokeOpacity="0.3" />
+                    
+                    {/* Floating Sparks (Absolute rising particles based on progress) */}
+                    {progressPercent >= 20 && <circle cx="65" cy="100" r="2.5" fill="#f59e0b" className="animate-particle-rise" style={{ animationDelay: "0s" }} />}
+                    {progressPercent >= 40 && <circle cx="100" cy="85" r="3" fill="#fbbf24" className="animate-particle-rise" style={{ animationDelay: "0.8s" }} />}
+                    {progressPercent >= 60 && <circle cx="135" cy="95" r="2" fill="#fbbf24" className="animate-particle-rise" style={{ animationDelay: "1.5s" }} />}
+                    {progressPercent >= 80 && <circle cx="85" cy="70" r="3.5" fill="#fef08a" className="animate-particle-rise" style={{ animationDelay: "0.4s" }} />}
+
+                    {/* Book spine base */}
+                    <path d="M60 156 L100 166 L140 156" stroke="#b45309" strokeWidth="5.5" strokeLinecap="round" />
+
+                    {/* Left Page layout (Adjusts coordinates dynamically according to progress) */}
+                    <path
+                      d={`M100 163 C85 155, 60 148, ${100 - (42 * Math.max(progressPercent, 10)) / 100} ${145 - (20 * progressPercent) / 100}`}
+                      stroke="url(#bookGrad)"
+                      strokeWidth="4"
+                      strokeLinecap="round"
+                      className="transition-all duration-1000 ease-out"
+                    />
+
+                    {/* Right Page layout */}
+                    <path
+                      d={`M100 163 C115 155, 140 148, ${100 + (42 * Math.max(progressPercent, 10)) / 100} ${145 - (20 * progressPercent) / 100}`}
+                      stroke="url(#bookGrad)"
+                      strokeWidth="4"
+                      strokeLinecap="round"
+                      className="transition-all duration-1000 ease-out"
+                    />
+
+                    {/* Hologram Light Beams fanning out from the spine */}
+                    {progressPercent > 0 && (
+                      <path
+                        d="M100 155 L65 50 M100 155 L100 40 M100 155 L135 50"
+                        stroke="#fbbf24"
+                        strokeWidth="1.5"
+                        strokeOpacity={0.15 + (progressPercent / 180)}
+                        strokeDasharray="5 3"
+                        filter="url(#bookGlow)"
+                      />
+                    )}
+
+                    {/* Floating glyph nodes */}
+                    {progressPercent >= 30 && (
+                      <g className="animate-pulse" style={{ animationDuration: "1.8s" }}>
+                        <rect x="55" y="105" width="6" height="6" fill="#f59e0b" fillOpacity="0.8" transform="rotate(45 58 108)" />
+                        <line x1="58" y1="125" x2="58" y2="116" stroke="#fbbf24" strokeWidth="1" strokeDasharray="2 1" />
+                      </g>
+                    )}
+                    {progressPercent >= 65 && (
+                      <g className="animate-pulse" style={{ animationDuration: "2.4s" }}>
+                        <rect x="135" y="85" width="7" height="7" fill="#fbbf24" fillOpacity="0.8" transform="rotate(45 138 88)" />
+                        <line x1="138" y1="110" x2="138" y2="97" stroke="#fbbf24" strokeWidth="1" strokeDasharray="2 1" />
+                      </g>
+                    )}
+                  </svg>
+                )}
+
+                {/* SVG 3: Cyber Pulse Heart (Health - Rose Red) */}
+                {activeTab === "health" && (
+                  <svg className="w-full h-full p-6 relative z-10" viewBox="0 0 200 200" fill="none">
+                    <defs>
+                      <linearGradient id="heartGrad" x1="0" y1="0" x2="1" y2="1">
+                        <stop offset="0%" stopColor="#f43f5e" />
+                        <stop offset="50%" stopColor="#e11d48" />
+                        <stop offset="100%" stopColor="#be123c" />
+                      </linearGradient>
+                      <filter id="heartGlow">
+                        <feGaussianBlur stdDeviation="5.5" result="blur" />
+                        <feMerge>
+                          <feMergeNode in="blur" />
+                          <feMergeNode in="SourceGraphic" />
+                        </feMerge>
+                      </filter>
+                    </defs>
+
+                    {/* High-fidelity ECG Grid Monitor Lines */}
+                    <path d="M10 40 L190 40 M10 80 L190 80 M10 120 L190 120 M10 160 L190 160" stroke="#881337" strokeWidth="0.5" strokeOpacity="0.2" />
+                    <path d="M40 10 L40 190 M80 10 L80 190 M120 10 L120 190 M160 10 L160 190" stroke="#881337" strokeWidth="0.5" strokeOpacity="0.2" />
+
                     {/* ECG grid line */}
                     <path
-                      d="M20 100 L60 100 L70 80 L80 130 L90 70 L100 110 L110 100 L180 100"
-                      stroke="#4c0519"
-                      strokeWidth="2"
+                      d="M10 100 L50 100 L60 70 L72 135 L84 60 L96 115 L108 100 L190 100"
+                      stroke="#881337"
+                      strokeWidth="2.5"
                       strokeLinecap="round"
                       strokeLinejoin="round"
+                      strokeOpacity="0.4"
                     />
 
                     {/* Animated glowing pulse wave overlay */}
                     <path
-                      d="M20 100 L60 100 L70 80 L80 130 L90 70 L100 110 L110 100 L180 100"
+                      d="M10 100 L50 100 L60 70 L72 135 L84 60 L96 115 L108 100 L190 100"
                       stroke="#f43f5e"
-                      strokeWidth="2.5"
+                      strokeWidth="3"
                       strokeLinecap="round"
                       strokeLinejoin="round"
                       filter="url(#heartGlow)"
                       className="animate-heartbeat-flow"
                     />
 
-                    {/* Glowing pulsative heart SVG (Scales based on progress) */}
+                    {/* Glowing pulsative heart SVG (Scales and pulses dynamically) */}
                     <path
-                      d="M100 140 C100 140, 40 100, 40 70 C40 50, 60 40, 80 50 C90 55, 100 70, 100 70 C100 70, 110 55, 120 50 C140 40, 160 50, 160 70 C160 100, 100 140, 100 140 Z"
+                      d="M100 145 C100 145, 35 102, 35 70 C35 48, 55 37, 77 48 C88 53.5, 100 70, 100 70 C100 70, 112 53.5, 123 48 C145 37, 165 48, 165 70 C165 102, 100 145, 100 145 Z"
                       fill="url(#heartGrad)"
                       filter="url(#heartGlow)"
                       className="origin-center"
                       style={{
-                        transform: `scale(${0.7 + (progressPercent / 250)})`,
-                        animation: "float-y 2.5s ease-in-out infinite",
+                        transform: `scale(${0.72 + (progressPercent / 200)})`,
+                        animation: `float-y ${2.8 - (progressPercent / 80)}s ease-in-out infinite`,
                         transformOrigin: "center"
                       }}
                     />
 
-                    {/* Ring ping based on pulse */}
+                    {/* Echoing ping ring */}
                     {progressPercent > 0 && (
                       <path
-                        d="M100 140 C100 140, 40 100, 40 70 C40 50, 60 40, 80 50 C90 55, 100 70, 100 70 C100 70, 110 55, 120 50 C140 40, 160 50, 160 70 C160 100, 100 140, 100 140 Z"
-                        stroke="#f43f5e"
-                        strokeWidth="1.5"
+                        d="M100 145 C100 145, 35 102, 35 70 C35 48, 55 37, 77 48 C88 53.5, 100 70, 100 70 C100 70, 112 53.5, 123 48 C145 37, 165 48, 165 70 C165 102, 100 145, 100 145 Z"
+                        stroke="#fda4af"
+                        strokeWidth="2.2"
                         strokeOpacity="0.4"
                         className="animate-ping origin-center"
-                        style={{ animationDuration: "2s", transformOrigin: "center" }}
+                        style={{ animationDuration: "1.8s", transformOrigin: "center" }}
                       />
                     )}
                   </svg>
@@ -1406,8 +1459,9 @@ export function CrowdfundPage() {
             
             {/* FINANCIAL STATS */}
             <div className="glass rounded-3xl p-6 sm:p-8 border border-white/5 relative overflow-hidden shadow-xl">
-              <span className="text-xs font-bold text-cyan-400 uppercase tracking-widest block mb-2">{t.campaignStats}</span>
-              <h2 className="text-2xl font-black text-white tracking-tight mb-6">
+              <div className="absolute top-0 right-0 h-32 w-32 rounded-full bg-cyan-500/5 blur-3xl" />
+              <span className="text-[10px] font-black text-cyan-400 uppercase tracking-widest block mb-2 font-display">{t.campaignStats}</span>
+              <h2 className="text-2xl font-black text-white tracking-tight mb-6 font-display">
                 {activeTab === "environment" && t.envTitle}
                 {activeTab === "education" && t.eduTitle}
                 {activeTab === "health" && t.healthTitle}
@@ -1415,49 +1469,52 @@ export function CrowdfundPage() {
 
               <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 border-b border-white/5 pb-6 mb-6">
                 <div>
-                  <span className="block text-[9px] uppercase font-black text-slate-500 tracking-wider">{t.goalTargetLabel}</span>
-                  <span className="text-xl sm:text-2xl font-black text-white font-mono leading-none">
+                  <span className="block text-[9px] uppercase font-black text-slate-500 tracking-wider font-mono">{t.goalTargetLabel}</span>
+                  <span className="text-2xl font-black text-white font-mono leading-none tracking-tight">
                     {campaign ? formatXlm(Number(campaign.goal) / 10_000_000) : "0.00"}
                   </span>
-                  <span className="text-[10px] text-slate-400 font-extrabold ml-1">XLM</span>
+                  <span className="text-[9px] text-slate-400 font-extrabold ml-1 font-mono">XLM</span>
                 </div>
                 <div>
-                  <span className="block text-[9px] uppercase font-black text-slate-500 tracking-wider">{t.totalRaisedLabel}</span>
-                  <span className="text-xl sm:text-2xl font-black text-cyan-400 font-mono leading-none">
+                  <span className="block text-[9px] uppercase font-black text-slate-500 tracking-wider font-mono">{t.totalRaisedLabel}</span>
+                  <span className="text-2xl font-black text-cyan-400 font-mono leading-none tracking-tight shadow-cyan-950/20">
                     {campaign ? formatXlm(Number(campaign.total) / 10_000_000) : "0.00"}
                   </span>
-                  <span className="text-[10px] text-cyan-400 font-extrabold ml-1">XLM</span>
+                  <span className="text-[9px] text-cyan-400 font-extrabold ml-1 font-mono">XLM</span>
                 </div>
                 <div>
-                  <span className="block text-[9px] uppercase font-black text-slate-500 tracking-wider">{t.totalWithdrawnLabel}</span>
-                  <span className="text-xl sm:text-2xl font-black text-violet-400 font-mono leading-none">
+                  <span className="block text-[9px] uppercase font-black text-slate-500 tracking-wider font-mono">{t.totalWithdrawnLabel}</span>
+                  <span className="text-2xl font-black text-violet-400 font-mono leading-none tracking-tight">
                     {formatXlm(totalWithdrawn)}
                   </span>
-                  <span className="text-[10px] text-violet-400 font-extrabold ml-1">XLM</span>
+                  <span className="text-[9px] text-violet-400 font-extrabold ml-1 font-mono">XLM</span>
                 </div>
                 <div>
-                  <span className="block text-[9px] uppercase font-black text-slate-500 tracking-wider">{t.donorCount}</span>
-                  <span className="text-xl sm:text-2xl font-black text-white font-mono leading-none">
+                  <span className="block text-[9px] uppercase font-black text-slate-500 tracking-wider font-mono">{t.donorCount}</span>
+                  <span className="text-2xl font-black text-white font-mono leading-none tracking-tight">
                     {campaign ? campaign.donor_count : 0}
                   </span>
                 </div>
               </div>
 
               <div>
-                <div className="flex justify-between items-center text-xs text-slate-400 mb-2">
+                <div className="flex justify-between items-center text-xs text-slate-400 mb-2.5 font-mono">
                   <span>{campaign ? t.raisedOfGoal(formatXlm(Number(campaign.total) / 10_000_000), formatXlm(Number(campaign.goal) / 10_000_000)) : ""}</span>
-                  <span className="font-bold text-cyan-400 font-mono">{progressPercent}%</span>
+                  <span className={`font-black font-mono px-2 py-0.5 rounded ${
+                    activeTab === "environment" ? "text-emerald-400 bg-emerald-950/30" : activeTab === "education" ? "text-amber-400 bg-amber-950/30" : "text-rose-400 bg-rose-950/30"
+                  }`}>{progressPercent}%</span>
                 </div>
                 
                 {/* Custom Gradient Striped Animated Progress Bar */}
-                <div className="h-4.5 w-full bg-slate-950 rounded-full border border-white/5 p-1 overflow-hidden shadow-inner">
+                <div className="h-5 w-full bg-slate-950 rounded-full border border-white/10 p-1 overflow-hidden shadow-inner relative">
+                  <div className="absolute inset-0 animate-shimmer opacity-20" />
                   <div
-                    className={`h-full rounded-full transition-all duration-1000 ease-out animate-gradient-x ${
+                    className={`h-full rounded-full transition-all duration-1000 ease-out animate-gradient-x shadow-[0_0_12px_currentColor] ${
                       activeTab === "environment" 
-                        ? "bg-gradient-to-r from-emerald-500 via-teal-400 to-cyan-500" 
+                        ? "bg-gradient-to-r from-emerald-500 via-teal-400 to-cyan-500 text-emerald-400" 
                         : activeTab === "education"
-                          ? "bg-gradient-to-r from-amber-500 via-orange-400 to-red-500"
-                          : "bg-gradient-to-r from-rose-500 via-pink-400 to-purple-500"
+                          ? "bg-gradient-to-r from-amber-500 via-orange-400 to-red-500 text-amber-400"
+                          : "bg-gradient-to-r from-rose-500 via-pink-400 to-purple-500 text-rose-400"
                     }`}
                     style={{ width: `${progressPercent}%`, backgroundSize: "200% 200%" }}
                   />
@@ -1467,12 +1524,12 @@ export function CrowdfundPage() {
 
             {/* ERROR ALERTS */}
             {txState.status === "error" && (
-              <div className="animate-fade-up rounded-2xl border p-5 flex gap-3.5 items-start border-rose-500/20 bg-rose-500/8 text-rose-200">
+              <div className="animate-fade-up rounded-2xl border p-5 flex gap-4 items-start border-rose-500/20 bg-rose-500/8 text-rose-200">
                 <svg className="mt-0.5 h-5 w-5 shrink-0 text-rose-400 animate-pulse" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
                   <path strokeLinecap="round" strokeLinejoin="round" d="M12 9v4m0 4h.01M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z" />
                 </svg>
                 <div className="flex-1">
-                  <h4 className="font-extrabold text-white mb-1">
+                  <h4 className="font-extrabold text-white mb-1 font-display">
                     {txState.type === "wallet_not_found" && t.walletNotFoundTitle}
                     {txState.type === "user_rejected" && t.userRejectedTitle}
                     {txState.type === "insufficient_balance" && t.insufficientBalanceTitle}
@@ -1487,7 +1544,7 @@ export function CrowdfundPage() {
                       type="button"
                       onClick={handleFund}
                       disabled={isFunding}
-                      className="rounded-xl bg-rose-500/20 border border-rose-500/35 px-4 py-2.5 text-xs font-black uppercase tracking-wider text-white transition hover:bg-rose-500/30 disabled:opacity-60"
+                      className="rounded-xl bg-rose-500/20 border border-rose-500/35 px-4 py-2.5 text-xs font-black uppercase tracking-widest text-white transition hover:bg-rose-500/30 disabled:opacity-60 font-display"
                     >
                       {isFunding ? t.fundingWalletBtn : t.fundWalletBtn}
                     </button>
@@ -1497,7 +1554,7 @@ export function CrowdfundPage() {
                       href="https://freighter.app"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-block rounded-xl bg-rose-500/20 border border-rose-500/35 px-4 py-2.5 text-xs font-black uppercase tracking-wider text-white transition hover:bg-rose-500/30"
+                      className="inline-block rounded-xl bg-rose-500/20 border border-rose-500/35 px-4 py-2.5 text-xs font-black uppercase tracking-widest text-white transition hover:bg-rose-500/30 font-display"
                     >
                       Download Freighter Wallet
                     </a>
@@ -1516,7 +1573,7 @@ export function CrowdfundPage() {
                   </svg>
                 </div>
                 <div>
-                  <h4 className="font-extrabold text-white mb-0.5">{t.signatureRequiredTitle}</h4>
+                  <h4 className="font-extrabold text-white mb-0.5 font-display">{t.signatureRequiredTitle}</h4>
                   <p className="text-xs text-indigo-300/80 leading-relaxed">
                     {t.signatureRequiredDesc}
                   </p>
@@ -1527,13 +1584,13 @@ export function CrowdfundPage() {
             {/* CONTRIBUTION COMPONENT */}
             <div className="glass rounded-3xl p-6 sm:p-8 border border-white/5 shadow-lg relative overflow-hidden">
               <div className="absolute -top-12 -right-12 h-24 w-24 rounded-full bg-cyan-500/5 blur-xl" />
-              <h3 className="text-lg font-black tracking-tight text-white mb-4">{t.donateTitle}</h3>
+              <h3 className="text-lg font-black tracking-tight text-white mb-4 font-display">{t.donateTitle}</h3>
               
               {publicKey && (
-                <div className="mb-5 flex items-center justify-between rounded-2xl bg-slate-950 border border-white/5 px-4 py-3.5 text-xs">
+                <div className="mb-5 flex items-center justify-between rounded-2xl bg-slate-950 border border-white/10 px-4 py-3.5 text-xs font-mono">
                   <div className="flex flex-col gap-0.5">
-                    <span className="text-slate-500 font-black uppercase tracking-wider text-[9px]">{t.balanceLabel}</span>
-                    <span className="text-sm font-black text-slate-200 font-mono">
+                    <span className="text-slate-500 font-bold uppercase tracking-wider text-[8px]">{t.balanceLabel}</span>
+                    <span className="text-sm font-black text-slate-200">
                       {isBalanceLoading ? "Loading…" : `${userBalance ? formatXlm(Number(userBalance)) : "0.00"} XLM`}
                     </span>
                   </div>
@@ -1541,7 +1598,7 @@ export function CrowdfundPage() {
                     type="button"
                     onClick={fetchBalance}
                     disabled={isBalanceLoading}
-                    className="text-cyan-400 hover:text-cyan-300 text-xs font-black uppercase tracking-wider transition disabled:opacity-60"
+                    className="text-cyan-400 hover:text-cyan-300 text-xs font-bold uppercase tracking-wider transition disabled:opacity-60"
                   >
                     Refresh
                   </button>
@@ -1571,21 +1628,21 @@ export function CrowdfundPage() {
                   
                   {/* Warning labels */}
                   {!inputValidation.valid && (
-                    <span className="text-xs font-bold text-rose-400 px-1 animate-pulse">
+                    <span className="text-xs font-bold text-rose-400 px-1 animate-pulse font-mono">
                       {inputValidation.reason}
                     </span>
                   )}
 
                   {/* Estimated remaining balance */}
                   {remainingBalance !== null && (
-                    <div className="text-xs font-bold text-slate-400 px-1 flex items-center justify-between border border-white/5 rounded-xl px-4 py-2 bg-slate-950/40">
+                    <div className="text-xs font-bold text-slate-400 px-1 flex items-center justify-between border border-white/5 rounded-xl px-4 py-2 bg-slate-950/40 font-mono">
                       <span>{t.remainingBalanceLabel}</span>
                       <span className="font-mono text-cyan-400">{t.remainingBalanceValue(remainingBalance)}</span>
                     </div>
                   )}
                   
                   {/* Presets (auto disabled if preset > wallet balance) */}
-                  <div className="grid grid-cols-4 gap-2 mb-2">
+                  <div className="grid grid-cols-4 gap-2 mb-2 font-mono">
                     {[5, 10, 25, 50].map(amt => {
                       const disabledPreset = userBalance !== null && amt > Number(userBalance);
                       
@@ -1595,7 +1652,7 @@ export function CrowdfundPage() {
                           type="button"
                           onClick={() => setDonateAmount(String(amt))}
                           disabled={txState.status === "pending" || disabledPreset}
-                          className={`rounded-xl border px-3 py-2.5 text-xs font-black transition duration-200 ${
+                          className={`rounded-xl border px-3 py-2.5 text-xs font-bold transition duration-200 ${
                             disabledPreset 
                               ? "bg-slate-950 border-white/5 text-slate-700 cursor-not-allowed opacity-20" 
                               : activeTab === "environment"
@@ -1614,7 +1671,7 @@ export function CrowdfundPage() {
                   <button
                     type="submit"
                     disabled={txState.status === "pending" || !inputValidation.valid}
-                    className={`w-full rounded-2xl hover:brightness-110 disabled:opacity-60 disabled:cursor-not-allowed py-4.5 text-sm font-black uppercase tracking-widest text-white shadow-lg transition-all duration-250 hover:scale-[1.01] ${
+                    className={`w-full rounded-2xl hover:brightness-110 disabled:opacity-60 disabled:cursor-not-allowed py-4.5 text-sm font-black uppercase tracking-widest text-white shadow-lg transition-all duration-250 hover:scale-[1.01] font-display ${
                       activeTab === "environment" 
                         ? "bg-gradient-to-r from-emerald-400 via-teal-500 to-cyan-500 shadow-emerald-900/30" 
                         : activeTab === "education"
@@ -1630,7 +1687,7 @@ export function CrowdfundPage() {
                   type="button"
                   onClick={openModal}
                   disabled={isConnecting}
-                  className="w-full rounded-2xl bg-gradient-to-r from-cyan-400 via-indigo-500 to-purple-600 hover:brightness-110 disabled:opacity-60 disabled:cursor-not-allowed py-4.5 text-sm font-black uppercase tracking-widest text-white shadow-lg shadow-cyan-900/30 transition-all duration-200 hover:scale-[1.01]"
+                  className="w-full rounded-2xl bg-gradient-to-r from-cyan-400 via-indigo-500 to-purple-600 hover:brightness-110 disabled:opacity-60 disabled:cursor-not-allowed py-4.5 text-sm font-black uppercase tracking-widest text-white shadow-lg shadow-cyan-900/30 transition-all duration-200 hover:scale-[1.01] font-display"
                 >
                   {isConnecting ? t.connecting : t.connectWalletToDonate}
                 </button>
@@ -1638,9 +1695,9 @@ export function CrowdfundPage() {
             </div>
 
             {/* LEADERBOARD CARD */}
-            <div className="glass rounded-3xl p-6 sm:p-8 border border-white/5 relative overflow-hidden shadow-xl">
+            <div className="glass rounded-3xl p-6 sm:p-8 border border-white/5 relative overflow-hidden shadow-xl cyber-scanline">
               <div className="absolute top-0 left-0 h-32 w-32 rounded-full bg-violet-600/5 blur-3xl" />
-              <h3 className="text-lg font-black tracking-tight text-white mb-6 flex items-center gap-2 border-b border-white/5 pb-3">
+              <h3 className="text-md font-black tracking-widest text-white mb-6 flex items-center gap-2 border-b border-white/5 pb-3 font-display">
                 <span>👑</span>
                 <span>{t.leaderboardTitle}</span>
               </h3>
@@ -1648,7 +1705,7 @@ export function CrowdfundPage() {
               {!campaign || campaign.top_donors.length === 0 ? (
                 <p className="text-xs text-slate-500 italic py-2">{t.noDonors}</p>
               ) : (
-                <div className="space-y-3 mt-2">
+                <div className="space-y-3 mt-2 font-mono">
                   {campaign.top_donors.map((donor, idx) => {
                     const medals = ["🥇", "🥈", "🥉"];
                     const medal = medals[idx] || "⭐";
@@ -1660,16 +1717,16 @@ export function CrowdfundPage() {
                         className={`flex items-center justify-between rounded-2xl border px-5 py-4 transition duration-350 hover:translate-x-1 ${
                           isSelf
                             ? "bg-cyan-500/5 border-cyan-500/25 shadow-[0_0_12px_rgba(6,182,212,0.15)]"
-                            : "bg-slate-900/40 border-white/5 hover:bg-slate-900/80 hover:border-white/10"
+                            : "bg-slate-950 border-white/5 hover:bg-slate-900 hover:border-white/10"
                         }`}
                       >
                         <div className="flex items-center gap-3">
                           <span className="text-lg shrink-0">{medal}</span>
-                          <span className="font-mono text-xs text-slate-200 font-bold break-all">
+                          <span className="text-xs text-slate-200 font-bold break-all">
                             {donor.address}
                           </span>
                         </div>
-                        <span className="font-mono text-sm font-black text-cyan-400 shrink-0 ml-3">
+                        <span className="text-sm font-black text-cyan-400 shrink-0 ml-3">
                           {formatXlm(Number(donor.amount) / 10_000_000)} XLM
                         </span>
                       </div>
@@ -1680,8 +1737,8 @@ export function CrowdfundPage() {
             </div>
 
             {/* CANLI GEÇMİŞ (Horizon logs) */}
-            <div className="glass rounded-3xl p-6 sm:p-8 border border-white/5 relative overflow-hidden shadow-xl">
-              <h3 className="text-lg font-black tracking-tight text-white mb-6 flex items-center justify-between border-b border-white/5 pb-3">
+            <div className="glass rounded-3xl p-6 sm:p-8 border border-white/5 relative overflow-hidden shadow-xl cyber-scanline">
+              <h3 className="text-md font-black tracking-widest text-white mb-6 flex items-center justify-between border-b border-white/5 pb-3 font-display">
                 <span className="flex items-center gap-2">
                   <span className="relative flex h-2.5 w-2.5 shrink-0">
                     <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyan-400 opacity-75" />
@@ -1695,29 +1752,29 @@ export function CrowdfundPage() {
               {activities.length === 0 ? (
                 <p className="text-xs text-slate-500 italic py-2">{t.noActivity}</p>
               ) : (
-                <div className="space-y-4">
+                <div className="space-y-4 font-mono">
                   {activities.map((tx) => {
                     const isInit = tx.functionName === "initialize";
                     
                     return (
-                      <div key={tx.id} className="rounded-2xl bg-slate-950/80 border border-white/5 p-4.5 transition hover:border-white/10 hover:bg-slate-950">
+                      <div key={tx.id} className="rounded-2xl bg-slate-950 border border-white/5 p-4.5 transition hover:border-white/10 hover:bg-slate-900">
                         <div className="flex items-center justify-between mb-2">
                           <span className={`text-[10px] font-black uppercase tracking-wider px-2 py-0.5 rounded ${
                             isInit ? "bg-indigo-500/20 text-indigo-300 border border-indigo-500/30" : "bg-cyan-500/20 text-cyan-300 border border-cyan-500/30"
                           }`}>
                             {isInit ? t.funcInitialize : t.funcFund}
                           </span>
-                          <span className="text-[10px] font-bold text-slate-500 font-mono">
+                          <span className="text-[10px] font-bold text-slate-500">
                             {new Date(tx.createdAt).toLocaleTimeString()}
                           </span>
                         </div>
-                        <p className="text-xs text-slate-300 leading-relaxed font-mono truncate mb-3">
-                          <span className="text-slate-500 font-bold uppercase tracking-wider text-[9px] mr-1.5">{t.actorLabel}:</span>
+                        <p className="text-xs text-slate-300 leading-relaxed truncate mb-3">
+                          <span className="text-slate-500 font-bold uppercase tracking-wider text-[8px] mr-1.5">{t.actorLabel}:</span>
                           {tx.donor}
                         </p>
                         
                         <div className="flex items-center justify-between border-t border-white/5 pt-3">
-                          <span className="font-mono text-xs font-black text-slate-200">
+                          <span className="text-xs font-black text-slate-200">
                             {tx.amount !== null ? `${formatXlm(tx.amount)} XLM` : "-"}
                           </span>
                           {tx.hash !== "demo_claim_hash_stellar" && tx.hash !== "demo_tx_hash_stellar" && !tx.hash.startsWith("demo_tx_") && !tx.hash.startsWith("env_tx_") && !tx.hash.startsWith("edu_tx_") && !tx.hash.startsWith("h_tx_") ? (
@@ -1745,8 +1802,8 @@ export function CrowdfundPage() {
             {/* Campaign Owner Panel */}
             {isOwner && (
               <div className="glass rounded-3xl p-6 sm:p-8 border border-cyan-400/25 shadow-xl relative overflow-hidden bg-cyan-950/5">
-                <span className="text-xs font-black text-cyan-400 uppercase tracking-widest block mb-2">{t.ownerSectionTitle}</span>
-                <h3 className="text-lg font-black tracking-tight text-white mb-4">
+                <span className="text-[10px] font-black text-cyan-400 uppercase tracking-widest block mb-2 font-display">{t.ownerSectionTitle}</span>
+                <h3 className="text-lg font-black tracking-tight text-white mb-4 font-display">
                   {locale === "tr" ? "Kilometre Taşı Dağıtım Paneli" : "Milestone Release Dashboard"}
                 </h3>
                 <p className="text-xs text-slate-400 leading-relaxed mb-4">
@@ -1755,9 +1812,9 @@ export function CrowdfundPage() {
                     : "As the campaign manager, you can disburse campaign funds directly to your wallet once progress targets are reached."}
                 </p>
                 <div className="flex flex-col gap-2">
-                  <div className="flex items-center justify-between text-xs py-2 border-b border-white/5">
+                  <div className="flex items-center justify-between text-xs py-2 border-b border-white/5 font-mono">
                     <div className="flex flex-col">
-                      <span className="font-bold text-slate-300">{t.phase1Title}</span>
+                      <span className="font-bold text-slate-300 font-display">{t.phase1Title}</span>
                       <span className={`font-black uppercase text-[10px] ${campaign?.m1_claimed ? "text-slate-500" : progressPercent >= 25 ? "text-cyan-400" : "text-slate-600"}`}>
                         {campaign?.m1_claimed ? t.claimedStatus : progressPercent >= 25 ? "Available" : "Locked"}
                       </span>
@@ -1767,15 +1824,15 @@ export function CrowdfundPage() {
                         type="button"
                         onClick={() => handleClaimMilestone(1)}
                         disabled={isClaiming !== null}
-                        className="rounded-lg bg-cyan-500/20 hover:bg-cyan-500/35 border border-cyan-500/40 px-3 py-1.5 text-[10px] font-black uppercase text-white transition disabled:opacity-50"
+                        className="rounded-lg bg-cyan-500/20 hover:bg-cyan-500/35 border border-cyan-500/40 px-3 py-1.5 text-[10px] font-black uppercase text-white transition disabled:opacity-50 font-display"
                       >
                         {isClaiming === 1 ? t.claimingBtn : t.claimBtn}
                       </button>
                     )}
                   </div>
-                  <div className="flex items-center justify-between text-xs py-2 border-b border-white/5">
+                  <div className="flex items-center justify-between text-xs py-2 border-b border-white/5 font-mono">
                     <div className="flex flex-col">
-                      <span className="font-bold text-slate-300">{t.phase2Title}</span>
+                      <span className="font-bold text-slate-300 font-display">{t.phase2Title}</span>
                       <span className={`font-black uppercase text-[10px] ${campaign?.m2_claimed ? "text-slate-500" : progressPercent >= 50 ? "text-violet-400" : "text-slate-600"}`}>
                         {campaign?.m2_claimed ? t.claimedStatus : progressPercent >= 50 ? "Available" : "Locked"}
                       </span>
@@ -1785,15 +1842,15 @@ export function CrowdfundPage() {
                         type="button"
                         onClick={() => handleClaimMilestone(2)}
                         disabled={isClaiming !== null}
-                        className="rounded-lg bg-violet-500/20 hover:bg-violet-500/35 border border-violet-500/40 px-3 py-1.5 text-[10px] font-black uppercase text-white transition disabled:opacity-50"
+                        className="rounded-lg bg-violet-500/20 hover:bg-violet-500/35 border border-violet-500/40 px-3 py-1.5 text-[10px] font-black uppercase text-white transition disabled:opacity-50 font-display"
                       >
                         {isClaiming === 2 ? t.claimingBtn : t.claimBtn}
                       </button>
                     )}
                   </div>
-                  <div className="flex items-center justify-between text-xs py-2">
+                  <div className="flex items-center justify-between text-xs py-2 font-mono">
                     <div className="flex flex-col">
-                      <span className="font-bold text-slate-300">{t.phase3Title}</span>
+                      <span className="font-bold text-slate-300 font-display">{t.phase3Title}</span>
                       <span className={`font-black uppercase text-[10px] ${campaign?.m3_claimed ? "text-slate-500" : progressPercent >= 100 ? "text-indigo-400" : "text-slate-600"}`}>
                         {campaign?.m3_claimed ? t.claimedStatus : progressPercent >= 100 ? "Available" : "Locked"}
                       </span>
@@ -1803,7 +1860,7 @@ export function CrowdfundPage() {
                         type="button"
                         onClick={() => handleClaimMilestone(3)}
                         disabled={isClaiming !== null}
-                        className="rounded-lg bg-indigo-500/20 hover:bg-indigo-500/35 border border-indigo-500/40 px-3 py-1.5 text-[10px] font-black uppercase text-white transition disabled:opacity-50"
+                        className="rounded-lg bg-indigo-500/20 hover:bg-indigo-500/35 border border-indigo-500/40 px-3 py-1.5 text-[10px] font-black uppercase text-white transition disabled:opacity-50 font-display"
                       >
                         {isClaiming === 3 ? t.claimingBtn : t.claimBtn}
                       </button>
