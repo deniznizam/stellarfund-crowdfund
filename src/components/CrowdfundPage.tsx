@@ -1198,6 +1198,17 @@ export function CrowdfundPage() {
                       strokeLinejoin="round"
                     />
 
+                    {/* Animated glowing pulse wave overlay */}
+                    <path
+                      d="M20 100 L60 100 L70 80 L80 130 L90 70 L100 110 L110 100 L180 100"
+                      stroke="#f43f5e"
+                      strokeWidth="2.5"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      filter="url(#heartGlow)"
+                      className="animate-heartbeat-flow"
+                    />
+
                     {/* Glowing pulsative heart SVG (Scales based on progress) */}
                     <path
                       d="M100 140 C100 140, 40 100, 40 70 C40 50, 60 40, 80 50 C90 55, 100 70, 100 70 C100 70, 110 55, 120 50 C140 40, 160 50, 160 70 C160 100, 100 140, 100 140 Z"

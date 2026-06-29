@@ -202,3 +202,15 @@ input[type="number"] {
   background: currentColor;
   animation: pulse-ring 1.5s ease-out infinite;
 }
+
+/* Heartbeat ECG scroll animation */
+@keyframes heartbeat-dash {
+  to {
+    stroke-dashoffset: -120;
+  }
+}
+
+.animate-heartbeat-flow {
+  stroke-dasharray: 40 80;
+  animation: heartbeat-dash 1.8s linear infinite;
+}
