@@ -13,6 +13,10 @@ export type Campaign = {
   total: bigint;
   donor_count: number;
   top_donors: TopDonor[];
+  owner: string;
+  m1_claimed: boolean;
+  m2_claimed: boolean;
+  m3_claimed: boolean;
 };
 export type TxStatus = "idle" | "pending" | "success" | "error";
 export type DonateError =
@@ -25,7 +29,6 @@ const DUMMY = "GAIH3ULLFQ4DGSECF2AR555KZ4KNDGEKN4AFI4SU2M96VKTA365PFB";
 
 export async function getCampaign(): Promise<Campaign> {
   const server = new Server(RPC_URL);
-  // Avoid network roundtrip: Instantiate dummy Account locally
   const account = new Account(DUMMY, "0");
   const tx = new TransactionBuilder(account, { fee: BASE_FEE, networkPassphrase: NETWORK_PASSPHRASE })
     .addOperation(new Contract(CONTRACT_ID).call("get_campaign"))
@@ -44,6 +47,10 @@ export async function getCampaign(): Promise<Campaign> {
       address: d.address,
       amount: BigInt(d.amount),
     })),
+    owner: raw.owner,
+    m1_claimed: Boolean(raw.m1_claimed),
+    m2_claimed: Boolean(raw.m2_claimed),
+    m3_claimed: Boolean(raw.m3_claimed),
   };
 }
 
@@ -78,7 +85,6 @@ export async function submitSignedXdr(signedXdr: string): Promise<{ hash: string
 
 export function classifyError(err: unknown): DonateError {
   const msg = err instanceof Error ? err.message : String(err);
-  // Narrow wallet regex detection to avoid overlapping with Horizon 404 HTTP errors
   if (/freighter|xbull|lobstr|wallet|extension|not installed/i.test(msg))
     return { type: "wallet_not_found", message: "Selected wallet extension is not installed." };
   if (/reject|decline|cancel/i.test(msg))
@@ -150,4 +156,3 @@ export async function getRecentTransactions(contractId: string): Promise<ParsedT
     return [];
   }
 }
-

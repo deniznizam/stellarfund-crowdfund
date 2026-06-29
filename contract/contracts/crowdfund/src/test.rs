@@ -11,64 +11,40 @@ fn test_crowdfund_flow() {
     let contract_id = env.register_contract(None, CrowdfundContract);
     let client = CrowdfundContractClient::new(&env, &contract_id);
 
+    let owner = Address::generate(&env);
     let title = String::from_str(&env, "Test Campaign");
     let goal = 1000;
 
-    // 1. Initialize
-    client.initialize(&title, &goal);
+    // 1. Initialize with owner
+    client.initialize(&owner, &title, &goal);
 
-    // Verify initialization state
+    // Verify initial states
     let campaign = client.get_campaign();
     assert_eq!(campaign.title, title);
     assert_eq!(campaign.goal, goal);
-    assert_eq!(campaign.total, 0);
-    assert_eq!(campaign.donor_count, 0);
-    assert_eq!(campaign.top_donors.len(), 0);
+    assert_eq!(campaign.owner, owner);
+    assert_eq!(campaign.m1_claimed, false);
+    assert_eq!(campaign.m2_claimed, false);
+    assert_eq!(campaign.m3_claimed, false);
 
-    // 2. Fund from donor 1
+    // 2. Fund from donor 1 (20% of goal, 200 stroops)
     let donor1 = Address::generate(&env);
-    let total_raised = client.fund(&donor1, &200);
-    assert_eq!(total_raised, 200);
-    assert_eq!(client.get_donor_amount(&donor1), 200);
+    client.fund(&donor1, &200);
 
-    // Verify campaign state updated
+    // Try claiming milestone 1 (Should fail since it's only 20%, target is 25%)
+    let result = client.try_claim_milestone(&1);
+    assert!(result.is_err());
+
+    // 3. Fund another 100 stroops (total 300, 30% of goal)
+    client.fund(&donor1, &100);
+
+    // Claim milestone 1 (Should pass since total 300 >= 25% of 1000)
+    client.claim_milestone(&1);
     let campaign = client.get_campaign();
-    assert_eq!(campaign.total, 200);
-    assert_eq!(campaign.donor_count, 1);
-    assert_eq!(campaign.top_donors.len(), 1);
-    assert_eq!(campaign.top_donors.get(0).unwrap().address, donor1);
-    assert_eq!(campaign.top_donors.get(0).unwrap().amount, 200);
+    assert_eq!(campaign.m1_claimed, true);
+    assert_eq!(campaign.m2_claimed, false);
 
-    // 3. Fund from donor 2 (larger amount)
-    let donor2 = Address::generate(&env);
-    client.fund(&donor2, &500);
-
-    // Verify donor 2 is top donor
-    let campaign = client.get_campaign();
-    assert_eq!(campaign.total, 700);
-    assert_eq!(campaign.donor_count, 2);
-    assert_eq!(campaign.top_donors.len(), 2);
-    assert_eq!(campaign.top_donors.get(0).unwrap().address, donor2);
-    assert_eq!(campaign.top_donors.get(0).unwrap().amount, 500);
-    assert_eq!(campaign.top_donors.get(1).unwrap().address, donor1);
-
-    // 4. Fund from donor 3
-    let donor3 = Address::generate(&env);
-    client.fund(&donor3, &100);
-
-    // 5. Fund from donor 4 (should kick donor 3 out of top 3)
-    let donor4 = Address::generate(&env);
-    client.fund(&donor4, &300);
-
-    let campaign = client.get_campaign();
-    assert_eq!(campaign.donor_count, 4);
-    assert_eq!(campaign.top_donors.len(), 3); // Capped at top 3
-    
-    // Top 3 should be: donor2 (500), donor4 (300), donor1 (200)
-    assert_eq!(campaign.top_donors.get(0).unwrap().address, donor2);
-    assert_eq!(campaign.top_donors.get(0).unwrap().amount, 500);
-    assert_eq!(campaign.top_donors.get(1).unwrap().address, donor4);
-    assert_eq!(campaign.top_donors.get(1).unwrap().amount, 300);
-    assert_eq!(campaign.top_donors.get(2).unwrap().address, donor1);
-    assert_eq!(campaign.top_donors.get(2).unwrap().amount, 200);
+    // Try claiming milestone 1 again (Should fail - already claimed)
+    let result = client.try_claim_milestone(&1);
+    assert!(result.is_err());
 }

@@ -1,5 +1,7 @@
+// Advanced Crowdfunding Contract with Owner Milestone Claims
 #![no_std]
 use soroban_sdk::{contract, contractimpl, contracttype, Address, Env, String, Vec};
+
 
 #[contracttype]
 #[derive(Clone)]
@@ -16,6 +18,10 @@ pub struct Campaign {
     pub total: i128,
     pub donor_count: u32,
     pub top_donors: Vec<TopDonor>,
+    pub owner: Address,
+    pub m1_claimed: bool, // %25 claimed
+    pub m2_claimed: bool, // %50 claimed
+    pub m3_claimed: bool, // %100 claimed
 }
 
 #[contracttype]
@@ -29,7 +35,8 @@ pub struct CrowdfundContract;
 
 #[contractimpl]
 impl CrowdfundContract {
-    pub fn initialize(env: Env, title: String, goal: i128) {
+    /// Kampanyayı başlatır. Çağıran adres kampanya sahibi (owner) olarak kaydedilir.
+    pub fn initialize(env: Env, owner: Address, title: String, goal: i128) {
         if env.storage().instance().has(&DataKey::Campaign) {
             panic!("already initialized");
         }
@@ -39,11 +46,16 @@ impl CrowdfundContract {
             total: 0,
             donor_count: 0,
             top_donors: Vec::new(&env),
+            owner,
+            m1_claimed: false,
+            m2_claimed: false,
+            m3_claimed: false,
         };
         env.storage().instance().set(&DataKey::Campaign, &campaign);
         env.storage().instance().extend_ttl(100_000, 100_000);
     }
 
+    /// Bağış yapma fonksiyonu
     pub fn fund(env: Env, donor: Address, amount: i128) -> i128 {
         donor.require_auth();
         if amount <= 0 {
@@ -67,12 +79,12 @@ impl CrowdfundContract {
         let new_total = prev + amount;
         campaign.total += amount;
 
-        // Save individual balance
+        // Bireysel bağış miktarını kaydet
         env.storage()
             .persistent()
             .set(&DataKey::Donor(donor.clone()), &new_total);
 
-        // Update top donors list
+        // Liderlik tablosunu güncelle
         let mut updated = false;
         let mut new_list = Vec::new(&env);
         
@@ -95,7 +107,7 @@ impl CrowdfundContract {
             });
         }
 
-        // Sort descending
+        // Liderlik tablosunu sırala (Azalan sırada)
         let mut sorted = Vec::new(&env);
         while new_list.len() > 0 {
             let mut max_idx = 0;
@@ -111,7 +123,7 @@ impl CrowdfundContract {
             new_list.remove(max_idx);
         }
 
-        // Keep top 3
+        // İlk 3 bağışçıyı koru
         while sorted.len() > 3 {
             sorted.pop_back();
         }
@@ -123,6 +135,37 @@ impl CrowdfundContract {
         campaign.total
     }
 
+    /// Kampanya sahibinin (owner) aşama fonunu talep etmesini sağlar
+    pub fn claim_milestone(env: Env, milestone_num: u32) {
+        let mut campaign: Campaign = env
+            .storage()
+            .instance()
+            .get(&DataKey::Campaign)
+            .expect("not initialized");
+
+        // İmza kontrolü (Sadece kampanya sahibi çekebilir)
+        campaign.owner.require_auth();
+
+        if milestone_num == 1 {
+            if campaign.m1_claimed { panic!("already claimed"); }
+            if campaign.total < (campaign.goal * 25 / 100) { panic!("goal target not met"); }
+            campaign.m1_claimed = true;
+        } else if milestone_num == 2 {
+            if campaign.m2_claimed { panic!("already claimed"); }
+            if campaign.total < (campaign.goal * 50 / 100) { panic!("goal target not met"); }
+            campaign.m2_claimed = true;
+        } else if milestone_num == 3 {
+            if campaign.m3_claimed { panic!("already claimed"); }
+            if campaign.total < campaign.goal { panic!("goal target not met"); }
+            campaign.m3_claimed = true;
+        } else {
+            panic!("invalid milestone number");
+        }
+
+        env.storage().instance().set(&DataKey::Campaign, &campaign);
+    }
+
+    /// Kampanya durumunu okur
     pub fn get_campaign(env: Env) -> Campaign {
         env.storage()
             .instance()
@@ -130,6 +173,7 @@ impl CrowdfundContract {
             .expect("not initialized")
     }
 
+    /// Bir bağışçının toplam bağış miktarını okur
     pub fn get_donor_amount(env: Env, donor: Address) -> i128 {
         env.storage()
             .persistent()
@@ -140,4 +184,3 @@ impl CrowdfundContract {
 
 #[cfg(test)]
 mod test;
-
