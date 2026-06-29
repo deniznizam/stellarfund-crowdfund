@@ -144,12 +144,26 @@ type PageCopy = {
   phase1Title: string;
   phase2Title: string;
   phase3Title: string;
+  trustBadge: string;
+};
+
+// Stateless Tooltip component using standard Tailwind hover classes
+const Tooltip = ({ content, children }: { content: string; children: React.ReactNode }) => {
+  return (
+    <span className="relative group inline-flex items-center cursor-help">
+      {children}
+      <span className="pointer-events-none absolute bottom-full left-1/2 -translate-x-1/2 mb-2 w-56 rounded-xl bg-slate-950 border border-white/10 px-3 py-2.5 text-[10px] font-mono text-slate-300 opacity-0 group-hover:opacity-100 transition-opacity duration-200 z-50 shadow-2xl leading-normal break-all select-all">
+        {content}
+        <span className="absolute top-full left-1/2 -translate-x-1/2 border-4 border-transparent border-t-slate-950" />
+      </span>
+    </span>
+  );
 };
 
 const pageCopy: Record<Locale, PageCopy> = {
   en: {
     title: "StellarFund",
-    tagline: "Autonomous Milestone-Driven Project Crowdfunding",
+    tagline: "Stellar On-Chain Trust Network",
     backToSplitPay: "← Back to SplitPay Calculator",
     connected: "Connected",
     disconnect: "Disconnect",
@@ -158,23 +172,23 @@ const pageCopy: Record<Locale, PageCopy> = {
     campaignStats: "Campaign Wallet Ledger",
     raisedOfGoal: (raised, goal) => `${raised} XLM raised of ${goal} XLM target`,
     donorCount: "Generous Backers",
-    donateTitle: "Support This Worthy Cause",
+    donateTitle: "Support This Project",
     donatePlaceholder: "Enter contribution (XLM)",
-    donateBtn: "Confirm Donation",
+    donateBtn: "Make My Donation",
     donatingBtn: "Sending to Smart Contract…",
     connectWalletToDonate: "Connect Wallet to Support",
     insufficientBalance: "Insufficient balance in your wallet.",
-    leaderboardTitle: "Top Benefactors Podium",
-    activityTitle: "Transparent Ledger Timeline",
+    leaderboardTitle: "Most Generous Supporters",
+    activityTitle: "Recent Donations & Disbursals",
     noDonors: "No transactions processed yet. Be the first to back this project!",
     noActivity: "No ledger transactions detected yet on Testnet.",
     funcInitialize: "Campaign Deployed",
     funcFund: "Donation",
-    milestonePlanning: "Planning & Architecture (25%)",
+    milestonePlanning: "Phase 1: Planning & Setup (25%)",
     milestonePlanningDesc: "Creation of initial specifications, core architecture setup, and developer environments.",
-    milestoneDevelopment: "Smart Contract Alpha (50%)",
+    milestoneDevelopment: "Phase 2: Development & Audit (50%)",
     milestoneDevelopmentDesc: "Soroban contract deployments, testing protocols on Stellar Testnet, and client SDK integration.",
-    milestoneProduction: "Mainnet Deployment (100%)",
+    milestoneProduction: "Phase 3: Launch & Mainnet (100%)",
     milestoneProductionDesc: "Final production release, third-party security audits, and global launch.",
     activeStatus: "Unlocked",
     inactiveStatus: "Locked",
@@ -196,8 +210,8 @@ const pageCopy: Record<Locale, PageCopy> = {
     balanceLabel: "Current Balance",
     claimBtn: "Disburse Milestone Funds",
     claimingBtn: "Withdrawing Funds…",
-    claimedStatus: "Funds Claimed & Spent",
-    lockedStatus: "Funds Locked in Escrow",
+    claimedStatus: "Released & Spent",
+    lockedStatus: "Locked in Escrow",
     claimableStatus: "Ready to Disburse",
     ownerSectionTitle: "Campaign Manager Portal",
     totalWithdrawnLabel: "Withdrawn Funds",
@@ -206,16 +220,16 @@ const pageCopy: Record<Locale, PageCopy> = {
     simulationAlert: "You are currently exploring the interactive simulation dashboard. You can mock donations and withdraw milestone funds.",
     
     // Custom Redesign Copy values
-    heroTitle: "Let your donation truly reach its goal",
-    heroDesc: "With StellarFund, your funds remain securely locked in the smart contract escrow. The project owner can only withdraw funds sequentially as they prove actual milestones. Complete transparency, zero trust issues.",
+    heroTitle: "Your Donation Will Actually Make an Impact",
+    heroDesc: "Your funds are secure on-chain. The creator withdraws only sequentially upon proving milestones.",
     howItWorksTitle: "How StellarFund Protects Your Giving",
-    howItWorksStep1Title: "1. Connect & Give",
+    howItWorksStep1Title: "Give Support",
     howItWorksStep1Desc: "Securely link your Stellar wallet and choose your support amount. Your donation is immediately recorded.",
-    howItWorksStep2Title: "2. Escrow Locking",
-    howItWorksStep2Desc: "Funds are locked inside a secure on-chain contract vault, visible and auditable by everyone.",
-    howItWorksStep3Title: "3. Milestone-Based Payouts",
-    howItWorksStep3Desc: "The creator receives funds only after verifying progress milestones, ensuring your money goes exactly where intended.",
-    outflowTunnelTitle: "Transparent Money Flow",
+    howItWorksStep2Title: "Keep Funds Secure",
+    howItWorksStep2Desc: "All donations are locked inside a secure on-chain contract vault. Nobody can withdraw it at once.",
+    howItWorksStep3Title: "Spend Sequentially",
+    howItWorksStep3Desc: "The creator receives funds only after verifying progress milestones (photos, receipts, reports) step-by-step.",
+    outflowTunnelTitle: "Where Does Your Money Go?",
     outflowTunnelDesc: "Track where, when, and why the withdrawn project budget is spent, with proof of execution.",
     outflowM1Expense: "Hosting infrastructure setup, domain registration, and API keys activation.",
     outflowM2Expense: "Smart contract independent code audit fees, integration testing, and bug bounties.",
@@ -234,20 +248,20 @@ const pageCopy: Record<Locale, PageCopy> = {
     bookTitle: "Holographic Knowledge Book",
     heartTitle: "Neon Heartbeat Vitality Monitor",
     activeCampaignLabel: "Selected Campaign Target",
-    victoryTitleEnv: "Nature Is Healing! 🌲",
-    victoryDescEnv: "Your contribution has sprouted new virtual leaves on the blockchain forest timeline.",
-    victoryTitleEdu: "Knowledge Illuminates! 📚",
-    victoryDescEdu: "Your contribution has opened new pages in the digital library grid timeline.",
-    victoryTitleHealth: "Heartbeats Strengthen! ❤️",
-    victoryDescHealth: "Your donation has vitalized the digital health monitor on-chain log.",
+    victoryTitleEnv: "Thank you! 🌲",
+    victoryDescEnv: "Your contribution sprouted 7 new saplings in our digital blockchain forest timeline!",
+    victoryTitleEdu: "Awesome! 📚",
+    victoryDescEdu: "Your contribution enabled 3 more students to receive modern technology books!",
+    victoryTitleHealth: "Thank you so much! ❤️",
+    victoryDescHealth: "Your donation provided 1 vital medical diagnostic device for our local health clinic!",
     closeBtn: "Close Dashboard",
     actorLabel: "From Address",
     liveFeedLabel: "Live Ledger Activity",
     signatureRequiredTitle: "Signature Required",
     signatureRequiredDesc: "Please review and authorize the transaction signing request in your connected wallet.",
-    phase1Release: "Phase 1 Budget Release (25%)",
-    phase2Release: "Phase 2 Budget Release (25%)",
-    phase3Release: "Phase 3 Budget Release (50%)",
+    phase1Release: "Phase 1: Planning & Setup (25%)",
+    phase2Release: "Phase 2: Development & Audit (25%)",
+    phase3Release: "Phase 3: Launch & Mainnet (50%)",
     receiverLabel: "Receiver Address",
     disbursedAmountLabel: "Amount Disbursed",
     totalRaisedLabel: "Total Contributions",
@@ -256,11 +270,12 @@ const pageCopy: Record<Locale, PageCopy> = {
     healthTitle: "Medical Diagnostic Equipment and Patient Supplies",
     phase1Title: "Phase 1: Planning (25%)",
     phase2Title: "Phase 2: Development (50%)",
-    phase3Title: "Phase 3: Production (100%)"
+    phase3Title: "Phase 3: Production (100%)",
+    trustBadge: "⭐ Stellar Secured"
   },
   tr: {
     title: "StellarFund",
-    tagline: "Hayalleri Gerçeğe Dönüştüren Adım Adım Güvenli Fon Sistemi",
+    tagline: "Stellar Blokzinciri Güvenceli Otonom Fonlama",
     backToSplitPay: "← SplitPay Hesaplayıcısına Dön",
     connected: "Bağlandı",
     disconnect: "Bağlantıyı Kes",
@@ -269,23 +284,23 @@ const pageCopy: Record<Locale, PageCopy> = {
     campaignStats: "Şeffaf Kampanya Kumbarası",
     raisedOfGoal: (raised, goal) => `${goal} XLM hedeften ${raised} XLM sevgiyle toplandı`,
     donorCount: "Gönüllü Destekçilerimiz",
-    donateTitle: "Geleceğe Katkıda Bulun",
+    donateTitle: "Bu Projeye Destek Ol",
     donatePlaceholder: "Destek miktarını girin (XLM)",
-    donateBtn: "Bağışımı Gönder",
+    donateBtn: "Bağışımı Yap",
     donatingBtn: "Blokzincirine Güvenle Aktarılıyor…",
     connectWalletToDonate: "Destek Olmak için Cüzdanı Bağla",
     insufficientBalance: "Cüzdanınızda yeterli bakiye bulunmamaktadır.",
-    leaderboardTitle: "En Çok Katkı Sağlayan Kahramanlar",
-    activityTitle: "Şeffaf ve Güvenilir Bağış Geçmişi",
+    leaderboardTitle: "En Cömert Destekçiler",
+    activityTitle: "Son Bağışlar ve Harcamalar",
     noDonors: "Henüz bağış yapılmadı. Bu iyilik hareketini başlatan ilk kahraman siz olun!",
     noActivity: "Testnet üzerinde henüz işlem algılanmadı.",
     funcInitialize: "Kampanya Yayında",
     funcFund: "Destek Gönderimi",
-    milestonePlanning: "Planlama & Altyapı Kurulumu (%25)",
+    milestonePlanning: "Aşama 1: Planlama & Kurulum (%25)",
     milestonePlanningDesc: "Çekirdek proje mimarisinin tasarımı, geliştirici ortamı kurulumu ve API entegrasyonu.",
-    milestoneDevelopment: "Akıllı Sözleşme Alfa Sürümü (%50)",
+    milestoneDevelopment: "Aşama 2: Geliştirme & Denetim (%50)",
     milestoneDevelopmentDesc: "Soroban akıllı sözleşmelerinin dağıtımı, Stellar Testnet testleri ve istemci SDK entegrasyonu.",
-    milestoneProduction: "Canlı Ağ Yayını (%100)",
+    milestoneProduction: "Aşama 3: Yayına Giriş & Mainnet (%100)",
     milestoneProductionDesc: "Mainnet dağıtımı, bağımsız güvenlik denetimleri ve genel yayın.",
     activeStatus: "Kilit Açıldı",
     inactiveStatus: "Kilitli",
@@ -308,7 +323,7 @@ const pageCopy: Record<Locale, PageCopy> = {
     claimBtn: "Hak Edilen Bütçeyi Çek",
     claimingBtn: "Bütçe Çekiliyor…",
     claimedStatus: "Çekildi ve Amacına Harcandı",
-    lockedStatus: "Akıllı Sözleşme Kasasında Güvende",
+    lockedStatus: "Akıllı Sözleşmede Kilitli",
     claimableStatus: "Çekilmeye Hazır",
     ownerSectionTitle: "Kampanya Yönetim Masası",
     totalWithdrawnLabel: "Çekilen Bütçe",
@@ -317,16 +332,16 @@ const pageCopy: Record<Locale, PageCopy> = {
     simulationAlert: "Şu anda etkileşimli simülasyon modundasınız. Gerçek para harcamadan bağış yapmayı ve bütçe çekmeyi deneyimleyebilirsiniz.",
     
     // Custom Redesign Copy values
-    heroTitle: "Bağışınızın tam amacına ulaştığından emin olun",
-    heroDesc: "StellarFund ile yaptığınız bağışlar akıllı sözleşme kasasında tamamen güvendedir. Proje sahibi, bütçeyi ancak kilometre taşlarını şeffaf bir şekilde kanıtladığında aşamalı olarak alabilir. Sıfır suistimal riski, tam şeffaflık!",
+    heroTitle: "Bağışınız Gerçekten İşe Yarayacak",
+    heroDesc: "Paranız blokzincirinde güvende. Proje sahibi parayı ancak işleri tamamladığını kanıtladığında, adım adım alabilir.",
     howItWorksTitle: "Güvenli Bağış Sistemi Nasıl Çalışır?",
-    howItWorksStep1Title: "1. Kolayca Bağlan ve Destek Ol",
-    howItWorksStep1Desc: "Stellar cüzdanınızı tek tıkla bağlayıp destek miktarını seçin. Katkınız anında blokzincirine yazılır.",
-    howItWorksStep2Title: "2. Akıllı Sözleşme Kasası",
-    howItWorksStep2Desc: "Toplanan tüm fonlar, kimsenin tek başına harcayamayacağı güvenli ve şeffaf bir akıllı sözleşmede kilitli kalır.",
-    howItWorksStep3Title: "3. Kanıta Dayalı Aşamalı Teslimat",
-    howItWorksStep3Desc: "Proje yöneticisi fonları tek seferde çekemez. Sadece belirlediği hedeflere ulaşıp kanıtlarını sundukça bütçe dilimlerini alabilir.",
-    outflowTunnelTitle: "Paranın Yolculuğu (Şeffaf Harcama Tüneli)",
+    howItWorksStep1Title: "Bağış Yap",
+    howItWorksStep1Desc: "Cüzdanınızı bağlayın ve istediğiniz miktarda destek olun.",
+    howItWorksStep2Title: "Paran Güvende Kalsın",
+    howItWorksStep2Desc: "Tüm bağışlar blokzincirinde özel bir kasada kilitlenir. Kimse tek seferde alamıyor.",
+    howItWorksStep3Title: "Adım Adım Harcansın",
+    howItWorksStep3Desc: "Proje sahibi parayı ancak her aşamayı tamamladığını kanıtladığında (fotoğraf, fatura, ilerleme raporu) alabilir.",
+    outflowTunnelTitle: "Paranız Nereye Gidiyor?",
     outflowTunnelDesc: "Kasadan çekilen geliştirici bütçelerinin tam olarak neye, ne zaman ve hangi kanıt belgesiyle harcandığını takip edin.",
     outflowM1Expense: "Hosting sunucu kurulumları, alan adı tescili ve API sunucu kiralama masrafları.",
     outflowM2Expense: "Akıllı sözleşme bağımsız denetim (audit) ücretleri, entegrasyon testleri ve hata ödül bütçeleri.",
@@ -345,20 +360,20 @@ const pageCopy: Record<Locale, PageCopy> = {
     bookTitle: "Işıldayan Holografik Bilgi Kitabı",
     heartTitle: "Neon Nabız ve Sağlık Monitörü",
     activeCampaignLabel: "Aktif Destek Kategorisi",
-    victoryTitleEnv: "Doğa Canlanıyor! 🌲",
-    victoryDescEnv: "Katkınız sayesinde siber ağacımızda yepyeni yapraklar filizlendi. Doğaya can verdiniz!",
-    victoryTitleEdu: "Gelecek Işıldıyor! 📚",
-    victoryDescEdu: "Katkınız dijital kütüphanemizde yeni sayfaların açılmasını sağladı. Eğitime ışık oldunuz!",
-    victoryTitleHealth: "Kalpler Birlikte Atıyor! ❤️",
-    victoryDescHealth: "Gönderdiğiniz destek on-chain tıp cihazımızın nabız dalgalarını güçlendirdi. Yaşama el verdiniz!",
+    victoryTitleEnv: "Teşekkürler! 🌲",
+    victoryDescEnv: "Katkınız sayesinde ormana 7 yeni fidan eklendi!",
+    victoryTitleEdu: "Harika! 📚",
+    victoryDescEdu: "Katkınız sayesinde 3 öğrencimiz daha teknoloji kitaplarına kavuştu!",
+    victoryTitleHealth: "Çok Teşekkürler! ❤️",
+    victoryDescHealth: "Katkınız sayesinde tıp merkezimiz 1 yeni hayati cihaza kavuştu!",
     closeBtn: "Kapat ve Paneli İncele",
     actorLabel: "Gönderen",
     liveFeedLabel: "Anlık Akış Günlüğü",
     signatureRequiredTitle: "İmza Talebi Bekleniyor",
     signatureRequiredDesc: "Lütfen cüzdanınızda açılan pencereden işlem imzalama talebini gözden geçirin ve onaylayın.",
-    phase1Release: "1. Aşama Bütçe Dağıtımı (%25)",
-    phase2Release: "2. Aşama Bütçe Dağıtımı (%25)",
-    phase3Release: "3. Aşama Bütçe Dağıtımı (%50)",
+    phase1Release: "Aşama 1: Planlama & Kurulum (%25)",
+    phase2Release: "Aşama 2: Geliştirme & Denetim (%25)",
+    phase3Release: "Aşama 3: Yayına Giriş & Mainnet (%50)",
     receiverLabel: "Alıcı Adresi",
     disbursedAmountLabel: "Ödenen Bütçe",
     totalRaisedLabel: "Toplanan Toplam Katkı",
@@ -367,7 +382,8 @@ const pageCopy: Record<Locale, PageCopy> = {
     healthTitle: "Tıbbi Teşhis Cihazları ve Hasta Sağlık Ekipmanları",
     phase1Title: "Aşama 1: Planlama & Kurulum (%25)",
     phase2Title: "Aşama 2: Geliştirme & Entegrasyon (%50)",
-    phase3Title: "Aşama 3: Yayına Giriş & Mainnet (%100)"
+    phase3Title: "Aşama 3: Yayına Giriş & Mainnet (%100)",
+    trustBadge: "⭐ Stellar Blokzinciri Korumalı"
   }
 };
 
@@ -867,10 +883,22 @@ export function CrowdfundPage() {
               {activeTab === "education" && t.victoryTitleEdu}
               {activeTab === "health" && t.victoryTitleHealth}
             </h2>
-            <p className="text-sm text-slate-300 leading-relaxed mb-6">
-              {activeTab === "environment" && t.victoryDescEnv}
-              {activeTab === "education" && t.victoryDescEdu}
-              {activeTab === "health" && t.victoryDescHealth}
+            <p className="text-sm text-slate-300 leading-relaxed mb-6 font-display px-2">
+              {activeTab === "environment" && (
+                locale === "tr"
+                  ? `Katkınız sayesinde siber ormanımıza tam ${Math.max(1, Math.round(Number(victoryDonationAmount) * 0.7))} yeni fidan eklediniz! Doğaya can verdiniz.`
+                  : `With your support, you added exactly ${Math.max(1, Math.round(Number(victoryDonationAmount) * 0.7))} new saplings to our digital forest timeline!`
+              )}
+              {activeTab === "education" && (
+                locale === "tr"
+                  ? `Katkınız sayesinde tam ${Math.max(1, Math.round(Number(victoryDonationAmount) * 0.15))} öğrencimiz daha teknoloji kitaplarına kavuştu. Eğitime ışık oldunuz!`
+                  : `With your support, ${Math.max(1, Math.round(Number(victoryDonationAmount) * 0.15))} more students got access to technology books!`
+              )}
+              {activeTab === "health" && (
+                locale === "tr"
+                  ? `Katkınız sayesinde tıp merkezimiz tam ${Math.max(1, Math.round(Number(victoryDonationAmount) * 0.2))} adet hayati tanı kiti ve teşhis desteği kazandı. Ritimler güçlendi!`
+                  : `With your support, our diagnostic center gained ${Math.max(1, Math.round(Number(victoryDonationAmount) * 0.2))} vital medical kits or diagnostic hours!`
+              )}
             </p>
             
             <div className="mb-6 p-4 rounded-2xl bg-white/5 border border-white/5 font-mono text-xs text-slate-400 flex flex-col gap-1 items-center">
@@ -954,6 +982,10 @@ export function CrowdfundPage() {
             >
               {isDemoMode ? t.demoModeLabel : t.liveModeLabel}
             </button>
+
+            <span className="inline-flex items-center gap-1.5 rounded-full border border-emerald-500/35 bg-emerald-500/10 px-3.5 py-1.5 text-[10px] font-black uppercase tracking-widest text-emerald-400 font-mono shadow-[0_0_15px_rgba(16,185,129,0.15)] animate-pulse">
+              {t.trustBadge}
+            </span>
 
             <span className="inline-flex items-center gap-1.5 rounded-full border border-cyan-400/30 bg-cyan-400/10 px-3.5 py-1.5 text-[10px] font-black uppercase tracking-widest text-cyan-300 font-mono">
               <span className="h-2 w-2 rounded-full bg-cyan-400 animate-ping" />
@@ -1057,19 +1089,19 @@ export function CrowdfundPage() {
             {t.howItWorksTitle}
           </h3>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="flex flex-col gap-2.5 relative pl-4 border-l-2 border-cyan-500/30">
-              <span className="text-xs font-black text-cyan-400 font-mono">01 / DISCOVERY</span>
-              <h4 className="text-sm font-bold text-white font-display">{t.howItWorksStep1Title}</h4>
+            <div className="flex flex-col gap-2.5 relative pl-4 border-l-2 border-cyan-500/35">
+              <span className="text-xs font-black text-cyan-400 font-mono">{locale === "tr" ? "01 / DESTEK" : "01 / SUPPORT"}</span>
+              <h4 className="text-sm font-extrabold text-white font-display">{t.howItWorksStep1Title}</h4>
               <p className="text-xs text-slate-400 leading-relaxed">{t.howItWorksStep1Desc}</p>
             </div>
-            <div className="flex flex-col gap-2.5 relative pl-4 border-l-2 border-violet-500/30">
-              <span className="text-xs font-black text-violet-400 font-mono">02 / PROTECTION</span>
-              <h4 className="text-sm font-bold text-white font-display">{t.howItWorksStep2Title}</h4>
+            <div className="flex flex-col gap-2.5 relative pl-4 border-l-2 border-violet-500/35">
+              <span className="text-xs font-black text-violet-400 font-mono">{locale === "tr" ? "02 / GÜVENLİK" : "02 / SECURITY"}</span>
+              <h4 className="text-sm font-extrabold text-white font-display">{t.howItWorksStep2Title}</h4>
               <p className="text-xs text-slate-400 leading-relaxed">{t.howItWorksStep2Desc}</p>
             </div>
-            <div className="flex flex-col gap-2.5 relative pl-4 border-l-2 border-indigo-500/30">
-              <span className="text-xs font-black text-indigo-400 font-mono">03 / TRUST</span>
-              <h4 className="text-sm font-bold text-white font-display">{t.howItWorksStep3Title}</h4>
+            <div className="flex flex-col gap-2.5 relative pl-4 border-l-2 border-indigo-500/35">
+              <span className="text-xs font-black text-indigo-400 font-mono">{locale === "tr" ? "03 / TESLİMAT" : "03 / RELEASE"}</span>
+              <h4 className="text-sm font-extrabold text-white font-display">{t.howItWorksStep3Title}</h4>
               <p className="text-xs text-slate-400 leading-relaxed">{t.howItWorksStep3Desc}</p>
             </div>
           </div>
@@ -1092,17 +1124,17 @@ export function CrowdfundPage() {
               <div className="relative w-full h-[320px] flex items-center justify-center bg-slate-950/70 rounded-2xl border border-white/10 shadow-inner overflow-hidden">
                 <div className="absolute inset-0 cyber-grid-dot opacity-40" />
                 
-                {/* SVG 1: Cyber Reforestation Tree (Green) */}
+                {/* SVG 1: Cybernetic Reforestation Tree (Green Accent) */}
                 {activeTab === "environment" && (
-                  <svg className="w-full h-full p-6 relative z-10" viewBox="0 0 200 200" fill="none">
+                  <svg className="w-full h-full max-h-[220px] p-6 relative z-10" viewBox="0 0 200 200" fill="none">
                     <defs>
                       <linearGradient id="treeGrad" x1="0" y1="1" x2="0" y2="0">
-                        <stop offset="0%" stopColor="#065f46" />
+                        <stop offset="0%" stopColor="#047857" />
                         <stop offset="50%" stopColor="#10b981" />
                         <stop offset="100%" stopColor="#34d399" />
                       </linearGradient>
                       <filter id="treeGlow">
-                        <feGaussianBlur stdDeviation="4" result="blur" />
+                        <feGaussianBlur stdDeviation="3.5" result="blur" />
                         <feMerge>
                           <feMergeNode in="blur" />
                           <feMergeNode in="SourceGraphic" />
@@ -1111,28 +1143,32 @@ export function CrowdfundPage() {
                     </defs>
 
                     {/* Cybernetic soil grid line */}
-                    <line x1="20" y1="175" x2="180" y2="175" stroke="#047857" strokeWidth="2.5" strokeDasharray="6 3" strokeOpacity="0.4" />
+                    <line x1="30" y1="170" x2="170" y2="170" stroke="#047857" strokeWidth="1.5" strokeDasharray="5 3" strokeOpacity="0.4" />
                     
-                    {/* Main Trunk */}
+                    {/* Concentric orbital radar rings (Breathing animation) */}
+                    <circle cx="100" cy="110" r="60" stroke="#10b981" strokeWidth="0.75" strokeOpacity="0.15" strokeDasharray="3 3" className="origin-center animate-spin" style={{ animationDuration: "25s" }} />
+                    <circle cx="100" cy="110" r="45" stroke="#10b981" strokeWidth="1" strokeOpacity="0.25" strokeDasharray="4 2" className="origin-center animate-spin" style={{ animationDuration: "18s", animationDirection: "reverse" }} />
+                    
+                    {/* Main Trunk (Grows based on progress) */}
                     <path
-                      d="M100 175 L100 75"
+                      d="M100 170 L100 80"
                       stroke="url(#treeGrad)"
-                      strokeWidth="6"
+                      strokeWidth="4"
                       strokeLinecap="round"
-                      strokeDasharray="100"
-                      strokeDashoffset={100 - (100 * Math.max(progressPercent, 5)) / 100}
+                      strokeDasharray="90"
+                      strokeDashoffset={90 - (90 * Math.max(progressPercent, 5)) / 100}
                       className="transition-all duration-1000 ease-out"
                     />
 
                     {/* Left Branch (Sprouts at 20%) */}
                     {progressPercent >= 20 && (
                       <path
-                        d="M100 135 C80 125, 65 110, 55 110"
+                        d="M100 135 C85 125, 75 115, 60 115"
                         stroke="url(#treeGrad)"
-                        strokeWidth="3.5"
+                        strokeWidth="2.5"
                         strokeLinecap="round"
-                        strokeDasharray="50"
-                        strokeDashoffset={50 - (50 * Math.max(progressPercent - 20, 0)) / 80}
+                        strokeDasharray="40"
+                        strokeDashoffset={40 - (40 * Math.max(progressPercent - 20, 0)) / 80}
                         className="transition-all duration-700 ease-out"
                       />
                     )}
@@ -1140,63 +1176,49 @@ export function CrowdfundPage() {
                     {/* Right Branch (Sprouts at 45%) */}
                     {progressPercent >= 45 && (
                       <path
-                        d="M100 115 C120 105, 135 90, 145 90"
+                        d="M100 115 C115 105, 125 95, 140 95"
                         stroke="url(#treeGrad)"
-                        strokeWidth="3.5"
+                        strokeWidth="2.5"
                         strokeLinecap="round"
-                        strokeDasharray="50"
-                        strokeDashoffset={50 - (50 * Math.max(progressPercent - 45, 0)) / 55}
+                        strokeDasharray="40"
+                        strokeDashoffset={40 - (40 * Math.max(progressPercent - 45, 0)) / 55}
                         className="transition-all duration-700 ease-out"
                       />
                     )}
 
-                    {/* Left Upper Twig (Sprouts at 70%) */}
-                    {progressPercent >= 70 && (
-                      <path
-                        d="M100 95 C85 85, 75 75, 70 75"
-                        stroke="url(#treeGrad)"
-                        strokeWidth="2"
-                        strokeLinecap="round"
-                        className="animate-fade-up"
-                      />
-                    )}
-
-                    {/* Leaf node signals */}
+                    {/* Top Leaf Signals (Lights up) */}
                     {progressPercent >= 10 && (
-                      <circle cx="100" cy="69" r="9" fill="#10b981" fillOpacity="0.8" filter="url(#treeGlow)" className="animate-pulse" />
+                      <circle cx="100" cy="74" r="6" fill="#34d399" filter="url(#treeGlow)" className="animate-pulse" />
                     )}
                     {progressPercent >= 30 && (
-                      <circle cx="53" cy="108" r="8" fill="#34d399" fillOpacity="0.8" filter="url(#treeGlow)" />
+                      <circle cx="58" cy="115" r="5" fill="#6ee7b7" filter="url(#treeGlow)" />
                     )}
-                    {progressPercent >= 55 && (
-                      <circle cx="147" cy="88" r="8" fill="#6ee7b7" fillOpacity="0.8" filter="url(#treeGlow)" />
-                    )}
-                    {progressPercent >= 80 && (
-                      <circle cx="68" cy="74" r="7" fill="#a7f3d0" fillOpacity="0.9" filter="url(#treeGlow)" />
+                    {progressPercent >= 60 && (
+                      <circle cx="142" cy="95" r="5" fill="#a7f3d0" filter="url(#treeGlow)" />
                     )}
 
-                    {/* Interactive glowing expanding rings */}
+                    {/* Ambient pulse wave */}
                     {progressPercent > 0 && (
                       <circle
                         cx="100"
                         cy="110"
-                        r={15 + (progressPercent / 1.8)}
-                        stroke="#34d399"
-                        strokeWidth="1.5"
-                        strokeOpacity={0.7 - (progressPercent / 160)}
+                        r={20 + (progressPercent / 3)}
+                        stroke="#10b981"
+                        strokeWidth="1"
+                        strokeOpacity={0.6 - (progressPercent / 200)}
                         className="animate-ping"
-                        style={{ animationDuration: "2.5s", transformOrigin: "100px 110px" }}
+                        style={{ animationDuration: "3s", transformOrigin: "center" }}
                       />
                     )}
                   </svg>
                 )}
 
-                {/* SVG 2: Holographic Knowledge Book (Amber) */}
+                {/* SVG 2: Holographic Knowledge Book (Amber Accent) */}
                 {activeTab === "education" && (
-                  <svg className="w-full h-full p-6 relative z-10" viewBox="0 0 200 200" fill="none">
+                  <svg className="w-full h-full max-h-[220px] p-6 relative z-10" viewBox="0 0 200 200" fill="none">
                     <defs>
                       <linearGradient id="bookGrad" x1="0" y1="1" x2="1" y2="0">
-                        <stop offset="0%" stopColor="#b45309" />
+                        <stop offset="0%" stopColor="#d97706" />
                         <stop offset="50%" stopColor="#f59e0b" />
                         <stop offset="100%" stopColor="#fef08a" />
                       </linearGradient>
@@ -1210,66 +1232,52 @@ export function CrowdfundPage() {
                     </defs>
 
                     {/* Cyber Grid Base Line */}
-                    <line x1="30" y1="160" x2="170" y2="160" stroke="#d97706" strokeWidth="2" strokeDasharray="6 3" strokeOpacity="0.3" />
+                    <line x1="30" y1="160" x2="170" y2="160" stroke="#d97706" strokeWidth="1.5" strokeDasharray="5 3" strokeOpacity="0.4" />
                     
-                    {/* Floating Sparks (Absolute rising particles based on progress) */}
-                    {progressPercent >= 20 && <circle cx="65" cy="100" r="2.5" fill="#f59e0b" className="animate-particle-rise" style={{ animationDelay: "0s" }} />}
-                    {progressPercent >= 40 && <circle cx="100" cy="85" r="3" fill="#fbbf24" className="animate-particle-rise" style={{ animationDelay: "0.8s" }} />}
-                    {progressPercent >= 60 && <circle cx="135" cy="95" r="2" fill="#fbbf24" className="animate-particle-rise" style={{ animationDelay: "1.5s" }} />}
-                    {progressPercent >= 80 && <circle cx="85" cy="70" r="3.5" fill="#fef08a" className="animate-particle-rise" style={{ animationDelay: "0.4s" }} />}
-
-                    {/* Book spine base */}
-                    <path d="M60 156 L100 166 L140 156" stroke="#b45309" strokeWidth="5.5" strokeLinecap="round" />
-
-                    {/* Left Page layout (Adjusts coordinates dynamically according to progress) */}
-                    <path
-                      d={`M100 163 C85 155, 60 148, ${100 - (42 * Math.max(progressPercent, 10)) / 100} ${145 - (20 * progressPercent) / 100}`}
-                      stroke="url(#bookGrad)"
-                      strokeWidth="4"
-                      strokeLinecap="round"
-                      className="transition-all duration-1000 ease-out"
-                    />
-
-                    {/* Right Page layout */}
-                    <path
-                      d={`M100 163 C115 155, 140 148, ${100 + (42 * Math.max(progressPercent, 10)) / 100} ${145 - (20 * progressPercent) / 100}`}
-                      stroke="url(#bookGrad)"
-                      strokeWidth="4"
-                      strokeLinecap="round"
-                      className="transition-all duration-1000 ease-out"
-                    />
+                    {/* Floating vertical uniform speed particles */}
+                    {progressPercent >= 15 && <circle cx="70" cy="100" r="2" fill="#f59e0b" className="animate-particle-rise" style={{ animationDelay: "0s" }} />}
+                    {progressPercent >= 40 && <circle cx="100" cy="85" r="2.5" fill="#fbbf24" className="animate-particle-rise" style={{ animationDelay: "0.8s" }} />}
+                    {progressPercent >= 65 && <circle cx="130" cy="95" r="2" fill="#fef08a" className="animate-particle-rise" style={{ animationDelay: "1.6s" }} />}
+                    {progressPercent >= 85 && <circle cx="85" cy="70" r="3" fill="#fbbf24" className="animate-particle-rise" style={{ animationDelay: "0.4s" }} />}
 
                     {/* Hologram Light Beams fanning out from the spine */}
                     {progressPercent > 0 && (
                       <path
                         d="M100 155 L65 50 M100 155 L100 40 M100 155 L135 50"
                         stroke="#fbbf24"
-                        strokeWidth="1.5"
-                        strokeOpacity={0.15 + (progressPercent / 180)}
-                        strokeDasharray="5 3"
+                        strokeWidth="1"
+                        strokeOpacity={0.1 + (progressPercent / 300)}
+                        strokeDasharray="4 4"
                         filter="url(#bookGlow)"
                       />
                     )}
 
-                    {/* Floating glyph nodes */}
-                    {progressPercent >= 30 && (
-                      <g className="animate-pulse" style={{ animationDuration: "1.8s" }}>
-                        <rect x="55" y="105" width="6" height="6" fill="#f59e0b" fillOpacity="0.8" transform="rotate(45 58 108)" />
-                        <line x1="58" y1="125" x2="58" y2="116" stroke="#fbbf24" strokeWidth="1" strokeDasharray="2 1" />
-                      </g>
-                    )}
-                    {progressPercent >= 65 && (
-                      <g className="animate-pulse" style={{ animationDuration: "2.4s" }}>
-                        <rect x="135" y="85" width="7" height="7" fill="#fbbf24" fillOpacity="0.8" transform="rotate(45 138 88)" />
-                        <line x1="138" y1="110" x2="138" y2="97" stroke="#fbbf24" strokeWidth="1" strokeDasharray="2 1" />
-                      </g>
-                    )}
+                    {/* Book spine base */}
+                    <path d="M65 152 L100 160 L135 152" stroke="#b45309" strokeWidth="4" strokeLinecap="round" />
+
+                    {/* Left Page layout */}
+                    <path
+                      d={`M100 157 C85 150, 65 142, ${100 - (38 * Math.max(progressPercent, 10)) / 100} ${140 - (18 * progressPercent) / 100}`}
+                      stroke="url(#bookGrad)"
+                      strokeWidth="3"
+                      strokeLinecap="round"
+                      className="transition-all duration-1000 ease-out"
+                    />
+
+                    {/* Right Page layout */}
+                    <path
+                      d={`M100 157 C115 150, 135 142, ${100 + (38 * Math.max(progressPercent, 10)) / 100} ${140 - (18 * progressPercent) / 100}`}
+                      stroke="url(#bookGrad)"
+                      strokeWidth="3"
+                      strokeLinecap="round"
+                      className="transition-all duration-1000 ease-out"
+                    />
                   </svg>
                 )}
 
-                {/* SVG 3: Cyber Pulse Heart (Health - Rose Red) */}
+                {/* SVG 3: Cyber Pulse Heart (Health - Rose Red Accent) */}
                 {activeTab === "health" && (
-                  <svg className="w-full h-full p-6 relative z-10" viewBox="0 0 200 200" fill="none">
+                  <svg className="w-full h-full max-h-[220px] p-6 relative z-10" viewBox="0 0 200 200" fill="none">
                     <defs>
                       <linearGradient id="heartGrad" x1="0" y1="0" x2="1" y2="1">
                         <stop offset="0%" stopColor="#f43f5e" />
@@ -1277,7 +1285,7 @@ export function CrowdfundPage() {
                         <stop offset="100%" stopColor="#be123c" />
                       </linearGradient>
                       <filter id="heartGlow">
-                        <feGaussianBlur stdDeviation="5.5" result="blur" />
+                        <feGaussianBlur stdDeviation="3.5" result="blur" />
                         <feMerge>
                           <feMergeNode in="blur" />
                           <feMergeNode in="SourceGraphic" />
@@ -1286,54 +1294,42 @@ export function CrowdfundPage() {
                     </defs>
 
                     {/* High-fidelity ECG Grid Monitor Lines */}
-                    <path d="M10 40 L190 40 M10 80 L190 80 M10 120 L190 120 M10 160 L190 160" stroke="#881337" strokeWidth="0.5" strokeOpacity="0.2" />
-                    <path d="M40 10 L40 190 M80 10 L80 190 M120 10 L120 190 M160 10 L160 190" stroke="#881337" strokeWidth="0.5" strokeOpacity="0.2" />
+                    <path d="M20 50 L180 50 M20 90 L180 90 M20 130 L180 130 M20 170 L180 170" stroke="#881337" strokeWidth="0.5" strokeOpacity="0.15" />
+                    <path d="M50 20 L50 180 M90 20 L90 180 M130 20 L130 180 M170 20 L170 180" stroke="#881337" strokeWidth="0.5" strokeOpacity="0.15" />
 
-                    {/* ECG grid line */}
+                    {/* ECG grid background line */}
                     <path
-                      d="M10 100 L50 100 L60 70 L72 135 L84 60 L96 115 L108 100 L190 100"
+                      d="M20 110 L60 110 L70 80 L82 140 L94 70 L106 125 L118 110 L180 110"
                       stroke="#881337"
-                      strokeWidth="2.5"
+                      strokeWidth="1.5"
                       strokeLinecap="round"
                       strokeLinejoin="round"
-                      strokeOpacity="0.4"
+                      strokeOpacity="0.3"
                     />
 
                     {/* Animated glowing pulse wave overlay */}
                     <path
-                      d="M10 100 L50 100 L60 70 L72 135 L84 60 L96 115 L108 100 L190 100"
+                      d="M20 110 L60 110 L70 80 L82 140 L94 70 L106 125 L118 110 L180 110"
                       stroke="#f43f5e"
-                      strokeWidth="3"
+                      strokeWidth="2"
                       strokeLinecap="round"
                       strokeLinejoin="round"
                       filter="url(#heartGlow)"
                       className="animate-heartbeat-flow"
                     />
 
-                    {/* Glowing pulsative heart SVG (Scales and pulses dynamically) */}
+                    {/* Glowing heartbeat icon in center (Pulses rhythmically) */}
                     <path
-                      d="M100 145 C100 145, 35 102, 35 70 C35 48, 55 37, 77 48 C88 53.5, 100 70, 100 70 C100 70, 112 53.5, 123 48 C145 37, 165 48, 165 70 C165 102, 100 145, 100 145 Z"
+                      d="M100 135 C100 135, 55 105, 55 82 C55 65, 68 57, 84 65 C92 69, 100 82, 100 82 C100 82, 108 69, 116 65 C132 57, 145 65, 145 82 C145 105, 100 135, 100 135 Z"
                       fill="url(#heartGrad)"
                       filter="url(#heartGlow)"
                       className="origin-center"
                       style={{
-                        transform: `scale(${0.72 + (progressPercent / 200)})`,
-                        animation: `float-y ${2.8 - (progressPercent / 80)}s ease-in-out infinite`,
+                        transform: `scale(${0.6 + (progressPercent / 300)})`,
+                        animation: `glow-pulse ${2.5 - (progressPercent / 120)}s ease-in-out infinite`,
                         transformOrigin: "center"
                       }}
                     />
-
-                    {/* Echoing ping ring */}
-                    {progressPercent > 0 && (
-                      <path
-                        d="M100 145 C100 145, 35 102, 35 70 C35 48, 55 37, 77 48 C88 53.5, 100 70, 100 70 C100 70, 112 53.5, 123 48 C145 37, 165 48, 165 70 C165 102, 100 145, 100 145 Z"
-                        stroke="#fda4af"
-                        strokeWidth="2.2"
-                        strokeOpacity="0.4"
-                        className="animate-ping origin-center"
-                        style={{ animationDuration: "1.8s", transformOrigin: "center" }}
-                      />
-                    )}
                   </svg>
                 )}
 
@@ -1343,41 +1339,68 @@ export function CrowdfundPage() {
             {/* ŞEFFAF PARA AKIŞI (Outflow Spend Tunnel) */}
             <div className="glass p-6 sm:p-8 rounded-3xl border border-white/5 relative overflow-hidden shadow-xl">
               <div className="absolute top-0 right-0 h-28 w-28 rounded-full bg-cyan-500/5 blur-2xl" />
-              <h3 className="text-lg font-black tracking-tight text-white mb-3 border-b border-white/5 pb-3">
+              <h3 className="text-lg font-black tracking-tight text-white mb-3 border-b border-white/5 pb-3 font-display">
                 {t.outflowTunnelTitle}
               </h3>
               <p className="text-[11px] text-slate-500 leading-relaxed mb-6">{t.outflowTunnelDesc}</p>
               
-              <div className="space-y-6 relative pl-4 border-l border-white/10">
+              <div className="space-y-7 relative pl-4 border-l border-white/10">
                 {/* Outflow 1 */}
                 <div className="relative">
-                  <div className={`absolute -left-[21px] top-1 h-3 w-3 rounded-full border ${
+                  <div className={`absolute -left-[21px] top-1.5 h-3.5 w-3.5 rounded-full border ${
                     campaign?.m1_claimed 
                       ? "bg-emerald-400 border-emerald-400 shadow-[0_0_8px_#10b981]" 
                       : "bg-slate-950 border-slate-700"
                   }`} />
                   <div className="flex items-center justify-between mb-1">
-                    <span className="text-xs font-extrabold text-slate-300">{t.phase1Release}</span>
-                    <span className={`text-[9px] font-black uppercase px-2 py-0.5 rounded ${
-                      campaign?.m1_claimed ? "bg-emerald-500/10 text-emerald-400 animate-pulse" : "bg-slate-900 text-slate-500"
+                    <span className="text-xs font-black text-slate-300 font-display">🌱 {t.milestonePlanning}</span>
+                    <span className={`text-[8px] font-black uppercase px-2 py-0.5 rounded font-mono ${
+                      campaign?.m1_claimed ? "bg-emerald-500/10 text-emerald-400" : progressPercent >= 25 ? "bg-cyan-500/10 text-cyan-400 animate-pulse" : "bg-slate-950 text-slate-600 border border-white/5"
                     }`}>
-                      {campaign?.m1_claimed ? t.claimedStatus : t.lockedStatus}
+                      {campaign?.m1_claimed ? t.claimedStatus : progressPercent >= 25 ? t.claimableStatus : t.lockedStatus}
                     </span>
                   </div>
-                  <p className="text-xs text-slate-400 leading-relaxed mb-2">{t.outflowM1Expense}</p>
+                  
+                  {/* Mini visual progress track */}
+                  <div className="h-1.5 w-full bg-slate-950 rounded-full border border-white/5 overflow-hidden mb-2 relative">
+                    <div 
+                      className={`h-full rounded-full transition-all duration-500 ${
+                        campaign?.m1_claimed ? "bg-emerald-400" : progressPercent >= 25 ? "bg-cyan-400 animate-pulse" : "bg-slate-800"
+                      }`}
+                      style={{ width: campaign?.m1_claimed ? "100%" : progressPercent >= 25 ? "100%" : `${(progressPercent / 25) * 100}%` }}
+                    />
+                  </div>
+
+                  <p className="text-[11px] text-slate-400 leading-relaxed mb-2.5">
+                    {t.outflowM1Expense}
+                    {!campaign?.m1_claimed && (
+                      <span className="block text-[9px] text-slate-500 mt-1 italic">
+                        {progressPercent >= 25 
+                          ? (locale === "tr" ? "• Cüzdan yetkilisi bütçeyi çekebilir." : "• Wallet owner can disburse this release.")
+                          : (locale === "tr" ? "• Henüz kilitli • Proje sahibi bu parayı almak için kanıt sunmalı" : "• Locked • Creator must prove this step to unlock funds")}
+                      </span>
+                    )}
+                  </p>
+
                   {campaign?.m1_claimed && (
-                    <div className="bg-slate-950 border border-white/5 rounded-xl px-3 py-2.5 text-[10px] font-mono text-slate-500 space-y-1">
-                      <div>
-                        <span className="font-bold text-slate-400 uppercase tracking-wider text-[8px] mr-1">{t.proofLabel}:</span>
-                        ipfs://bafybeihd3...a78f2441995a94
+                    <div className="bg-slate-950 border border-white/5 rounded-xl px-3.5 py-2.5 text-[10px] font-mono text-slate-400 space-y-1">
+                      <div className="flex items-center justify-between">
+                        <span>{t.proofLabel}:</span>
+                        <Tooltip content="ipfs://bafybeihd3w62e2w6m5j7q8f2441995a94o6vsz">
+                          <span className="text-cyan-400 font-bold hover:underline">IPFS Link ℹ️</span>
+                        </Tooltip>
                       </div>
-                      <div>
-                        <span className="font-bold text-slate-400 uppercase tracking-wider text-[8px] mr-1">{t.receiverLabel}:</span>
-                        GD2X...K90L (Vercel & Domain Registrar)
+                      <div className="flex items-center justify-between">
+                        <span>{t.receiverLabel}:</span>
+                        <Tooltip content="GD2XZ7B3L6M8X9N0K2P4Q5W8V2C4X98F7">
+                          <span className="text-slate-300 hover:underline">{formatAddress("GD2XZ7B3L6M8X9N0K2P4Q5W8V2C4X98F7", 4, 4)} ℹ️</span>
+                        </Tooltip>
                       </div>
-                      <div>
-                        <span className="font-bold text-slate-400 uppercase tracking-wider text-[8px] mr-1">{t.disbursedAmountLabel}:</span>
-                        {campaign ? formatXlm(Number(campaign.goal) * 0.25 / 10_000_000) : "0.00"} XLM
+                      <div className="flex items-center justify-between">
+                        <span>{t.disbursedAmountLabel}:</span>
+                        <span className="font-bold text-white">
+                          {campaign ? formatXlm(Number(campaign.goal) * 0.25 / 10_000_000) : "0.00"} XLM
+                        </span>
                       </div>
                     </div>
                   )}
@@ -1385,33 +1408,60 @@ export function CrowdfundPage() {
 
                 {/* Outflow 2 */}
                 <div className="relative">
-                  <div className={`absolute -left-[21px] top-1 h-3 w-3 rounded-full border ${
+                  <div className={`absolute -left-[21px] top-1.5 h-3.5 w-3.5 rounded-full border ${
                     campaign?.m2_claimed 
                       ? "bg-emerald-400 border-emerald-400 shadow-[0_0_8px_#10b981]" 
                       : "bg-slate-950 border-slate-700"
                   }`} />
                   <div className="flex items-center justify-between mb-1">
-                    <span className="text-xs font-extrabold text-slate-300">{t.phase2Release}</span>
-                    <span className={`text-[9px] font-black uppercase px-2 py-0.5 rounded ${
-                      campaign?.m2_claimed ? "bg-emerald-500/10 text-emerald-400 animate-pulse" : "bg-slate-900 text-slate-500"
+                    <span className="text-xs font-black text-slate-300 font-display">🛠️ {t.milestoneDevelopment}</span>
+                    <span className={`text-[8px] font-black uppercase px-2 py-0.5 rounded font-mono ${
+                      campaign?.m2_claimed ? "bg-emerald-500/10 text-emerald-400" : progressPercent >= 50 ? "bg-violet-500/10 text-violet-400 animate-pulse" : "bg-slate-950 text-slate-600 border border-white/5"
                     }`}>
-                      {campaign?.m2_claimed ? t.claimedStatus : t.lockedStatus}
+                      {campaign?.m2_claimed ? t.claimedStatus : progressPercent >= 50 ? t.claimableStatus : t.lockedStatus}
                     </span>
                   </div>
-                  <p className="text-xs text-slate-400 leading-relaxed mb-2">{t.outflowM2Expense}</p>
+
+                  {/* Mini visual progress track */}
+                  <div className="h-1.5 w-full bg-slate-950 rounded-full border border-white/5 overflow-hidden mb-2 relative">
+                    <div 
+                      className={`h-full rounded-full transition-all duration-500 ${
+                        campaign?.m2_claimed ? "bg-emerald-400" : progressPercent >= 50 ? "bg-violet-400 animate-pulse" : "bg-slate-800"
+                      }`}
+                      style={{ width: campaign?.m2_claimed ? "100%" : progressPercent >= 50 ? "100%" : `${(progressPercent / 50) * 100}%` }}
+                    />
+                  </div>
+
+                  <p className="text-[11px] text-slate-400 leading-relaxed mb-2.5">
+                    {t.outflowM2Expense}
+                    {!campaign?.m2_claimed && (
+                      <span className="block text-[9px] text-slate-500 mt-1 italic">
+                        {progressPercent >= 50 
+                          ? (locale === "tr" ? "• Cüzdan yetkilisi bütçeyi çekebilir." : "• Wallet owner can disburse this release.")
+                          : (locale === "tr" ? "• Henüz kilitli • Proje sahibi bu parayı almak için kanıt sunmalı" : "• Locked • Creator must prove this step to unlock funds")}
+                      </span>
+                    )}
+                  </p>
+
                   {campaign?.m2_claimed && (
-                    <div className="bg-slate-950 border border-white/5 rounded-xl px-3 py-2.5 text-[10px] font-mono text-slate-500 space-y-1">
-                      <div>
-                        <span className="font-bold text-slate-400 uppercase tracking-wider text-[8px] mr-1">{t.proofLabel}:</span>
-                        ipfs://bafybeicm2...c92a5430852c80
+                    <div className="bg-slate-950 border border-white/5 rounded-xl px-3.5 py-2.5 text-[10px] font-mono text-slate-400 space-y-1">
+                      <div className="flex items-center justify-between">
+                        <span>{t.proofLabel}:</span>
+                        <Tooltip content="ipfs://bafybeicm22zwz7q8v24a98kf22f7as90x1">
+                          <span className="text-cyan-400 font-bold hover:underline">IPFS Link ℹ️</span>
+                        </Tooltip>
                       </div>
-                      <div>
-                        <span className="font-bold text-slate-400 uppercase tracking-wider text-[8px] mr-1">{t.receiverLabel}:</span>
-                        GCBY...A98K (Hacken Cybersecurity Audit Firm)
+                      <div className="flex items-center justify-between">
+                        <span>{t.receiverLabel}:</span>
+                        <Tooltip content="GCBY87KB3X9A2C4H98K92F78W56D7X89B">
+                          <span className="text-slate-300 hover:underline">{formatAddress("GCBY87KB3X9A2C4H98K92F78W56D7X89B", 4, 4)} ℹ️</span>
+                        </Tooltip>
                       </div>
-                      <div>
-                        <span className="font-bold text-slate-400 uppercase tracking-wider text-[8px] mr-1">{t.disbursedAmountLabel}:</span>
-                        {campaign ? formatXlm(Number(campaign.goal) * 0.25 / 10_000_000) : "0.00"} XLM
+                      <div className="flex items-center justify-between">
+                        <span>{t.disbursedAmountLabel}:</span>
+                        <span className="font-bold text-white">
+                          {campaign ? formatXlm(Number(campaign.goal) * 0.25 / 10_000_000) : "0.00"} XLM
+                        </span>
                       </div>
                     </div>
                   )}
@@ -1419,33 +1469,60 @@ export function CrowdfundPage() {
 
                 {/* Outflow 3 */}
                 <div className="relative">
-                  <div className={`absolute -left-[21px] top-1 h-3 w-3 rounded-full border ${
+                  <div className={`absolute -left-[21px] top-1.5 h-3.5 w-3.5 rounded-full border ${
                     campaign?.m3_claimed 
                       ? "bg-emerald-400 border-emerald-400 shadow-[0_0_8px_#10b981]" 
                       : "bg-slate-950 border-slate-700"
                   }`} />
                   <div className="flex items-center justify-between mb-1">
-                    <span className="text-xs font-extrabold text-slate-300">{t.phase3Release}</span>
-                    <span className={`text-[9px] font-black uppercase px-2 py-0.5 rounded ${
-                      campaign?.m3_claimed ? "bg-emerald-500/10 text-emerald-400 animate-pulse" : "bg-slate-900 text-slate-500"
+                    <span className="text-xs font-black text-slate-300 font-display">🚀 {t.milestoneProduction}</span>
+                    <span className={`text-[8px] font-black uppercase px-2 py-0.5 rounded font-mono ${
+                      campaign?.m3_claimed ? "bg-emerald-500/10 text-emerald-400" : progressPercent >= 100 ? "bg-indigo-500/10 text-indigo-400 animate-pulse" : "bg-slate-950 text-slate-600 border border-white/5"
                     }`}>
-                      {campaign?.m3_claimed ? t.claimedStatus : t.lockedStatus}
+                      {campaign?.m3_claimed ? t.claimedStatus : progressPercent >= 100 ? t.claimableStatus : t.lockedStatus}
                     </span>
                   </div>
-                  <p className="text-xs text-slate-400 leading-relaxed mb-2">{t.outflowM3Expense}</p>
+
+                  {/* Mini visual progress track */}
+                  <div className="h-1.5 w-full bg-slate-950 rounded-full border border-white/5 overflow-hidden mb-2 relative">
+                    <div 
+                      className={`h-full rounded-full transition-all duration-500 ${
+                        campaign?.m3_claimed ? "bg-emerald-400" : progressPercent >= 100 ? "bg-indigo-400 animate-pulse" : "bg-slate-800"
+                      }`}
+                      style={{ width: campaign?.m3_claimed ? "100%" : progressPercent >= 100 ? "100%" : `${(progressPercent / 100) * 100}%` }}
+                    />
+                  </div>
+
+                  <p className="text-[11px] text-slate-400 leading-relaxed mb-2.5">
+                    {t.outflowM3Expense}
+                    {!campaign?.m3_claimed && (
+                      <span className="block text-[9px] text-slate-500 mt-1 italic">
+                        {progressPercent >= 100 
+                          ? (locale === "tr" ? "• Cüzdan yetkilisi bütçeyi çekebilir." : "• Wallet owner can disburse this release.")
+                          : (locale === "tr" ? "• Henüz kilitli • Proje sahibi bu parayı almak için kanıt sunmalı" : "• Locked • Creator must prove this step to unlock funds")}
+                      </span>
+                    )}
+                  </p>
+
                   {campaign?.m3_claimed && (
-                    <div className="bg-slate-950 border border-white/5 rounded-xl px-3 py-2.5 text-[10px] font-mono text-slate-500 space-y-1">
-                      <div>
-                        <span className="font-bold text-slate-400 uppercase tracking-wider text-[8px] mr-1">{t.proofLabel}:</span>
-                        ipfs://bafybeid98...e15a4439054ca1
+                    <div className="bg-slate-950 border border-white/5 rounded-xl px-3.5 py-2.5 text-[10px] font-mono text-slate-400 space-y-1">
+                      <div className="flex items-center justify-between">
+                        <span>{t.proofLabel}:</span>
+                        <Tooltip content="ipfs://bafybeid982e2w6m5j7q8f2441995a94o6vsz">
+                          <span className="text-cyan-400 font-bold hover:underline">IPFS Link ℹ️</span>
+                        </Tooltip>
                       </div>
-                      <div>
-                        <span className="font-bold text-slate-400 uppercase tracking-wider text-[8px] mr-1">{t.receiverLabel}:</span>
-                        GD7S...P32B (Stellar Mainnet Fee Pool & Dev Team)
+                      <div className="flex items-center justify-between">
+                        <span>{t.receiverLabel}:</span>
+                        <Tooltip content="GD7S4P32B6W8X9N0K2P4Q5W8V2C4X98F7">
+                          <span className="text-slate-300 hover:underline">{formatAddress("GD7S4P32B6W8X9N0K2P4Q5W8V2C4X98F7", 4, 4)} ℹ️</span>
+                        </Tooltip>
                       </div>
-                      <div>
-                        <span className="font-bold text-slate-400 uppercase tracking-wider text-[8px] mr-1">{t.disbursedAmountLabel}:</span>
-                        {campaign ? formatXlm(Number(campaign.goal) * 0.50 / 10_000_000) : "0.00"} XLM
+                      <div className="flex items-center justify-between">
+                        <span>{t.disbursedAmountLabel}:</span>
+                        <span className="font-bold text-white">
+                          {campaign ? formatXlm(Number(campaign.goal) * 0.50 / 10_000_000) : "0.00"} XLM
+                        </span>
                       </div>
                     </div>
                   )}
@@ -1722,9 +1799,11 @@ export function CrowdfundPage() {
                       >
                         <div className="flex items-center gap-3">
                           <span className="text-lg shrink-0">{medal}</span>
-                          <span className="text-xs text-slate-200 font-bold break-all">
-                            {donor.address}
-                          </span>
+                          <Tooltip content={donor.address}>
+                            <span className="text-xs text-slate-200 font-bold hover:underline cursor-help">
+                              {formatAddress(donor.address, 6, 6)} ℹ️
+                            </span>
+                          </Tooltip>
                         </div>
                         <span className="text-sm font-black text-cyan-400 shrink-0 ml-3">
                           {formatXlm(Number(donor.amount) / 10_000_000)} XLM
@@ -1768,9 +1847,11 @@ export function CrowdfundPage() {
                             {new Date(tx.createdAt).toLocaleTimeString()}
                           </span>
                         </div>
-                        <p className="text-xs text-slate-300 leading-relaxed truncate mb-3">
+                        <p className="text-xs text-slate-300 leading-relaxed mb-3">
                           <span className="text-slate-500 font-bold uppercase tracking-wider text-[8px] mr-1.5">{t.actorLabel}:</span>
-                          {tx.donor}
+                          <Tooltip content={tx.donor}>
+                            <span className="hover:underline cursor-help">{formatAddress(tx.donor, 6, 6)} ℹ️</span>
+                          </Tooltip>
                         </p>
                         
                         <div className="flex items-center justify-between border-t border-white/5 pt-3">
@@ -1778,18 +1859,22 @@ export function CrowdfundPage() {
                             {tx.amount !== null ? `${formatXlm(tx.amount)} XLM` : "-"}
                           </span>
                           {tx.hash !== "demo_claim_hash_stellar" && tx.hash !== "demo_tx_hash_stellar" && !tx.hash.startsWith("demo_tx_") && !tx.hash.startsWith("env_tx_") && !tx.hash.startsWith("edu_tx_") && !tx.hash.startsWith("h_tx_") ? (
-                            <a
-                              href={`https://stellar.expert/explorer/testnet/tx/${tx.hash}`}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className="text-[10px] font-black uppercase tracking-wider text-indigo-400 hover:text-indigo-300 transition"
-                            >
-                              Explore Tx ↗
-                            </a>
+                            <Tooltip content={tx.hash}>
+                              <a
+                                href={`https://stellar.expert/explorer/testnet/tx/${tx.hash}`}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="text-[10px] font-black uppercase tracking-wider text-indigo-400 hover:text-indigo-300 transition"
+                              >
+                                Explorer ↗ ℹ️
+                              </a>
+                            </Tooltip>
                           ) : (
-                            <span className="text-[10px] font-black uppercase tracking-wider text-slate-600 select-none">
-                              Simulated
-                            </span>
+                            <Tooltip content={`Simulated Hash: ${tx.hash}`}>
+                              <span className="text-[10px] font-black uppercase tracking-wider text-slate-600 select-none cursor-help">
+                                Simulated ℹ️
+                              </span>
+                            </Tooltip>
                           )}
                         </div>
                       </div>
