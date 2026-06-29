@@ -128,6 +128,22 @@ type PageCopy = {
   victoryTitleHealth: string;
   victoryDescHealth: string;
   closeBtn: string;
+  actorLabel: string;
+  liveFeedLabel: string;
+  signatureRequiredTitle: string;
+  signatureRequiredDesc: string;
+  phase1Release: string;
+  phase2Release: string;
+  phase3Release: string;
+  receiverLabel: string;
+  disbursedAmountLabel: string;
+  totalRaisedLabel: string;
+  envTitle: string;
+  eduTitle: string;
+  healthTitle: string;
+  phase1Title: string;
+  phase2Title: string;
+  phase3Title: string;
 };
 
 const pageCopy: Record<Locale, PageCopy> = {
@@ -224,7 +240,23 @@ const pageCopy: Record<Locale, PageCopy> = {
     victoryDescEdu: "Your contribution has opened new pages in the digital library grid timeline.",
     victoryTitleHealth: "Heartbeats Strengthen! ❤️",
     victoryDescHealth: "Your donation has vitalized the digital health monitor on-chain log.",
-    closeBtn: "Close Dashboard"
+    closeBtn: "Close Dashboard",
+    actorLabel: "Actor",
+    liveFeedLabel: "Live Feed",
+    signatureRequiredTitle: "Signature Required",
+    signatureRequiredDesc: "Please review and authorize the transaction signing request in your connected wallet.",
+    phase1Release: "Phase 1 Budget Release (25%)",
+    phase2Release: "Phase 2 Budget Release (25%)",
+    phase3Release: "Phase 3 Budget Release (50%)",
+    receiverLabel: "Receiver",
+    disbursedAmountLabel: "Disbursed Amount",
+    totalRaisedLabel: "Total Raised",
+    envTitle: "Reforestation and Cyber-Forestry Campaign",
+    eduTitle: "Tech Books and Hardware for Underprivileged Schools",
+    healthTitle: "Medical Diagnostic Equipment and Patient Supplies",
+    phase1Title: "Phase 1: Planning (25%)",
+    phase2Title: "Phase 2: Development (50%)",
+    phase3Title: "Phase 3: Production (100%)"
   },
   tr: {
     title: "StellarFund",
@@ -319,7 +351,23 @@ const pageCopy: Record<Locale, PageCopy> = {
     victoryDescEdu: "Katkınız dijital kütüphaneye yeni holografik bilgi dalgaları kazandırdı.",
     victoryTitleHealth: "Kalp Atışları Güçleniyor! ❤️",
     victoryDescHealth: "Katkınız on-chain nabız monitöründeki yaşam ritmini güçlendirdi.",
-    closeBtn: "Kapat"
+    closeBtn: "Kapat",
+    actorLabel: "Aktör",
+    liveFeedLabel: "Canlı Akış",
+    signatureRequiredTitle: "İmza Talebi Bekleniyor",
+    signatureRequiredDesc: "Lütfen cüzdanınızda açılan pencereden işlem imzalama talebini gözden geçirin ve onaylayın.",
+    phase1Release: "1. Aşama Bütçe Dağıtımı (%25)",
+    phase2Release: "2. Aşama Bütçe Dağıtımı (%25)",
+    phase3Release: "3. Aşama Bütçe Dağıtımı (%50)",
+    receiverLabel: "Alıcı",
+    disbursedAmountLabel: "Çekilen Tutar",
+    totalRaisedLabel: "Toplam Toplanan",
+    envTitle: "Siber Orman ve Ağaçlandırma Kampanyası",
+    eduTitle: "Dezavantajlı Okullara Teknolojik Kitap ve Donanım",
+    healthTitle: "Tıbbi Teşhis Cihazları ve Hasta Sağlık Ekipmanları",
+    phase1Title: "Aşama 1: Planlama & Kurulum (%25)",
+    phase2Title: "Aşama 2: Geliştirme & Entegrasyon (%50)",
+    phase3Title: "Aşama 3: Yayına Giriş & Mainnet (%100)"
   }
 };
 
@@ -1256,7 +1304,7 @@ export function CrowdfundPage() {
                       : "bg-slate-950 border-slate-700"
                   }`} />
                   <div className="flex items-center justify-between mb-1">
-                    <span className="text-xs font-extrabold text-slate-300">Phase 1 Budget Release (25%)</span>
+                    <span className="text-xs font-extrabold text-slate-300">{t.phase1Release}</span>
                     <span className={`text-[9px] font-black uppercase px-2 py-0.5 rounded ${
                       campaign?.m1_claimed ? "bg-emerald-500/10 text-emerald-400 animate-pulse" : "bg-slate-900 text-slate-500"
                     }`}>
@@ -1265,9 +1313,19 @@ export function CrowdfundPage() {
                   </div>
                   <p className="text-xs text-slate-400 leading-relaxed mb-2">{t.outflowM1Expense}</p>
                   {campaign?.m1_claimed && (
-                    <div className="bg-slate-950 border border-white/5 rounded-xl px-3 py-2 text-[10px] font-mono text-slate-500">
-                      <span className="block font-bold text-slate-400 uppercase tracking-wider text-[8px] mb-0.5">{t.proofLabel}</span>
-                      ipfs://bafybeihd3...a78f2441995a94
+                    <div className="bg-slate-950 border border-white/5 rounded-xl px-3 py-2.5 text-[10px] font-mono text-slate-500 space-y-1">
+                      <div>
+                        <span className="font-bold text-slate-400 uppercase tracking-wider text-[8px] mr-1">{t.proofLabel}:</span>
+                        ipfs://bafybeihd3...a78f2441995a94
+                      </div>
+                      <div>
+                        <span className="font-bold text-slate-400 uppercase tracking-wider text-[8px] mr-1">{t.receiverLabel}:</span>
+                        GD2X...K90L (Vercel & Domain Registrar)
+                      </div>
+                      <div>
+                        <span className="font-bold text-slate-400 uppercase tracking-wider text-[8px] mr-1">{t.disbursedAmountLabel}:</span>
+                        {campaign ? formatXlm(Number(campaign.goal) * 0.25 / 10_000_000) : "0.00"} XLM
+                      </div>
                     </div>
                   )}
                 </div>
@@ -1280,7 +1338,7 @@ export function CrowdfundPage() {
                       : "bg-slate-950 border-slate-700"
                   }`} />
                   <div className="flex items-center justify-between mb-1">
-                    <span className="text-xs font-extrabold text-slate-300">Phase 2 Budget Release (25%)</span>
+                    <span className="text-xs font-extrabold text-slate-300">{t.phase2Release}</span>
                     <span className={`text-[9px] font-black uppercase px-2 py-0.5 rounded ${
                       campaign?.m2_claimed ? "bg-emerald-500/10 text-emerald-400 animate-pulse" : "bg-slate-900 text-slate-500"
                     }`}>
@@ -1289,9 +1347,19 @@ export function CrowdfundPage() {
                   </div>
                   <p className="text-xs text-slate-400 leading-relaxed mb-2">{t.outflowM2Expense}</p>
                   {campaign?.m2_claimed && (
-                    <div className="bg-slate-950 border border-white/5 rounded-xl px-3 py-2 text-[10px] font-mono text-slate-500">
-                      <span className="block font-bold text-slate-400 uppercase tracking-wider text-[8px] mb-0.5">{t.proofLabel}</span>
-                      ipfs://bafybeicm2...c92a5430852c80
+                    <div className="bg-slate-950 border border-white/5 rounded-xl px-3 py-2.5 text-[10px] font-mono text-slate-500 space-y-1">
+                      <div>
+                        <span className="font-bold text-slate-400 uppercase tracking-wider text-[8px] mr-1">{t.proofLabel}:</span>
+                        ipfs://bafybeicm2...c92a5430852c80
+                      </div>
+                      <div>
+                        <span className="font-bold text-slate-400 uppercase tracking-wider text-[8px] mr-1">{t.receiverLabel}:</span>
+                        GCBY...A98K (Hacken Cybersecurity Audit Firm)
+                      </div>
+                      <div>
+                        <span className="font-bold text-slate-400 uppercase tracking-wider text-[8px] mr-1">{t.disbursedAmountLabel}:</span>
+                        {campaign ? formatXlm(Number(campaign.goal) * 0.25 / 10_000_000) : "0.00"} XLM
+                      </div>
                     </div>
                   )}
                 </div>
@@ -1304,7 +1372,7 @@ export function CrowdfundPage() {
                       : "bg-slate-950 border-slate-700"
                   }`} />
                   <div className="flex items-center justify-between mb-1">
-                    <span className="text-xs font-extrabold text-slate-300">Phase 3 Budget Release (50%)</span>
+                    <span className="text-xs font-extrabold text-slate-300">{t.phase3Release}</span>
                     <span className={`text-[9px] font-black uppercase px-2 py-0.5 rounded ${
                       campaign?.m3_claimed ? "bg-emerald-500/10 text-emerald-400 animate-pulse" : "bg-slate-900 text-slate-500"
                     }`}>
@@ -1313,9 +1381,19 @@ export function CrowdfundPage() {
                   </div>
                   <p className="text-xs text-slate-400 leading-relaxed mb-2">{t.outflowM3Expense}</p>
                   {campaign?.m3_claimed && (
-                    <div className="bg-slate-950 border border-white/5 rounded-xl px-3 py-2 text-[10px] font-mono text-slate-500">
-                      <span className="block font-bold text-slate-400 uppercase tracking-wider text-[8px] mb-0.5">{t.proofLabel}</span>
-                      ipfs://bafybeid98...e15a4439054ca1
+                    <div className="bg-slate-950 border border-white/5 rounded-xl px-3 py-2.5 text-[10px] font-mono text-slate-500 space-y-1">
+                      <div>
+                        <span className="font-bold text-slate-400 uppercase tracking-wider text-[8px] mr-1">{t.proofLabel}:</span>
+                        ipfs://bafybeid98...e15a4439054ca1
+                      </div>
+                      <div>
+                        <span className="font-bold text-slate-400 uppercase tracking-wider text-[8px] mr-1">{t.receiverLabel}:</span>
+                        GD7S...P32B (Stellar Mainnet Fee Pool & Dev Team)
+                      </div>
+                      <div>
+                        <span className="font-bold text-slate-400 uppercase tracking-wider text-[8px] mr-1">{t.disbursedAmountLabel}:</span>
+                        {campaign ? formatXlm(Number(campaign.goal) * 0.50 / 10_000_000) : "0.00"} XLM
+                      </div>
                     </div>
                   )}
                 </div>
@@ -1330,7 +1408,9 @@ export function CrowdfundPage() {
             <div className="glass rounded-3xl p-6 sm:p-8 border border-white/5 relative overflow-hidden shadow-xl">
               <span className="text-xs font-bold text-cyan-400 uppercase tracking-widest block mb-2">{t.campaignStats}</span>
               <h2 className="text-2xl font-black text-white tracking-tight mb-6">
-                {campaign ? campaign.title : "StellarFund Campaign"}
+                {activeTab === "environment" && t.envTitle}
+                {activeTab === "education" && t.eduTitle}
+                {activeTab === "health" && t.healthTitle}
               </h2>
 
               <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 border-b border-white/5 pb-6 mb-6">
@@ -1342,7 +1422,7 @@ export function CrowdfundPage() {
                   <span className="text-[10px] text-slate-400 font-extrabold ml-1">XLM</span>
                 </div>
                 <div>
-                  <span className="block text-[9px] uppercase font-black text-slate-500 tracking-wider">Total Raised</span>
+                  <span className="block text-[9px] uppercase font-black text-slate-500 tracking-wider">{t.totalRaisedLabel}</span>
                   <span className="text-xl sm:text-2xl font-black text-cyan-400 font-mono leading-none">
                     {campaign ? formatXlm(Number(campaign.total) / 10_000_000) : "0.00"}
                   </span>
@@ -1436,9 +1516,9 @@ export function CrowdfundPage() {
                   </svg>
                 </div>
                 <div>
-                  <h4 className="font-extrabold text-white mb-0.5">Signature Required</h4>
+                  <h4 className="font-extrabold text-white mb-0.5">{t.signatureRequiredTitle}</h4>
                   <p className="text-xs text-indigo-300/80 leading-relaxed">
-                    Please review and authorize the transaction signing request in your connected wallet.
+                    {t.signatureRequiredDesc}
                   </p>
                 </div>
               </div>
@@ -1609,7 +1689,7 @@ export function CrowdfundPage() {
                   </span>
                   <span>{t.activityTitle}</span>
                 </span>
-                <span className="text-[9px] uppercase font-black text-slate-500 font-mono tracking-wider">Live Feed</span>
+                <span className="text-[9px] uppercase font-black text-slate-500 font-mono tracking-wider">{t.liveFeedLabel}</span>
               </h3>
 
               {activities.length === 0 ? (
@@ -1632,7 +1712,7 @@ export function CrowdfundPage() {
                           </span>
                         </div>
                         <p className="text-xs text-slate-300 leading-relaxed font-mono truncate mb-3">
-                          <span className="text-slate-500 font-bold uppercase tracking-wider text-[9px] mr-1.5">Actor:</span>
+                          <span className="text-slate-500 font-bold uppercase tracking-wider text-[9px] mr-1.5">{t.actorLabel}:</span>
                           {tx.donor}
                         </p>
                         
@@ -1666,14 +1746,18 @@ export function CrowdfundPage() {
             {isOwner && (
               <div className="glass rounded-3xl p-6 sm:p-8 border border-cyan-400/25 shadow-xl relative overflow-hidden bg-cyan-950/5">
                 <span className="text-xs font-black text-cyan-400 uppercase tracking-widest block mb-2">{t.ownerSectionTitle}</span>
-                <h3 className="text-lg font-black tracking-tight text-white mb-4">Milestone Release Dashboard</h3>
+                <h3 className="text-lg font-black tracking-tight text-white mb-4">
+                  {locale === "tr" ? "Kilometre Taşı Dağıtım Paneli" : "Milestone Release Dashboard"}
+                </h3>
                 <p className="text-xs text-slate-400 leading-relaxed mb-4">
-                  As the campaign manager, you can disburse campaign funds directly to your wallet once progress targets are reached.
+                  {locale === "tr" 
+                    ? "Kampanya yöneticisi olarak, kilometre taşı hedeflerine ulaşıldığında biriken fonları doğrudan cüzdanınıza çekebilirsiniz." 
+                    : "As the campaign manager, you can disburse campaign funds directly to your wallet once progress targets are reached."}
                 </p>
                 <div className="flex flex-col gap-2">
                   <div className="flex items-center justify-between text-xs py-2 border-b border-white/5">
                     <div className="flex flex-col">
-                      <span className="font-bold text-slate-300">Phase 1: Planning (25%)</span>
+                      <span className="font-bold text-slate-300">{t.phase1Title}</span>
                       <span className={`font-black uppercase text-[10px] ${campaign?.m1_claimed ? "text-slate-500" : progressPercent >= 25 ? "text-cyan-400" : "text-slate-600"}`}>
                         {campaign?.m1_claimed ? t.claimedStatus : progressPercent >= 25 ? "Available" : "Locked"}
                       </span>
@@ -1691,7 +1775,7 @@ export function CrowdfundPage() {
                   </div>
                   <div className="flex items-center justify-between text-xs py-2 border-b border-white/5">
                     <div className="flex flex-col">
-                      <span className="font-bold text-slate-300">Phase 2: Development (50%)</span>
+                      <span className="font-bold text-slate-300">{t.phase2Title}</span>
                       <span className={`font-black uppercase text-[10px] ${campaign?.m2_claimed ? "text-slate-500" : progressPercent >= 50 ? "text-violet-400" : "text-slate-600"}`}>
                         {campaign?.m2_claimed ? t.claimedStatus : progressPercent >= 50 ? "Available" : "Locked"}
                       </span>
@@ -1709,7 +1793,7 @@ export function CrowdfundPage() {
                   </div>
                   <div className="flex items-center justify-between text-xs py-2">
                     <div className="flex flex-col">
-                      <span className="font-bold text-slate-300">Phase 3: Production (100%)</span>
+                      <span className="font-bold text-slate-300">{t.phase3Title}</span>
                       <span className={`font-black uppercase text-[10px] ${campaign?.m3_claimed ? "text-slate-500" : progressPercent >= 100 ? "text-indigo-400" : "text-slate-600"}`}>
                         {campaign?.m3_claimed ? t.claimedStatus : progressPercent >= 100 ? "Available" : "Locked"}
                       </span>
