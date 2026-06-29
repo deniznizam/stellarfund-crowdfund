@@ -993,6 +993,27 @@ export function CrowdfundPage() {
             </span>
             <LanguageToggle locale={locale} onChange={setLocale} />
             
+            {/* Global Trust Info Button (🔒 Nedir?) */}
+            <div className="relative group inline-block">
+              <button
+                type="button"
+                className="flex h-8 w-8 items-center justify-center rounded-full border border-cyan-500/40 bg-cyan-500/10 text-xs font-black text-cyan-300 shadow-[0_0_12px_rgba(6,182,212,0.25)] animate-glow-pulse transition hover:scale-105 hover:bg-cyan-500/20 cursor-help font-mono"
+              >
+                i
+              </button>
+              <div className="pointer-events-none absolute right-0 top-full mt-3 w-72 rounded-2xl bg-slate-950 border border-white/10 p-5 text-xs text-slate-300 opacity-0 group-hover:opacity-100 transition-opacity duration-250 z-50 shadow-2xl leading-relaxed">
+                <span className="block font-black text-cyan-400 mb-1.5 font-display text-left">
+                  {locale === "tr" ? "🔒 Blokzinciri & Güvenlik Nedir?" : "🔒 What is Blockchain & Security?"}
+                </span>
+                <p className="text-left font-sans">
+                  {locale === "tr" 
+                    ? "Blokzinciri, kimsenin müdahale edemeyeceği dijital bir güven defteridir. Bağışlarınız doğrudan akıllı sözleşme kasasında kilitlenir. Proje yöneticisi, yaptığı işlerin görsel kanıtlarını (fatura, fotoğraf vb.) sunmadan paranızı çekemez. Bu sayede desteğinizin her kuruşu güvence altındadır."
+                    : "Blockchain is a digital ledger of absolute trust. Your donations are locked directly inside a smart contract vault. The creator cannot withdraw your funds without submitting visual proof of work (receipts, photos, etc.). Your support is 100% secure."}
+                </p>
+                <div className="absolute top-0 right-3.5 -mt-1.5 h-3 w-3 rotate-45 border-l border-t border-white/10 bg-slate-950" />
+              </div>
+            </div>
+            
             {publicKey ? (
               <div className="flex items-center gap-2.5">
                 <code className="rounded-xl bg-slate-950 border border-white/5 px-4.5 py-2.5 text-xs text-slate-200 font-mono font-bold">
