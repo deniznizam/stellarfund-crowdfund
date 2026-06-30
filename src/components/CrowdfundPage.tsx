@@ -378,7 +378,7 @@ const pageCopy: Record<Locale, PageCopy> = {
     disbursedAmountLabel: "Ödenen Bütçe",
     totalRaisedLabel: "Toplanan Toplam Katkı",
     envTitle: "Ağaçlandırma ve Doğa Kampanyası",
-    eduTitle: "Dezavantajlı Okullara Teknolojik Kitap ve Donanım Desteği",
+    eduTitle: "Dezavantajlı Okullara Kitap ve/veya Donanım Desteği",
     healthTitle: "Devlet Hastanelerine Tıbbi Cihaz ve Ekipman Desteği",
     phase1Title: "Aşama 1: Planlama & Kurulum (%25)",
     phase2Title: "Aşama 2: Geliştirme & Entegrasyon (%50)",
@@ -1012,15 +1012,14 @@ export function CrowdfundPage() {
         <header className="mb-12 flex flex-col gap-5 sm:flex-row sm:items-center sm:justify-between border-b border-white/5 pb-8">
           <div className="flex flex-col gap-1.5">
             <div className="flex items-center gap-4">
-              <div className={`relative flex h-12 w-12 items-center justify-center rounded-2xl shadow-[0_8px_32px_rgba(6,182,212,0.25)] animate-glow-pulse transition-all duration-700 ${
+              <div className={`relative flex h-12 w-12 items-center justify-center rounded-2xl border border-white/10 transition-all duration-700 ${
                 activeTab === "environment" 
-                  ? "bg-gradient-to-tr from-emerald-500 via-teal-400 to-cyan-500" 
+                  ? "bg-emerald-950/30 text-emerald-400" 
                   : activeTab === "education" 
-                    ? "bg-gradient-to-tr from-amber-500 via-orange-400 to-red-500" 
-                    : "bg-gradient-to-tr from-rose-500 via-pink-400 to-purple-600"
+                    ? "bg-amber-950/30 text-amber-400" 
+                    : "bg-rose-950/30 text-rose-400"
               }`}>
-                <span className="absolute inset-0 rounded-2xl bg-cyan-400/20 blur-sm animate-pulse" />
-                <svg className="h-5 w-5 text-white relative z-10" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                <svg className="h-5 w-5 relative z-10" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
                   <path strokeLinecap="round" strokeLinejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
                 </svg>
               </div>
@@ -1032,20 +1031,7 @@ export function CrowdfundPage() {
           </div>
           
           <div className="flex items-center gap-3.5 self-end sm:self-center">
-            {/* Simulation/Live Switcher */}
-            <button
-              type="button"
-              onClick={() => setIsDemoMode(!isDemoMode)}
-              className={`rounded-xl px-4 py-2.5 text-xs font-black uppercase tracking-wider transition-all duration-300 border font-display ${
-                isDemoMode
-                  ? "bg-amber-500/10 border-amber-500/40 text-amber-300 shadow-[0_0_20px_rgba(245,158,11,0.25)] animate-pulse"
-                  : "bg-cyan-500/10 border-cyan-500/40 text-cyan-300 shadow-[0_0_20px_rgba(6,182,212,0.2)]"
-              }`}
-            >
-              {isDemoMode ? t.demoModeLabel : t.liveModeLabel}
-            </button>
-
-            <span className="inline-flex items-center gap-1.5 rounded-full border border-emerald-500/35 bg-emerald-500/10 px-3.5 py-1.5 text-[10px] font-black uppercase tracking-widest text-emerald-400 font-mono shadow-[0_0_15px_rgba(16,185,129,0.15)] animate-pulse">
+            <span className="inline-flex items-center gap-1.5 rounded-full border border-emerald-500/20 bg-emerald-500/5 px-3.5 py-1.5 text-[10px] font-black uppercase tracking-widest text-emerald-400/80 font-mono">
               {t.trustBadge}
             </span>
 
@@ -1102,25 +1088,42 @@ export function CrowdfundPage() {
           </div>
         </header>
 
-        {/* SIMULATOR ALERT */}
-        {isDemoMode && (
-          <div className="mb-10 rounded-3xl bg-amber-500/5 border border-amber-500/20 p-5 text-xs text-amber-300 font-bold flex items-center gap-3 animate-fade-up shadow-[0_4px_25px_rgba(245,158,11,0.04)]">
-            <span className="relative flex h-2.5 w-2.5 shrink-0">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-amber-400 opacity-75" />
-              <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-amber-500" />
-            </span>
-            <span className="leading-relaxed">{t.simulationAlert}</span>
+        {/* HERO HEADER AREA & SIMULATION BOX GRID */}
+        <section className="mb-12 animate-fade-up relative z-10 grid grid-cols-1 md:grid-cols-12 gap-8 items-center border border-white/5 bg-slate-950/20 rounded-3xl p-6 sm:p-8 glass">
+          <div className="md:col-span-8 text-left">
+            <h2 className="text-3xl sm:text-4xl font-black text-white tracking-tight mb-4 leading-tight font-display text-gradient">
+              {t.heroTitle}
+            </h2>
+            <p className="text-xs sm:text-sm text-slate-400 leading-relaxed">
+              {t.heroDesc}
+            </p>
           </div>
-        )}
-
-        {/* HERO HEADER AREA (Explanation in first 8 seconds) */}
-        <section className="mb-12 text-center max-w-3xl mx-auto animate-fade-up relative z-10">
-          <h2 className="text-4xl sm:text-5xl font-black text-white tracking-tight mb-5 leading-tight font-display text-gradient">
-            {t.heroTitle}
-          </h2>
-          <p className="text-sm sm:text-base text-slate-400 leading-relaxed max-w-2xl mx-auto">
-            {t.heroDesc}
-          </p>
+          
+          <div className="md:col-span-4 rounded-2xl bg-white/5 border border-white/10 p-5 flex flex-col items-center justify-center text-center">
+            <span className="text-[10px] font-black text-slate-400 uppercase tracking-wider mb-2.5 font-mono">
+              {locale === "tr" ? "🧪 TEST SÜRÜŞÜ" : "🧪 SANDBOX MODE"}
+            </span>
+            <p className="text-xs font-bold text-slate-300 leading-relaxed mb-3.5 px-1 font-display">
+              {locale === "tr" ? "İsterseniz önce simülasyonda deneyin!" : "Feel free to try in simulation mode first!"}
+            </p>
+            
+            <button
+              type="button"
+              onClick={() => setIsDemoMode(!isDemoMode)}
+              className={`w-full rounded-xl py-2 text-xs font-black uppercase tracking-wider transition-all duration-300 border font-display ${
+                isDemoMode
+                  ? "bg-amber-500/10 border-amber-500/40 text-amber-300 shadow-[0_0_15px_rgba(245,158,11,0.2)] animate-pulse"
+                  : "bg-cyan-500/10 border-cyan-500/40 text-cyan-300"
+              }`}
+            >
+              {isDemoMode ? t.demoModeLabel : t.liveModeLabel}
+            </button>
+            <span className="text-[9px] text-slate-500 mt-2 font-mono text-center">
+              {isDemoMode 
+                ? (locale === "tr" ? "✓ Sanal bütçelerle test ediyorsunuz" : "✓ Using mock funds and test releases")
+                : (locale === "tr" ? "⚠️ Canlı testnet sözleşmesine bağlı" : "⚠️ Bound to live testnet contract")}
+            </span>
+          </div>
         </section>
 
         {/* CATEGORY TABS (Doğa / Eğitim / Sağlık) */}
