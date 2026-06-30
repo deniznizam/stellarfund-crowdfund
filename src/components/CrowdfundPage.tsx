@@ -850,8 +850,34 @@ export function CrowdfundPage() {
       setDemoStates(prev => {
         const catState = { ...prev[activeTab] };
         const campaignUpdate = { ...catState.campaign };
-        campaignUpdate.total += BigInt(Math.round(amount * 10_000_000));
+        const donorAmountScVal = BigInt(Math.round(amount * 10_000_000));
+        
+        campaignUpdate.total += donorAmountScVal;
         campaignUpdate.donor_count += 1;
+
+        // Dynamic leaderboard updates in simulation mode
+        const donorAddress = publicKey || "G-SIZ...CUZDAN (Siz)";
+        let found = false;
+        const updatedDonors = campaignUpdate.top_donors.map(d => {
+          if (d.address === donorAddress || (d.address.includes("(Siz)") && donorAddress === "G-SIZ...CUZDAN (Siz)")) {
+            found = true;
+            return { ...d, amount: d.amount + donorAmountScVal };
+          }
+          return d;
+        });
+
+        if (!found) {
+          updatedDonors.push({
+            address: donorAddress,
+            amount: donorAmountScVal
+          });
+        }
+
+        // Sort descending and keep top 3
+        campaignUpdate.top_donors = updatedDonors
+          .sort((a, b) => (b.amount > a.amount ? 1 : b.amount < a.amount ? -1 : 0))
+          .slice(0, 3);
+
         catState.campaign = campaignUpdate;
 
         const updatedActivities = [...catState.activities];
@@ -860,7 +886,7 @@ export function CrowdfundPage() {
           hash: `demo_tx_${Math.random().toString(36).substr(2, 9)}`,
           createdAt: new Date().toISOString(),
           functionName: "fund",
-          donor: publicKey ? publicKey.substring(0, 8) + "..." : "GD3X...P4PL (Donor)",
+          donor: donorAddress,
           amount
         });
         catState.activities = updatedActivities;
@@ -1892,7 +1918,7 @@ export function CrowdfundPage() {
                 <div className="space-y-3 mt-2 font-mono">
                   {campaign.top_donors.map((donor, idx) => {
                     const rank = `#${idx + 1}`;
-                    const isSelf = publicKey && donor.address === publicKey;
+                    const isSelf = (publicKey && donor.address === publicKey) || donor.address.includes("(Siz)");
                     
                     return (
                       <div
@@ -1909,7 +1935,8 @@ export function CrowdfundPage() {
                           }`}>{rank}</span>
                           <Tooltip content={donor.address}>
                             <span className="text-xs text-slate-200 font-bold hover:underline cursor-help">
-                              {formatAddress(donor.address, 6, 6)} ℹ️
+                              {donor.address.includes("(Siz)") ? donor.address.replace("(Siz)", "").trim() : formatAddress(donor.address, 6, 6)}
+                              {isSelf && ` (${locale === "tr" ? "Siz" : "You"})`} ℹ️
                             </span>
                           </Tooltip>
                         </div>
