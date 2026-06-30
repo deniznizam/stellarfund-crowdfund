@@ -853,16 +853,21 @@ export function CrowdfundPage() {
       await new Promise(r => setTimeout(r, 1000));
       
       setDemoStates(prev => {
-        const catState = { ...prev[activeTab] };
-        const campaignUpdate = { ...catState.campaign };
+        const catState = prev[activeTab];
         const donorAmountScVal = BigInt(Math.round(amount * 10_000_000));
         
-        campaignUpdate.total += donorAmountScVal;
-        campaignUpdate.donor_count += 1;
+        // Deep copy the campaign properties safely
+        const campaignUpdate = {
+          ...catState.campaign,
+          total: catState.campaign.total + donorAmountScVal,
+          donor_count: catState.campaign.donor_count + 1,
+          top_donors: catState.campaign.top_donors.map(d => ({ ...d }))
+        };
 
         // Dynamic leaderboard updates in simulation mode
         const donorAddress = publicKey || "G-SIZ...CUZDAN (Siz)";
         let found = false;
+        
         const updatedDonors = campaignUpdate.top_donors.map(d => {
           if (d.address === donorAddress || (d.address.includes("(Siz)") && donorAddress === "G-SIZ...CUZDAN (Siz)")) {
             found = true;
@@ -883,25 +888,30 @@ export function CrowdfundPage() {
           .sort((a, b) => (b.amount > a.amount ? 1 : b.amount < a.amount ? -1 : 0))
           .slice(0, 3);
 
-        catState.campaign = campaignUpdate;
+        const updatedActivities = [
+          {
+            id: `op_${Date.now()}`,
+            hash: `demo_tx_${Math.random().toString(36).substr(2, 9)}`,
+            createdAt: new Date().toISOString(),
+            functionName: "fund",
+            donor: donorAddress,
+            amount
+          },
+          ...catState.activities.map(a => ({ ...a }))
+        ];
 
-        setMyDemoDonations(prev => ({
-          ...prev,
-          [activeTab]: prev[activeTab] + amount
+        setMyDemoDonations(prevMy => ({
+          ...prevMy,
+          [activeTab]: prevMy[activeTab] + amount
         }));
 
-        const updatedActivities = [...catState.activities];
-        updatedActivities.unshift({
-          id: `op_${Date.now()}`,
-          hash: `demo_tx_${Math.random().toString(36).substr(2, 9)}`,
-          createdAt: new Date().toISOString(),
-          functionName: "fund",
-          donor: donorAddress,
-          amount
-        });
-        catState.activities = updatedActivities;
-
-        return { ...prev, [activeTab]: catState };
+        return {
+          ...prev,
+          [activeTab]: {
+            campaign: campaignUpdate,
+            activities: updatedActivities
+          }
+        };
       });
 
       setTxState({
