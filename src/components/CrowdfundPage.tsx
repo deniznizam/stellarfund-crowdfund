@@ -1467,7 +1467,7 @@ export function CrowdfundPage() {
               <h3 className="text-lg font-black tracking-tight text-white mb-3 border-b border-white/5 pb-3 font-display">
                 {t.outflowTunnelTitle}
               </h3>
-              <p className="text-[11px] text-slate-500 leading-relaxed mb-6">{t.outflowTunnelDesc}</p>
+              <p className="text-xs sm:text-sm text-slate-400 leading-relaxed mb-6">{t.outflowTunnelDesc}</p>
               
               <div className="space-y-7 relative pl-4 border-l border-white/10">
                 {/* Outflow 1 */}
@@ -1478,7 +1478,7 @@ export function CrowdfundPage() {
                       : "bg-slate-950 border-slate-700"
                   }`} />
                   <div className="flex items-center justify-between mb-1">
-                    <span className="text-xs font-black text-slate-300 font-display">{t.milestonePlanning}</span>
+                    <span className="text-sm font-black text-slate-200 font-display">{getMilestoneDetails(activeTab, 1, locale).title}</span>
                     <span className={`text-[8px] font-black uppercase px-2 py-0.5 rounded font-mono ${
                       campaign?.m1_claimed ? "bg-emerald-500/10 text-emerald-400" : progressPercent >= 25 ? "bg-cyan-500/10 text-cyan-400 animate-pulse" : "bg-slate-950 text-slate-600 border border-white/5"
                     }`}>
@@ -1496,16 +1496,16 @@ export function CrowdfundPage() {
                     />
                   </div>
 
-                  <p className="text-[11px] text-slate-400 leading-relaxed mb-2.5">
+                  <p className="text-xs text-slate-300 leading-relaxed mb-2.5">
                     {getMilestoneDetails(activeTab, 1, locale).expense}
-                    <span className="block text-[9px] text-slate-500 mt-1">
+                    <span className="block text-[11px] text-slate-400 mt-1">
                       {locale === "tr" ? "Açıklama: " : "Details: "}{getMilestoneDetails(activeTab, 1, locale).desc}
                     </span>
                     {!campaign?.m1_claimed && (
-                      <span className="block text-[9px] text-slate-500 mt-1 italic">
+                      <span className="block text-[10px] text-slate-400/80 mt-1 italic">
                         {progressPercent >= 25 
                           ? (locale === "tr" ? "• Aşamaya ulaşıldı, proje yöneticisi bütçeyi talep edebilir." : "• Target reached, project manager can request release.")
-                          : (locale === "tr" ? "• Henüz kilitli • Proje sahibi bu parayı almak için kanıt sunmalı" : "• Locked • Creator must prove this step to unlock funds")}
+                          : (locale === "tr" ? "• Kilitli • Serbest kalması için bağış hedefinin %25'e ulaşması gerekir" : "• Locked • Requires 25% funding progress to unlock")}
                       </span>
                     )}
                   </p>
@@ -1542,7 +1542,7 @@ export function CrowdfundPage() {
                       : "bg-slate-950 border-slate-700"
                   }`} />
                   <div className="flex items-center justify-between mb-1">
-                    <span className="text-xs font-black text-slate-300 font-display">{t.milestoneDevelopment}</span>
+                    <span className="text-sm font-black text-slate-200 font-display">{getMilestoneDetails(activeTab, 2, locale).title}</span>
                     <span className={`text-[8px] font-black uppercase px-2 py-0.5 rounded font-mono ${
                       campaign?.m2_claimed ? "bg-emerald-500/10 text-emerald-400" : progressPercent >= 50 ? "bg-violet-500/10 text-violet-400 animate-pulse" : "bg-slate-950 text-slate-600 border border-white/5"
                     }`}>
@@ -1560,13 +1560,13 @@ export function CrowdfundPage() {
                     />
                   </div>
 
-                  <p className="text-[11px] text-slate-400 leading-relaxed mb-2.5">
+                  <p className="text-xs text-slate-300 leading-relaxed mb-2.5">
                     {getMilestoneDetails(activeTab, 2, locale).expense}
-                    <span className="block text-[9px] text-slate-500 mt-1">
+                    <span className="block text-[11px] text-slate-400 mt-1">
                       {locale === "tr" ? "Açıklama: " : "Details: "}{getMilestoneDetails(activeTab, 2, locale).desc}
                     </span>
                     {!campaign?.m2_claimed && (
-                      <span className="block text-[9px] text-slate-500 mt-1 italic">
+                      <span className="block text-[10px] text-slate-400/80 mt-1 italic">
                         {progressPercent >= 50 
                           ? (locale === "tr" ? "• Aşamaya ulaşıldı, proje yöneticisi bütçeyi talep edebilir." : "• Target reached, project manager can request release.")
                           : (locale === "tr" ? "• Kilitli • Serbest kalması için bağış hedefinin %50'ye ulaşması gerekir" : "• Locked • Requires 50% funding progress to unlock")}
@@ -1606,7 +1606,7 @@ export function CrowdfundPage() {
                       : "bg-slate-950 border-slate-700"
                   }`} />
                   <div className="flex items-center justify-between mb-1">
-                    <span className="text-xs font-black text-slate-300 font-display">{t.milestoneProduction}</span>
+                    <span className="text-sm font-black text-slate-200 font-display">{getMilestoneDetails(activeTab, 3, locale).title}</span>
                     <span className={`text-[8px] font-black uppercase px-2 py-0.5 rounded font-mono ${
                       campaign?.m3_claimed ? "bg-emerald-500/10 text-emerald-400" : progressPercent >= 100 ? "bg-indigo-500/10 text-indigo-400 animate-pulse" : "bg-slate-950 text-slate-600 border border-white/5"
                     }`}>
@@ -1624,16 +1624,16 @@ export function CrowdfundPage() {
                     />
                   </div>
 
-                  <p className="text-[11px] text-slate-400 leading-relaxed mb-2.5">
+                  <p className="text-xs text-slate-300 leading-relaxed mb-2.5">
                     {getMilestoneDetails(activeTab, 3, locale).expense}
-                    <span className="block text-[9px] text-slate-500 mt-1">
+                    <span className="block text-[11px] text-slate-400 mt-1">
                       {locale === "tr" ? "Açıklama: " : "Details: "}{getMilestoneDetails(activeTab, 3, locale).desc}
                     </span>
                     {!campaign?.m3_claimed && (
-                      <span className="block text-[9px] text-slate-500 mt-1 italic">
+                      <span className="block text-[10px] text-slate-400/80 mt-1 italic">
                         {progressPercent >= 100 
-                          ? (locale === "tr" ? "• Cüzdan yetkilisi bütçeyi çekebilir." : "• Wallet owner can disburse this release.")
-                          : (locale === "tr" ? "• Henüz kilitli • Proje sahibi bu parayı almak için kanıt sunmalı" : "• Locked • Creator must prove this step to unlock funds")}
+                          ? (locale === "tr" ? "• Aşamaya ulaşıldı, proje yöneticisi bütçeyi talep edebilir." : "• Target reached, project manager can request release.")
+                          : (locale === "tr" ? "• Kilitli • Serbest kalması için bağış hedefinin %100'e ulaşması gerekir" : "• Locked • Requires 100% funding progress to unlock")}
                       </span>
                     )}
                   </p>
@@ -1912,42 +1912,58 @@ export function CrowdfundPage() {
                 <span>{t.leaderboardTitle}</span>
               </h3>
 
-              {!campaign || campaign.top_donors.length === 0 ? (
-                <p className="text-xs text-slate-500 italic py-2">{t.noDonors}</p>
-              ) : (
-                <div className="space-y-3 mt-2 font-mono">
-                  {campaign.top_donors.map((donor, idx) => {
-                    const rank = `#${idx + 1}`;
-                    const isSelf = (publicKey && donor.address === publicKey) || donor.address.includes("(Siz)");
-                    
-                    return (
-                      <div
-                        key={donor.address}
-                        className={`flex items-center justify-between rounded-2xl border px-5 py-4 transition duration-350 hover:translate-x-1 ${
-                          isSelf
-                            ? "bg-cyan-500/5 border-cyan-500/25 shadow-[0_0_12px_rgba(6,182,212,0.15)]"
-                            : "bg-slate-950 border-white/5 hover:bg-slate-900 hover:border-white/10"
-                        }`}
-                      >
-                        <div className="flex items-center gap-3">
-                          <span className={`text-xs font-black tracking-widest font-mono ${
-                            idx === 0 ? "text-amber-400" : idx === 1 ? "text-slate-300" : idx === 2 ? "text-amber-600" : "text-slate-500"
-                          }`}>{rank}</span>
-                          <Tooltip content={donor.address}>
-                            <span className="text-xs text-slate-200 font-bold hover:underline cursor-help">
-                              {donor.address.includes("(Siz)") ? donor.address.replace("(Siz)", "").trim() : formatAddress(donor.address, 6, 6)}
-                              {isSelf && ` (${locale === "tr" ? "Siz" : "You"})`} ℹ️
-                            </span>
-                          </Tooltip>
+              {(() => {
+                const hasDonors = campaign && campaign.top_donors && campaign.top_donors.length > 0;
+                const displayDonors = hasDonors 
+                  ? campaign.top_donors 
+                  : [
+                      { address: `GB2X...R4PQ (Alice - ${locale === "tr" ? "Örnek" : "Example"})`, amount: BigInt(200_000_000) },
+                      { address: `GD4Y...K7LT (Bob - ${locale === "tr" ? "Örnek" : "Example"})`, amount: BigInt(100_000_000) },
+                      { address: `GC3Z...M2NS (Charlie - ${locale === "tr" ? "Örnek" : "Example"})`, amount: BigInt(50_000_000) }
+                    ];
+
+                return (
+                  <div className="space-y-3 mt-2 font-mono">
+                    {displayDonors.map((donor, idx) => {
+                      const rank = `#${idx + 1}`;
+                      const isSelf = (publicKey && donor.address === publicKey) || donor.address.includes("(Siz)");
+                      const isMock = !hasDonors;
+                      
+                      return (
+                        <div
+                          key={donor.address}
+                          className={`flex items-center justify-between rounded-2xl border px-5 py-4 transition duration-350 hover:translate-x-1 ${
+                            isSelf
+                              ? "bg-cyan-500/5 border-cyan-500/25 shadow-[0_0_12px_rgba(6,182,212,0.15)]"
+                              : isMock
+                                ? "bg-slate-950/40 border-white/5 opacity-70"
+                                : "bg-slate-950 border-white/5 hover:bg-slate-900 hover:border-white/10"
+                          }`}
+                        >
+                          <div className="flex items-center gap-3">
+                            <span className={`text-xs font-black tracking-widest font-mono ${
+                              idx === 0 ? "text-amber-400" : idx === 1 ? "text-slate-300" : idx === 2 ? "text-amber-600" : "text-slate-500"
+                            }`}>{rank}</span>
+                            <Tooltip content={donor.address}>
+                              <span className="text-xs text-slate-200 font-bold hover:underline cursor-help">
+                                {donor.address.includes("(Siz)") 
+                                  ? donor.address.replace("(Siz)", "").trim() 
+                                  : isMock 
+                                    ? donor.address 
+                                    : formatAddress(donor.address, 6, 6)}
+                                {isSelf && ` (${locale === "tr" ? "Siz" : "You"})`} ℹ️
+                              </span>
+                            </Tooltip>
+                          </div>
+                          <span className="text-sm font-black text-cyan-400 shrink-0 ml-3">
+                            {formatXlm(Number(donor.amount) / 10_000_000)} XLM
+                          </span>
                         </div>
-                        <span className="text-sm font-black text-cyan-400 shrink-0 ml-3">
-                          {formatXlm(Number(donor.amount) / 10_000_000)} XLM
-                        </span>
-                      </div>
-                    );
-                  })}
-                </div>
-              )}
+                      );
+                    })}
+                  </div>
+                );
+              })()}
             </div>
 
             {/* CANLI GEÇMİŞ (Horizon logs) */}
