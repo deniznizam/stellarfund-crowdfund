@@ -615,6 +615,11 @@ export function CrowdfundPage() {
 
   // Form State
   const [donateAmount, setDonateAmount] = useState("");
+  const [myDemoDonations, setMyDemoDonations] = useState<Record<Category, number>>({
+    environment: 0,
+    education: 0,
+    health: 0
+  });
   const [txState, setTxState] = useState<TxState>({ status: "idle" });
   const [showConfetti, setShowConfetti] = useState(false);
   const [isClaiming, setIsClaiming] = useState<number | null>(null);
@@ -879,6 +884,11 @@ export function CrowdfundPage() {
           .slice(0, 3);
 
         catState.campaign = campaignUpdate;
+
+        setMyDemoDonations(prev => ({
+          ...prev,
+          [activeTab]: prev[activeTab] + amount
+        }));
 
         const updatedActivities = [...catState.activities];
         updatedActivities.unshift({
@@ -1264,14 +1274,6 @@ export function CrowdfundPage() {
                     <path d="M20 50 L180 50 M20 90 L180 90 M20 130 L180 130 M20 170 L180 170" stroke="#064e3b" strokeWidth="0.5" strokeOpacity="0.15" />
                     <path d="M50 20 L50 180 M90 20 L90 180 M130 20 L130 180 M170 20 L170 180" stroke="#064e3b" strokeWidth="0.5" strokeOpacity="0.15" />
 
-                    {/* Biometric/Forestry Monitor Readout */}
-                    <g className="font-mono text-[9px] fill-emerald-400/80 font-bold select-none">
-                      <text x="25" y="38">DENS: {70 + Math.round(progressPercent * 0.18)}%</text>
-                      <text x="25" y="174">CO2: +{(4.2 + (progressPercent * 0.082)).toFixed(1)}%</text>
-                      <text x="135" y="38">SOIL: 64%</text>
-                      <text x="135" y="174">TEMP: 21.8C</text>
-                    </g>
-
                     {/* Concentric orbital radar rings (Breathing animation) */}
                     <circle cx="100" cy="110" r="70" stroke="#10b981" strokeWidth="0.5" strokeOpacity="0.1" strokeDasharray="3 3" className="origin-center animate-spin" style={{ animationDuration: "25s" }} />
                     <circle cx="100" cy="110" r="50" stroke="#10b981" strokeWidth="0.75" strokeOpacity="0.15" strokeDasharray="4 2" className="origin-center animate-spin" style={{ animationDuration: "18s", animationDirection: "reverse" }} />
@@ -1281,58 +1283,55 @@ export function CrowdfundPage() {
                       {/* Trunk */}
                       <line 
                         x1="100" 
-                        y1="155" 
+                        y1="165" 
                         x2="100" 
-                        y2={155 - (80 * Math.max(progressPercent, 10)) / 100} 
+                        y2={165 - (95 * Math.max(progressPercent, 10)) / 100} 
                         stroke="url(#treeGrad)" 
-                        strokeWidth="3.5" 
+                        strokeWidth="4" 
                         strokeLinecap="round" 
                         className="transition-all duration-1000 ease-out"
                       />
-                      {/* Branches sprouting based on progress */}
+                      {/* Lush Pine Tree Shape Layers sprouting based on progress */}
                       {progressPercent >= 20 && (
                         <path 
-                          d="M100 130 L75 110" 
-                          stroke="url(#treeGrad)" 
-                          strokeWidth="2.5" 
-                          strokeLinecap="round" 
-                          className="transition-all duration-700 ease-out"
-                        />
-                      )}
-                      {progressPercent >= 40 && (
-                        <path 
-                          d="M100 130 L125 110" 
-                          stroke="url(#treeGrad)" 
-                          strokeWidth="2.5" 
-                          strokeLinecap="round" 
-                          className="transition-all duration-700 ease-out"
-                        />
-                      )}
-                      {progressPercent >= 60 && (
-                        <path 
-                          d="M100 105 L65 85 M100 105 L135 85" 
+                          d="M100 70 L65 110 H135 Z" 
+                          fill="url(#treeGrad)" 
+                          fillOpacity="0.25"
                           stroke="url(#treeGrad)" 
                           strokeWidth="2" 
-                          strokeLinecap="round" 
+                          strokeLinejoin="round"
+                          className="transition-all duration-700 ease-out"
+                        />
+                      )}
+                      {progressPercent >= 50 && (
+                        <path 
+                          d="M100 100 L55 145 H145 Z" 
+                          fill="url(#treeGrad)" 
+                          fillOpacity="0.2"
+                          stroke="url(#treeGrad)" 
+                          strokeWidth="2.5" 
+                          strokeLinejoin="round"
                           className="transition-all duration-700 ease-out"
                         />
                       )}
                       {progressPercent >= 80 && (
                         <path 
-                          d="M100 85 L80 70 M100 85 L120 70" 
+                          d="M100 125 L45 170 H155 Z" 
+                          fill="url(#treeGrad)" 
+                          fillOpacity="0.15"
                           stroke="url(#treeGrad)" 
-                          strokeWidth="1.5" 
-                          strokeLinecap="round" 
+                          strokeWidth="3" 
+                          strokeLinejoin="round"
                           className="transition-all duration-700 ease-out"
                         />
                       )}
 
-                      {/* Top crown light (Pulses rhythmically) */}
+                      {/* Glowing crown lights based on progress */}
                       {progressPercent >= 10 && (
                         <circle 
                           cx="100" 
-                          cy={155 - (80 * Math.max(progressPercent, 10)) / 100} 
-                          r="4" 
+                          cy={165 - (95 * Math.max(progressPercent, 10)) / 100} 
+                          r="5" 
                           fill="#34d399" 
                           className="animate-pulse" 
                         />
@@ -1376,18 +1375,10 @@ export function CrowdfundPage() {
                     {/* High-fidelity Education Grid Monitor Lines */}
                     <path d="M20 50 L180 50 M20 90 L180 90 M20 130 L180 130 M20 170 L180 170" stroke="#78350f" strokeWidth="0.5" strokeOpacity="0.15" />
                     <path d="M50 20 L50 180 M90 20 L90 180 M130 20 L130 180 M170 20 L170 180" stroke="#78350f" strokeWidth="0.5" strokeOpacity="0.15" />
-
-                    {/* Technical Monitor Readout */}
-                    <g className="font-mono text-[9px] fill-amber-400/80 font-bold select-none">
-                      <text x="25" y="38">REACH: {Math.max(12, Math.round(Number(progressPercent) * 4.2))} ok</text>
-                      <text x="25" y="174">INDEX: 9.4/10</text>
-                      <text x="135" y="38">SYNC: ACTIVE</text>
-                      <text x="135" y="174">DB: TESTNET</text>
-                    </g>
                     
                     {/* Floating vertical binary code particles (Rise animation) */}
-                    {progressPercent >= 30 && <text x="75" y="75" fill="#f59e0b" fontSize="8" className="animate-pulse font-mono font-bold" opacity="0.3">1</text>}
-                    {progressPercent >= 60 && <text x="125" y="70" fill="#fef08a" fontSize="8" className="animate-pulse font-mono font-bold" opacity="0.4">0</text>}
+                    {progressPercent >= 30 && <text x="75" y="65" fill="#f59e0b" fontSize="8" className="animate-pulse font-mono font-bold" opacity="0.3">1</text>}
+                    {progressPercent >= 60 && <text x="125" y="60" fill="#fef08a" fontSize="8" className="animate-pulse font-mono font-bold" opacity="0.4">0</text>}
 
                     {/* Laser scanner target line (Animates vertically) */}
                     <line 
@@ -1405,13 +1396,15 @@ export function CrowdfundPage() {
                     {/* Glowing Book Core Line Art */}
                     <g filter="url(#bookGlow)">
                       {/* Spine */}
-                      <path d="M65 145 L100 152 L135 145" stroke="#b45309" strokeWidth="3" strokeLinecap="round" />
+                      <path d="M100 80 V152" stroke="#b45309" strokeWidth="3.5" strokeLinecap="round" />
                       
                       {/* Left Page (Grows based on progress) */}
                       <path
-                        d={`M100 150 C85 142, 65 134, ${100 - (38 * Math.max(progressPercent, 10)) / 100} ${132 - (18 * progressPercent) / 100}`}
+                        d={`M100 152 Q75 142 45 147 V75 Q75 70 100 80 Z`}
+                        fill="url(#bookGrad)"
+                        fillOpacity="0.15"
                         stroke="url(#bookGrad)"
-                        strokeWidth="3.5"
+                        strokeWidth="3"
                         strokeLinecap="round"
                         className="transition-all duration-1000 ease-out"
                       />
@@ -1450,13 +1443,6 @@ export function CrowdfundPage() {
                     <path d="M20 50 L180 50 M20 90 L180 90 M20 130 L180 130 M20 170 L180 170" stroke="#881337" strokeWidth="0.5" strokeOpacity="0.15" />
                     <path d="M50 20 L50 180 M90 20 L90 180 M130 20 L130 180 M170 20 L170 180" stroke="#881337" strokeWidth="0.5" strokeOpacity="0.15" />
 
-                    {/* Biometric Monitor Readout */}
-                    <g className="font-mono text-[9px] fill-rose-400/80 font-bold select-none">
-                      <text x="25" y="38">SYS: 118</text>
-                      <text x="25" y="48">DIA: 79</text>
-                      <text x="25" y="58">BPM: {72 + Math.min(48, Math.round(progressPercent * 0.48))}</text>
-                    </g>
-
                     {/* ECG grid background line */}
                     <path
                       d="M20 110 L60 110 L70 80 L82 140 L94 70 L106 125 L118 110 L180 110"
@@ -1494,6 +1480,77 @@ export function CrowdfundPage() {
                 )}
 
               </div>
+
+              {/* Dynamic Impact Statistics Panel */}
+              {(() => {
+                const myRealDonations = campaign?.top_donors.find(d => {
+                  const isMatch = publicKey && (d.address === publicKey || d.address.startsWith(publicKey.substring(0, 10)));
+                  return isMatch;
+                })?.amount || BigInt(0);
+                
+                const userTotalXlm = isDemoMode 
+                  ? myDemoDonations[activeTab] 
+                  : (Number(myRealDonations) / 10_000_000);
+                  
+                const communityTotalXlm = Number(campaign?.total || 0) / 10_000_000;
+
+                let userImpact = 0;
+                let communityImpact = 0;
+                let userText = "";
+                let communityText = "";
+
+                if (activeTab === "environment") {
+                  userImpact = Math.max(0, Math.round(userTotalXlm * 0.7));
+                  communityImpact = Math.max(0, Math.round(communityTotalXlm * 0.7));
+                  
+                  userText = locale === "tr"
+                    ? `Bağışlarınızla doğaya ${userImpact} fidan kazandırıldı.`
+                    : `Your contributions planted ${userImpact} saplings.`;
+                    
+                  communityText = locale === "tr"
+                    ? `Topluluk bağışlarıyla doğaya ${communityImpact} fidan kazandırıldı.`
+                    : `Community donations planted ${communityImpact} saplings.`;
+                } else if (activeTab === "education") {
+                  userImpact = Math.max(0, Math.round(userTotalXlm * 0.15));
+                  communityImpact = Math.max(0, Math.round(communityTotalXlm * 0.15));
+
+                  userText = locale === "tr"
+                    ? `Bağışlarınız ${userImpact} öğrenciye destek oldu.`
+                    : `Your contributions supported ${userImpact} students.`;
+
+                  communityText = locale === "tr"
+                    ? `Topluluk bağışları ${communityImpact} öğrenciye destek oldu.`
+                    : `Community donations supported ${communityImpact} students.`;
+                } else {
+                  userImpact = Math.max(0, Math.round(userTotalXlm * 0.2));
+                  communityImpact = Math.max(0, Math.round(communityTotalXlm * 0.2));
+
+                  userText = locale === "tr"
+                    ? `Bağışlarınız ${userImpact} hastaya şifa oldu.`
+                    : `Your donations supported ${userImpact} patients.`;
+
+                  communityText = locale === "tr"
+                    ? `Topluluk bağışları ${communityImpact} hastaya şifa oldu.`
+                    : `Community donations supported ${communityImpact} patients.`;
+                }
+
+                return (
+                  <div className="w-full mt-4 p-4 rounded-2xl bg-slate-950/90 border border-white/5 space-y-2.5 font-mono text-[11px] text-left">
+                    <div className="flex items-center gap-2.5">
+                      <span className={`h-1.5 w-1.5 rounded-full shrink-0 ${
+                        activeTab === "environment" ? "bg-emerald-400" : activeTab === "education" ? "bg-amber-400" : "bg-rose-400"
+                      }`} />
+                      <span className="text-slate-300 font-bold">{userText}</span>
+                    </div>
+                    <div className="flex items-center gap-2.5 border-t border-white/5 pt-2.5">
+                      <span className={`h-1.5 w-1.5 rounded-full shrink-0 animate-ping ${
+                        activeTab === "environment" ? "bg-emerald-400" : activeTab === "education" ? "bg-amber-400" : "bg-rose-400"
+                      }`} />
+                      <span className="text-slate-400">{communityText}</span>
+                    </div>
+                  </div>
+                );
+              })()}
             </div>
 
             {/* ŞEFFAF PARA AKIŞI (Outflow Spend Tunnel) */}
