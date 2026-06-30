@@ -1260,70 +1260,94 @@ export function CrowdfundPage() {
                       </filter>
                     </defs>
 
-                    {/* Cybernetic soil grid line */}
-                    <line x1="30" y1="170" x2="170" y2="170" stroke="#047857" strokeWidth="1.5" strokeDasharray="5 3" strokeOpacity="0.4" />
-                    
+                    {/* High-fidelity Environmental Grid Monitor Lines */}
+                    <path d="M20 50 L180 50 M20 90 L180 90 M20 130 L180 130 M20 170 L180 170" stroke="#064e3b" strokeWidth="0.5" strokeOpacity="0.15" />
+                    <path d="M50 20 L50 180 M90 20 L90 180 M130 20 L130 180 M170 20 L170 180" stroke="#064e3b" strokeWidth="0.5" strokeOpacity="0.15" />
+
+                    {/* Biometric/Forestry Monitor Readout */}
+                    <g className="font-mono text-[9px] fill-emerald-400/80 font-bold select-none">
+                      <text x="25" y="38">DENS: {70 + Math.round(progressPercent * 0.18)}%</text>
+                      <text x="25" y="174">CO2: +{(4.2 + (progressPercent * 0.082)).toFixed(1)}%</text>
+                      <text x="135" y="38">SOIL: 64%</text>
+                      <text x="135" y="174">TEMP: 21.8C</text>
+                    </g>
+
                     {/* Concentric orbital radar rings (Breathing animation) */}
-                    <circle cx="100" cy="110" r="60" stroke="#10b981" strokeWidth="0.75" strokeOpacity="0.15" strokeDasharray="3 3" className="origin-center animate-spin" style={{ animationDuration: "25s" }} />
-                    <circle cx="100" cy="110" r="45" stroke="#10b981" strokeWidth="1" strokeOpacity="0.25" strokeDasharray="4 2" className="origin-center animate-spin" style={{ animationDuration: "18s", animationDirection: "reverse" }} />
+                    <circle cx="100" cy="110" r="70" stroke="#10b981" strokeWidth="0.5" strokeOpacity="0.1" strokeDasharray="3 3" className="origin-center animate-spin" style={{ animationDuration: "25s" }} />
+                    <circle cx="100" cy="110" r="50" stroke="#10b981" strokeWidth="0.75" strokeOpacity="0.15" strokeDasharray="4 2" className="origin-center animate-spin" style={{ animationDuration: "18s", animationDirection: "reverse" }} />
                     
-                    {/* Main Trunk (Grows based on progress) */}
-                    <path
-                      d="M100 170 L100 80"
-                      stroke="url(#treeGrad)"
-                      strokeWidth="4"
-                      strokeLinecap="round"
-                      strokeDasharray="90"
-                      strokeDashoffset={90 - (90 * Math.max(progressPercent, 5)) / 100}
-                      className="transition-all duration-1000 ease-out"
-                    />
-
-                    {/* Left Branch (Sprouts at 20%) */}
-                    {progressPercent >= 20 && (
-                      <path
-                        d="M100 135 C85 125, 75 115, 60 115"
-                        stroke="url(#treeGrad)"
-                        strokeWidth="2.5"
-                        strokeLinecap="round"
-                        strokeDasharray="40"
-                        strokeDashoffset={40 - (40 * Math.max(progressPercent - 20, 0)) / 80}
-                        className="transition-all duration-700 ease-out"
+                    {/* Glowing Tree Core Line Art */}
+                    <g filter="url(#treeGlow)">
+                      {/* Trunk */}
+                      <line 
+                        x1="100" 
+                        y1="155" 
+                        x2="100" 
+                        y2={155 - (80 * Math.max(progressPercent, 10)) / 100} 
+                        stroke="url(#treeGrad)" 
+                        strokeWidth="3.5" 
+                        strokeLinecap="round" 
+                        className="transition-all duration-1000 ease-out"
                       />
-                    )}
+                      {/* Branches sprouting based on progress */}
+                      {progressPercent >= 20 && (
+                        <path 
+                          d="M100 130 L75 110" 
+                          stroke="url(#treeGrad)" 
+                          strokeWidth="2.5" 
+                          strokeLinecap="round" 
+                          className="transition-all duration-700 ease-out"
+                        />
+                      )}
+                      {progressPercent >= 40 && (
+                        <path 
+                          d="M100 130 L125 110" 
+                          stroke="url(#treeGrad)" 
+                          strokeWidth="2.5" 
+                          strokeLinecap="round" 
+                          className="transition-all duration-700 ease-out"
+                        />
+                      )}
+                      {progressPercent >= 60 && (
+                        <path 
+                          d="M100 105 L65 85 M100 105 L135 85" 
+                          stroke="url(#treeGrad)" 
+                          strokeWidth="2" 
+                          strokeLinecap="round" 
+                          className="transition-all duration-700 ease-out"
+                        />
+                      )}
+                      {progressPercent >= 80 && (
+                        <path 
+                          d="M100 85 L80 70 M100 85 L120 70" 
+                          stroke="url(#treeGrad)" 
+                          strokeWidth="1.5" 
+                          strokeLinecap="round" 
+                          className="transition-all duration-700 ease-out"
+                        />
+                      )}
 
-                    {/* Right Branch (Sprouts at 45%) */}
-                    {progressPercent >= 45 && (
-                      <path
-                        d="M100 115 C115 105, 125 95, 140 95"
-                        stroke="url(#treeGrad)"
-                        strokeWidth="2.5"
-                        strokeLinecap="round"
-                        strokeDasharray="40"
-                        strokeDashoffset={40 - (40 * Math.max(progressPercent - 45, 0)) / 55}
-                        className="transition-all duration-700 ease-out"
-                      />
-                    )}
-
-                    {/* Top Leaf Signals (Lights up) */}
-                    {progressPercent >= 10 && (
-                      <circle cx="100" cy="74" r="6" fill="#34d399" filter="url(#treeGlow)" className="animate-pulse" />
-                    )}
-                    {progressPercent >= 30 && (
-                      <circle cx="58" cy="115" r="5" fill="#6ee7b7" filter="url(#treeGlow)" />
-                    )}
-                    {progressPercent >= 60 && (
-                      <circle cx="142" cy="95" r="5" fill="#a7f3d0" filter="url(#treeGlow)" />
-                    )}
+                      {/* Top crown light (Pulses rhythmically) */}
+                      {progressPercent >= 10 && (
+                        <circle 
+                          cx="100" 
+                          cy={155 - (80 * Math.max(progressPercent, 10)) / 100} 
+                          r="4" 
+                          fill="#34d399" 
+                          className="animate-pulse" 
+                        />
+                      )}
+                    </g>
 
                     {/* Ambient pulse wave */}
                     {progressPercent > 0 && (
                       <circle
                         cx="100"
                         cy="110"
-                        r={20 + (progressPercent / 3)}
+                        r={30 + (progressPercent * 0.4)}
                         stroke="#10b981"
                         strokeWidth="1"
-                        strokeOpacity={0.6 - (progressPercent / 200)}
+                        strokeOpacity={0.5 - (progressPercent / 200)}
                         className="animate-ping"
                         style={{ animationDuration: "3s", transformOrigin: "center" }}
                       />
@@ -1349,47 +1373,58 @@ export function CrowdfundPage() {
                       </filter>
                     </defs>
 
-                    {/* Cyber Grid Base Line */}
-                    <line x1="30" y1="160" x2="170" y2="160" stroke="#d97706" strokeWidth="1.5" strokeDasharray="5 3" strokeOpacity="0.4" />
+                    {/* High-fidelity Education Grid Monitor Lines */}
+                    <path d="M20 50 L180 50 M20 90 L180 90 M20 130 L180 130 M20 170 L180 170" stroke="#78350f" strokeWidth="0.5" strokeOpacity="0.15" />
+                    <path d="M50 20 L50 180 M90 20 L90 180 M130 20 L130 180 M170 20 L170 180" stroke="#78350f" strokeWidth="0.5" strokeOpacity="0.15" />
+
+                    {/* Technical Monitor Readout */}
+                    <g className="font-mono text-[9px] fill-amber-400/80 font-bold select-none">
+                      <text x="25" y="38">REACH: {Math.max(12, Math.round(Number(progressPercent) * 4.2))} ok</text>
+                      <text x="25" y="174">INDEX: 9.4/10</text>
+                      <text x="135" y="38">SYNC: ACTIVE</text>
+                      <text x="135" y="174">DB: TESTNET</text>
+                    </g>
                     
-                    {/* Floating vertical uniform speed binary particles */}
-                    {progressPercent >= 15 && <text x="70" y="100" fill="#f59e0b" fontSize="8" className="animate-particle-rise font-mono font-bold" style={{ animationDelay: "0s", opacity: 0.6 }}>0</text>}
-                    {progressPercent >= 40 && <text x="100" y="85" fill="#fbbf24" fontSize="9" className="animate-particle-rise font-mono font-bold" style={{ animationDelay: "0.8s", opacity: 0.7 }}>1</text>}
-                    {progressPercent >= 65 && <text x="130" y="95" fill="#fef08a" fontSize="7" className="animate-particle-rise font-mono font-bold" style={{ animationDelay: "1.6s", opacity: 0.5 }}>0</text>}
-                    {progressPercent >= 85 && <text x="85" y="70" fill="#fbbf24" fontSize="10" className="animate-particle-rise font-mono font-bold" style={{ animationDelay: "0.4s", opacity: 0.8 }}>1</text>}
+                    {/* Floating vertical binary code particles (Rise animation) */}
+                    {progressPercent >= 30 && <text x="75" y="75" fill="#f59e0b" fontSize="8" className="animate-pulse font-mono font-bold" opacity="0.3">1</text>}
+                    {progressPercent >= 60 && <text x="125" y="70" fill="#fef08a" fontSize="8" className="animate-pulse font-mono font-bold" opacity="0.4">0</text>}
 
-                    {/* Hologram Light Beams fanning out from the spine */}
-                    {progressPercent > 0 && (
+                    {/* Laser scanner target line (Animates vertically) */}
+                    <line 
+                      x1="45" 
+                      y1="75" 
+                      x2="155" 
+                      y2="75" 
+                      stroke="#fbbf24" 
+                      strokeWidth="1.5" 
+                      filter="url(#bookGlow)"
+                      className="animate-bounce"
+                      style={{ animationDuration: "3.5s" }}
+                    />
+
+                    {/* Glowing Book Core Line Art */}
+                    <g filter="url(#bookGlow)">
+                      {/* Spine */}
+                      <path d="M65 145 L100 152 L135 145" stroke="#b45309" strokeWidth="3" strokeLinecap="round" />
+                      
+                      {/* Left Page (Grows based on progress) */}
                       <path
-                        d="M100 155 L65 50 M100 155 L100 40 M100 155 L135 50"
-                        stroke="#fbbf24"
-                        strokeWidth="1"
-                        strokeOpacity={0.1 + (progressPercent / 300)}
-                        strokeDasharray="4 4"
-                        filter="url(#bookGlow)"
+                        d={`M100 150 C85 142, 65 134, ${100 - (38 * Math.max(progressPercent, 10)) / 100} ${132 - (18 * progressPercent) / 100}`}
+                        stroke="url(#bookGrad)"
+                        strokeWidth="3.5"
+                        strokeLinecap="round"
+                        className="transition-all duration-1000 ease-out"
                       />
-                    )}
 
-                    {/* Book spine base */}
-                    <path d="M65 152 L100 160 L135 152" stroke="#b45309" strokeWidth="4" strokeLinecap="round" />
-
-                    {/* Left Page layout */}
-                    <path
-                      d={`M100 157 C85 150, 65 142, ${100 - (38 * Math.max(progressPercent, 10)) / 100} ${140 - (18 * progressPercent) / 100}`}
-                      stroke="url(#bookGrad)"
-                      strokeWidth="3"
-                      strokeLinecap="round"
-                      className="transition-all duration-1000 ease-out"
-                    />
-
-                    {/* Right Page layout */}
-                    <path
-                      d={`M100 157 C115 150, 135 142, ${100 + (38 * Math.max(progressPercent, 10)) / 100} ${140 - (18 * progressPercent) / 100}`}
-                      stroke="url(#bookGrad)"
-                      strokeWidth="3"
-                      strokeLinecap="round"
-                      className="transition-all duration-1000 ease-out"
-                    />
+                      {/* Right Page (Grows based on progress) */}
+                      <path
+                        d={`M100 150 C115 142, 135 134, ${100 + (38 * Math.max(progressPercent, 10)) / 100} ${132 - (18 * progressPercent) / 100}`}
+                        stroke="url(#bookGrad)"
+                        strokeWidth="3.5"
+                        strokeLinecap="round"
+                        className="transition-all duration-1000 ease-out"
+                      />
+                    </g>
                   </svg>
                 )}
 
