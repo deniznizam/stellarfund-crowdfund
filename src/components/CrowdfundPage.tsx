@@ -152,9 +152,9 @@ const Tooltip = ({ content, children }: { content: string; children: React.React
   return (
     <span className="relative group inline-flex items-center cursor-help">
       {children}
-      <span className="pointer-events-none absolute bottom-full left-1/2 -translate-x-1/2 mb-2 w-56 rounded-xl bg-slate-950 border border-white/10 px-3 py-2.5 text-[10px] font-mono text-slate-300 opacity-0 group-hover:opacity-100 transition-opacity duration-200 z-50 shadow-2xl leading-normal break-all select-all">
+      <span className="pointer-events-none absolute bottom-full right-[-10px] sm:right-auto sm:left-1/2 sm:-translate-x-1/2 mb-2 w-56 rounded-xl bg-slate-950 border border-white/10 px-3 py-2.5 text-[10px] font-mono text-slate-300 opacity-0 group-hover:opacity-100 transition-opacity duration-200 z-50 shadow-2xl leading-normal break-all select-all">
         {content}
-        <span className="absolute top-full left-1/2 -translate-x-1/2 border-4 border-transparent border-t-slate-950" />
+        <span className="absolute top-full right-[16px] sm:right-auto sm:left-1/2 sm:-translate-x-1/2 border-4 border-transparent border-t-slate-950" />
       </span>
     </span>
   );
@@ -1046,8 +1046,8 @@ export function CrowdfundPage() {
         
         {/* TOP HEADER */}
         <header className="mb-12 flex flex-col gap-5 sm:flex-row sm:items-center sm:justify-between border-b border-white/5 pb-8">
-          <div className="flex flex-col gap-1.5">
-            <div className="flex items-center gap-4">
+          <div className="flex flex-col gap-1.5 items-center sm:items-start text-center sm:text-left w-full sm:w-auto">
+            <div className="flex flex-col sm:flex-row items-center gap-4">
               <div className={`relative flex h-12 w-12 items-center justify-center rounded-2xl border border-white/10 transition-all duration-700 ${
                 activeTab === "environment" 
                   ? "bg-emerald-950/30 text-emerald-400" 
@@ -1066,8 +1066,8 @@ export function CrowdfundPage() {
             </div>
           </div>
           
-          <div className="flex flex-wrap items-center gap-2 sm:gap-3.5 justify-start sm:justify-end w-full sm:w-auto sm:self-center">
-            <span className="hidden sm:inline-flex items-center gap-1.5 rounded-full border border-emerald-500/20 bg-emerald-500/5 px-3 py-1.5 text-[9px] font-black uppercase tracking-wider text-emerald-400/80 font-mono whitespace-nowrap">
+          <div className="flex flex-wrap items-center justify-center sm:justify-end gap-2 sm:gap-3.5 w-full sm:w-auto sm:self-center">
+            <span className="inline-flex items-center gap-1.5 rounded-full border border-emerald-500/20 bg-emerald-500/5 px-3 py-1.5 text-[9px] font-black uppercase tracking-wider text-emerald-400/80 font-mono whitespace-nowrap">
               {t.trustBadge}
             </span>
 
