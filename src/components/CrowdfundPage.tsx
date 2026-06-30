@@ -1067,7 +1067,7 @@ export function CrowdfundPage() {
           </div>
           
           <div className="flex items-center gap-3.5 self-end sm:self-center">
-            <span className="inline-flex items-center gap-1.5 rounded-full border border-emerald-500/20 bg-emerald-500/5 px-3.5 py-1.5 text-[10px] font-black uppercase tracking-widest text-emerald-400/80 font-mono whitespace-nowrap">
+            <span className="inline-flex items-center gap-1.5 rounded-full border border-emerald-500/20 bg-emerald-500/5 px-3 py-1.5 text-[9px] font-black uppercase tracking-wider text-emerald-400/80 font-mono whitespace-nowrap">
               {t.trustBadge}
             </span>
 
