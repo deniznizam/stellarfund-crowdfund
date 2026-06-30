@@ -1278,6 +1278,17 @@ export function CrowdfundPage() {
                     <circle cx="100" cy="110" r="70" stroke="#10b981" strokeWidth="0.5" strokeOpacity="0.1" strokeDasharray="3 3" className="origin-center animate-spin" style={{ animationDuration: "25s" }} />
                     <circle cx="100" cy="110" r="50" stroke="#10b981" strokeWidth="0.75" strokeOpacity="0.15" strokeDasharray="4 2" className="origin-center animate-spin" style={{ animationDuration: "18s", animationDirection: "reverse" }} />
                     
+                    {/* Static backdrop dashed tree blueprint (Always visible so tree is recognizable) */}
+                    <path 
+                      d="M100 65 L65 110 H75 L55 145 H65 L45 170 H155 L135 170 H145 L125 145 H135 L100 110 Z" 
+                      stroke="#10b981" 
+                      strokeWidth="1.5" 
+                      strokeOpacity="0.25" 
+                      fill="none" 
+                      strokeDasharray="3 3" 
+                    />
+                    <line x1="100" y1="170" x2="100" y2="65" stroke="#10b981" strokeWidth="1" strokeOpacity="0.2" />
+
                     {/* Glowing Tree Core Line Art */}
                     <g filter="url(#treeGlow)">
                       {/* Trunk */}
@@ -1291,40 +1302,36 @@ export function CrowdfundPage() {
                         strokeLinecap="round" 
                         className="transition-all duration-1000 ease-out"
                       />
-                      {/* Lush Pine Tree Shape Layers sprouting based on progress */}
-                      {progressPercent >= 20 && (
-                        <path 
-                          d="M100 70 L65 110 H135 Z" 
-                          fill="url(#treeGrad)" 
-                          fillOpacity="0.25"
-                          stroke="url(#treeGrad)" 
-                          strokeWidth="2" 
-                          strokeLinejoin="round"
-                          className="transition-all duration-700 ease-out"
-                        />
-                      )}
-                      {progressPercent >= 50 && (
-                        <path 
-                          d="M100 100 L55 145 H145 Z" 
-                          fill="url(#treeGrad)" 
-                          fillOpacity="0.2"
-                          stroke="url(#treeGrad)" 
-                          strokeWidth="2.5" 
-                          strokeLinejoin="round"
-                          className="transition-all duration-700 ease-out"
-                        />
-                      )}
-                      {progressPercent >= 80 && (
-                        <path 
-                          d="M100 125 L45 170 H155 Z" 
-                          fill="url(#treeGrad)" 
-                          fillOpacity="0.15"
-                          stroke="url(#treeGrad)" 
-                          strokeWidth="3" 
-                          strokeLinejoin="round"
-                          className="transition-all duration-700 ease-out"
-                        />
-                      )}
+                      {/* Lush Pine Tree Shape Layers growing in opacity with progress */}
+                      <path 
+                        d="M100 70 L65 110 H135 Z" 
+                        fill="url(#treeGrad)" 
+                        fillOpacity={0.05 + (progressPercent / 400)}
+                        stroke="url(#treeGrad)" 
+                        strokeWidth="2" 
+                        strokeLinejoin="round"
+                        className="transition-all duration-700 ease-out"
+                      />
+                      <path 
+                        d="M100 100 L55 145 H145 Z" 
+                        fill="url(#treeGrad)" 
+                        fillOpacity={progressPercent >= 30 ? 0.05 + (progressPercent / 500) : 0.02}
+                        stroke="url(#treeGrad)" 
+                        strokeWidth="2.5" 
+                        strokeLinejoin="round"
+                        className="transition-all duration-700 ease-out font-sans"
+                        strokeOpacity={progressPercent >= 30 ? 1 : 0.25}
+                      />
+                      <path 
+                        d="M100 125 L45 170 H155 Z" 
+                        fill="url(#treeGrad)" 
+                        fillOpacity={progressPercent >= 60 ? 0.05 + (progressPercent / 600) : 0.02}
+                        stroke="url(#treeGrad)" 
+                        strokeWidth="3" 
+                        strokeLinejoin="round"
+                        className="transition-all duration-700 ease-out"
+                        strokeOpacity={progressPercent >= 60 ? 1 : 0.2}
+                      />
 
                       {/* Glowing crown lights based on progress */}
                       {progressPercent >= 10 && (
@@ -1392,6 +1399,17 @@ export function CrowdfundPage() {
                       className="animate-bounce"
                       style={{ animationDuration: "3.5s" }}
                     />
+ 
+                    {/* Static backdrop dashed book blueprint (Always visible so book is recognizable) */}
+                    <path 
+                      d="M100 152 Q75 142 45 147 V75 Q75 70 100 80 Q125 70 155 75 V147 Q125 142 100 152 Z" 
+                      stroke="#fbbf24" 
+                      strokeWidth="1.5" 
+                      strokeOpacity="0.25" 
+                      fill="none" 
+                      strokeDasharray="3 3" 
+                    />
+                    <line x1="100" y1="152" x2="100" y2="80" stroke="#fbbf24" strokeWidth="1" strokeOpacity="0.2" />
 
                     {/* Glowing Book Core Line Art */}
                     <g filter="url(#bookGlow)">
@@ -1400,23 +1418,34 @@ export function CrowdfundPage() {
                       
                       {/* Left Page (Grows based on progress) */}
                       <path
-                        d={`M100 152 Q75 142 45 147 V75 Q75 70 100 80 Z`}
+                        d="M100 152 Q75 142 45 147 V75 Q75 70 100 80 Z"
                         fill="url(#bookGrad)"
-                        fillOpacity="0.15"
+                        fillOpacity={0.05 + (progressPercent / 400)}
+                        stroke="url(#bookGrad)"
+                        strokeWidth="3"
+                        strokeLinecap="round"
+                        className="transition-all duration-1000 ease-out"
+                      />
+ 
+                      {/* Right Page (Grows based on progress) */}
+                      <path
+                        d="M100 152 Q125 142 155 147 V75 Q125 70 100 80 Z"
+                        fill="url(#bookGrad)"
+                        fillOpacity={0.05 + (progressPercent / 400)}
                         stroke="url(#bookGrad)"
                         strokeWidth="3"
                         strokeLinecap="round"
                         className="transition-all duration-1000 ease-out"
                       />
 
-                      {/* Right Page (Grows based on progress) */}
-                      <path
-                        d={`M100 150 C115 142, 135 134, ${100 + (38 * Math.max(progressPercent, 10)) / 100} ${132 - (18 * progressPercent) / 100}`}
-                        stroke="url(#bookGrad)"
-                        strokeWidth="3.5"
-                        strokeLinecap="round"
-                        className="transition-all duration-1000 ease-out"
-                      />
+                      {/* Simulated Text Lines inside Book Pages */}
+                      <line x1="55" y1="95" x2="88" y2="95" stroke="#fbbf24" strokeWidth="1.5" strokeOpacity="0.3" strokeLinecap="round" />
+                      <line x1="55" y1="110" x2="88" y2="110" stroke="#fbbf24" strokeWidth="1.5" strokeOpacity="0.3" strokeLinecap="round" />
+                      <line x1="55" y1="125" x2="80" y2="125" stroke="#fbbf24" strokeWidth="1.5" strokeOpacity="0.3" strokeLinecap="round" />
+
+                      <line x1="112" y1="95" x2="145" y2="95" stroke="#fbbf24" strokeWidth="1.5" strokeOpacity="0.3" strokeLinecap="round" />
+                      <line x1="112" y1="110" x2="145" y2="110" stroke="#fbbf24" strokeWidth="1.5" strokeOpacity="0.3" strokeLinecap="round" />
+                      <line x1="112" y1="125" x2="137" y2="125" stroke="#fbbf24" strokeWidth="1.5" strokeOpacity="0.3" strokeLinecap="round" />
                     </g>
                   </svg>
                 )}
@@ -1500,8 +1529,8 @@ export function CrowdfundPage() {
                 let communityText = "";
 
                 if (activeTab === "environment") {
-                  userImpact = Math.max(0, Math.round(userTotalXlm * 0.7));
-                  communityImpact = Math.max(0, Math.round(communityTotalXlm * 0.7));
+                  userImpact = Math.max(0, Math.round(userTotalXlm * 0.1));
+                  communityImpact = Math.max(0, Math.round(communityTotalXlm * 0.1));
                   
                   userText = locale === "tr"
                     ? `Bağışlarınızla doğaya ${userImpact} fidan kazandırıldı.`
@@ -1511,26 +1540,26 @@ export function CrowdfundPage() {
                     ? `Topluluk bağışlarıyla doğaya ${communityImpact} fidan kazandırıldı.`
                     : `Community donations planted ${communityImpact} saplings.`;
                 } else if (activeTab === "education") {
-                  userImpact = Math.max(0, Math.round(userTotalXlm * 0.15));
-                  communityImpact = Math.max(0, Math.round(communityTotalXlm * 0.15));
-
-                  userText = locale === "tr"
-                    ? `Bağışlarınız ${userImpact} öğrenciye destek oldu.`
-                    : `Your contributions supported ${userImpact} students.`;
-
-                  communityText = locale === "tr"
-                    ? `Topluluk bağışları ${communityImpact} öğrenciye destek oldu.`
-                    : `Community donations supported ${communityImpact} students.`;
-                } else {
                   userImpact = Math.max(0, Math.round(userTotalXlm * 0.2));
                   communityImpact = Math.max(0, Math.round(communityTotalXlm * 0.2));
 
                   userText = locale === "tr"
-                    ? `Bağışlarınız ${userImpact} hastaya şifa oldu.`
+                    ? `Bağışlarınız ${userImpact} adet kitap desteği sağladı.`
+                    : `Your contributions provided ${userImpact} books.`;
+
+                  communityText = locale === "tr"
+                    ? `Topluluk bağışları ${communityImpact} adet kitap desteği sağladı.`
+                    : `Community donations provided ${communityImpact} books.`;
+                } else {
+                  userImpact = Math.max(0, Math.round(userTotalXlm * 0.05));
+                  communityImpact = Math.max(0, Math.round(communityTotalXlm * 0.05));
+
+                  userText = locale === "tr"
+                    ? `Bağışlarınız ${userImpact} hastaya tıbbi destek sağladı.`
                     : `Your donations supported ${userImpact} patients.`;
 
                   communityText = locale === "tr"
-                    ? `Topluluk bağışları ${communityImpact} hastaya şifa oldu.`
+                    ? `Topluluk bağışları ${communityImpact} hastaya tıbbi destek sağladı.`
                     : `Community donations supported ${communityImpact} patients.`;
                 }
 
