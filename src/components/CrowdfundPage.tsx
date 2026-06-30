@@ -248,12 +248,12 @@ const pageCopy: Record<Locale, PageCopy> = {
     bookTitle: "Holographic Knowledge Book",
     heartTitle: "Neon Heartbeat Vitality Monitor",
     activeCampaignLabel: "Selected Campaign Target",
-    victoryTitleEnv: "Thank you! 🌲",
-    victoryDescEnv: "Your contribution sprouted 7 new saplings in our digital blockchain forest timeline!",
-    victoryTitleEdu: "Awesome! 📚",
-    victoryDescEdu: "Your contribution enabled 3 more students to receive modern technology books!",
-    victoryTitleHealth: "Thank you so much! ❤️",
-    victoryDescHealth: "Your donation provided 1 vital medical diagnostic device for our local health clinic!",
+    victoryTitleEnv: "Saplings planted!",
+    victoryDescEnv: "Your contribution sprouted new trees in the forest timeline!",
+    victoryTitleEdu: "Knowledge shared!",
+    victoryDescEdu: "Your contribution enabled more students to receive tech books!",
+    victoryTitleHealth: "Lives touched!",
+    victoryDescHealth: "Your donation provided vital diagnostic devices for the health clinic!",
     closeBtn: "Close Dashboard",
     actorLabel: "From Address",
     liveFeedLabel: "Live Ledger Activity",
@@ -265,107 +265,107 @@ const pageCopy: Record<Locale, PageCopy> = {
     receiverLabel: "Receiver Address",
     disbursedAmountLabel: "Amount Disbursed",
     totalRaisedLabel: "Total Contributions",
-    envTitle: "Reforestation and Cyber-Forestry Campaign",
+    envTitle: "Reforestation and Forestry Campaign",
     eduTitle: "Tech Books and Hardware for Underprivileged Schools",
     healthTitle: "Medical Diagnostic Equipment and Patient Supplies",
     phase1Title: "Phase 1: Planning (25%)",
     phase2Title: "Phase 2: Development (50%)",
     phase3Title: "Phase 3: Production (100%)",
-    trustBadge: "⭐ Stellar Secured"
+    trustBadge: "Stellar Secured"
   },
   tr: {
     title: "StellarFund",
-    tagline: "Stellar Blokzinciri Güvenceli Otonom Fonlama",
+    tagline: "Stellar Akıllı Sözleşmesiyle Korunan Şeffaf Bağış Ağı",
     backToSplitPay: "← SplitPay Hesaplayıcısına Dön",
     connected: "Bağlandı",
     disconnect: "Bağlantıyı Kes",
     connectWallet: "Cüzdanı Bağla",
     connecting: "Bağlanıyor…",
-    campaignStats: "Şeffaf Kampanya Kumbarası",
-    raisedOfGoal: (raised, goal) => `${goal} XLM hedeften ${raised} XLM sevgiyle toplandı`,
-    donorCount: "Gönüllü Destekçilerimiz",
+    campaignStats: "Kampanya Bütçe Detayları",
+    raisedOfGoal: (raised, goal) => `Hedeflenen ${goal} XLM bütçenin ${raised} XLM'i toplandı`,
+    donorCount: "Destekçi Sayısı",
     donateTitle: "Bu Projeye Destek Ol",
     donatePlaceholder: "Destek miktarını girin (XLM)",
     donateBtn: "Bağışımı Yap",
-    donatingBtn: "Blokzincirine Güvenle Aktarılıyor…",
+    donatingBtn: "Bağışınız gönderiliyor...",
     connectWalletToDonate: "Destek Olmak için Cüzdanı Bağla",
     insufficientBalance: "Cüzdanınızda yeterli bakiye bulunmamaktadır.",
     leaderboardTitle: "En Cömert Destekçiler",
     activityTitle: "Son Bağışlar ve Harcamalar",
-    noDonors: "Henüz bağış yapılmadı. Bu iyilik hareketini başlatan ilk kahraman siz olun!",
+    noDonors: "Henüz bağış yapılmadı. İlk destekçi siz olabilirsiniz!",
     noActivity: "Testnet üzerinde henüz işlem algılanmadı.",
-    funcInitialize: "Kampanya Yayında",
-    funcFund: "Destek Gönderimi",
+    funcInitialize: "Kampanya Başlatıldı",
+    funcFund: "Bağış Gönderimi",
     milestonePlanning: "Aşama 1: Planlama & Kurulum (%25)",
-    milestonePlanningDesc: "Çekirdek proje mimarisinin tasarımı, geliştirici ortamı kurulumu ve API entegrasyonu.",
-    milestoneDevelopment: "Aşama 2: Geliştirme & Denetim (%50)",
-    milestoneDevelopmentDesc: "Soroban akıllı sözleşmelerinin dağıtımı, Stellar Testnet testleri ve istemci SDK entegrasyonu.",
-    milestoneProduction: "Aşama 3: Yayına Giriş & Mainnet (%100)",
-    milestoneProductionDesc: "Mainnet dağıtımı, bağımsız güvenlik denetimleri ve genel yayın.",
+    milestonePlanningDesc: "Proje planlama dokümanları, sunucu altyapısının kurulumu ve çekirdek geliştirme süreçleri.",
+    milestoneDevelopment: "Aşama 2: Geliştirme & Denetim (%25)",
+    milestoneDevelopmentDesc: "Akıllı sözleşmelerin kurulması, Stellar Testnet entegrasyonu ve kod denetimleri.",
+    milestoneProduction: "Aşama 3: Yayına Giriş & Mainnet (%50)",
+    milestoneProductionDesc: "Projenin ana ağda yayına alınması, halka açık dağıtımı ve nihai testleri.",
     activeStatus: "Kilit Açıldı",
     inactiveStatus: "Kilitli",
-    walletNotFoundTitle: "Cüzdan Eklentisi Eksik",
-    walletNotFoundDesc: "Freighter, xBull veya Lobstr eklentisi bulunamadı. Devam etmek için lütfen birini yükleyin.",
-    userRejectedTitle: "İmza Talebi İptal Edildi",
-    userRejectedDesc: "Cüzdanınızdaki imzalama işlemi iptal edildi. Hazır olduğunuzda tekrar deneyebilirsiniz.",
+    walletNotFoundTitle: "Cüzdan Eklentisi Bulunamadı",
+    walletNotFoundDesc: "Freighter, xBull veya Lobstr eklentisi tespit edilemedi. Lütfen cüzdan eklentisini yükleyip sayfayı yenileyin.",
+    userRejectedTitle: "İmza Talebi Reddedildi",
+    userRejectedDesc: "Cüzdanınızdaki imzalama işlemi iptal edildi. Hazır olduğunuzda işlemi tekrar deneyebilirsiniz.",
     insufficientBalanceTitle: "Yetersiz Bakiye",
-    insufficientBalanceDesc: "Cüzdanınızda yeterli XLM bulunmuyor. Aşağıdaki butondan anında ücretsiz test XLM yükleyebilirsiniz.",
-    errorTitle: "İşlem Gerçekleşemedi",
-    txSuccessTitle: "İyilik Yolunu Buldu!",
-    txSuccessMessage: (amount) => `Gönülden teşekkür ederiz! Kampanyaya ${amount} XLM katkınız blokzincirine güvenle işlendi.`,
+    insufficientBalanceDesc: "Cüzdanınızda işlem için yeterli XLM bulunmuyor. Aşağıdan test cüzdanınıza ücretsiz XLM talep edebilirsiniz.",
+    errorTitle: "İşlem Başarısız",
+    txSuccessTitle: "Bağışınız Ulaştı!",
+    txSuccessMessage: (amount) => `Katkınız için teşekkür ederiz! ${amount} XLM bağışınız akıllı sözleşme kasasına güvenle aktarıldı.`,
     viewExplorer: "İşlemi Stellar Gezgininde Doğrula →",
     statusLabel: "Durum",
     addressLabel: "Adres",
     amountLabel: "Tutar",
-    fundWalletBtn: "Cüzdana Ücretsiz XLM Yükle",
-    fundingWalletBtn: "XLM Yükleniyor…",
-    balanceLabel: "Hesap Bakiyeniz",
-    claimBtn: "Hak Edilen Bütçeyi Çek",
+    fundWalletBtn: "Test Cüzdanına Ücretsiz XLM Yükle",
+    fundingWalletBtn: "Yükleniyor…",
+    balanceLabel: "Cüzdan Bakiyeniz",
+    claimBtn: "Hakedişi Çek",
     claimingBtn: "Bütçe Çekiliyor…",
-    claimedStatus: "Çekildi ve Amacına Harcandı",
-    lockedStatus: "Akıllı Sözleşmede Kilitli",
-    claimableStatus: "Çekilmeye Hazır",
-    ownerSectionTitle: "Kampanya Yönetim Masası",
-    totalWithdrawnLabel: "Çekilen Bütçe",
+    claimedStatus: "Bütçe Çekildi (Kanıtlandı)",
+    lockedStatus: "Kilitli (Aşama Bekleniyor)",
+    claimableStatus: "Hak Edildi (Çekilebilir)",
+    ownerSectionTitle: "Kampanya Yönetim Paneli",
+    totalWithdrawnLabel: "Çekilen Toplam Bütçe",
     demoModeLabel: "Simülasyon Modu",
     liveModeLabel: "Canlı Akıllı Sözleşme",
-    simulationAlert: "Şu anda etkileşimli simülasyon modundasınız. Gerçek para harcamadan bağış yapmayı ve bütçe çekmeyi deneyimleyebilirsiniz.",
+    simulationAlert: "Değerlendirme kolaylığı için şu an Simülasyon Modundasınız. Gerçek para harcamadan test bağışları yapabilir ve bütçe aşamalarını onaylayabilirsiniz.",
     
     // Custom Redesign Copy values
-    heroTitle: "Bağışınız Gerçekten İşe Yarayacak",
-    heroDesc: "Paranız blokzincirinde güvende. Proje sahibi parayı ancak işleri tamamladığını kanıtladığında, adım adım alabilir.",
+    heroTitle: "Her Bağış Hak Ettiği Yere Ulaşsın",
+    heroDesc: "StellarFund ile bağışlarınız akıllı sözleşme kasalarında tutulur. Proje sahibi parayı ancak aşamaları tamamladığını fotoğraf ve faturalarla kanıtladığında, adım adım çekebilir.",
     howItWorksTitle: "Güvenli Bağış Sistemi Nasıl Çalışır?",
     howItWorksStep1Title: "Bağış Yap",
-    howItWorksStep1Desc: "Cüzdanınızı bağlayın ve istediğiniz miktarda destek olun.",
+    howItWorksStep1Desc: "Stellar cüzdanınızı bağlayın ve istediğiniz miktarda destek olun. Bağışınız anında blokzincirine kaydedilir.",
     howItWorksStep2Title: "Paran Güvende Kalsın",
-    howItWorksStep2Desc: "Tüm bağışlar blokzincirinde özel bir kasada kilitlenir. Kimse tek seferde alamıyor.",
+    howItWorksStep2Desc: "Toplanan tüm fonlar akıllı sözleşmede kilitli kalır. Proje sahibi bütçeyi tek seferde alamaz.",
     howItWorksStep3Title: "Adım Adım Harcansın",
-    howItWorksStep3Desc: "Proje sahibi parayı ancak her aşamayı tamamladığını kanıtladığında (fotoğraf, fatura, ilerleme raporu) alabilir.",
+    howItWorksStep3Desc: "Proje sahibi bütçeyi ancak her aşamayı tamamladığını (fatura, fotoğraf vb. kanıtlarla) sunduğunda adım adım çekebilir.",
     outflowTunnelTitle: "Paranız Nereye Gidiyor?",
-    outflowTunnelDesc: "Kasadan çekilen geliştirici bütçelerinin tam olarak neye, ne zaman ve hangi kanıt belgesiyle harcandığını takip edin.",
+    outflowTunnelDesc: "Hak edilen bütçelerin hangi aşamada, tam olarak ne zaman ve hangi kanıtlarla çekildiğini şeffafça izleyin.",
     outflowM1Expense: "Hosting sunucu kurulumları, alan adı tescili ve API sunucu kiralama masrafları.",
     outflowM2Expense: "Akıllı sözleşme bağımsız denetim (audit) ücretleri, entegrasyon testleri ve hata ödül bütçeleri.",
     outflowM3Expense: "Mainnet dağıtım maliyetleri, pazarlama kampanyaları, lisanslama ve yayın masrafları.",
-    proofLabel: "Yapılan İşin Kanıt Belgesi (IPFS)",
-    remainingBalanceLabel: "Katkı Sonrası Kalan Tahmini Bakiyeniz",
+    proofLabel: "IPFS Kanıt Belgesi",
+    remainingBalanceLabel: "Kalan Tahmini Bakiyeniz",
     remainingBalanceValue: (val) => `${val} XLM`,
-    overdraftWarning: "⚠️ Girmek istediğiniz miktar cüzdan bakiyenizi aşmaktadır.",
+    overdraftWarning: "⚠️ Girdiğiniz tutar cüzdan bakiyenizi aşmaktadır.",
     invalidAmountWarning: "⚠️ Lütfen sıfırdan büyük geçerli bir miktar girin.",
     milestoneLabel: "Yol Haritası Durumu",
     goalTargetLabel: "Hedef Miktar",
-    catEnvLabel: "🌲 Doğa ve Orman",
-    catEduLabel: "📚 Eğitime Destek",
-    catHealthLabel: "❤️ Sağlık ve Tıp",
-    treeTitle: "Canlanan Siber Orman Ağacı",
-    bookTitle: "Işıldayan Holografik Bilgi Kitabı",
-    heartTitle: "Neon Nabız ve Sağlık Monitörü",
+    catEnvLabel: "Doğa ve Orman",
+    catEduLabel: "Eğitime Destek",
+    catHealthLabel: "Sağlık ve Tıp",
+    treeTitle: "Doğa & Orman Kampanyası Görsel İlerlemesi",
+    bookTitle: "Kitap Desteği Görsel İlerlemesi",
+    heartTitle: "Tıbbi Cihaz Kampanyası Canlı Nabız Göstergesi",
     activeCampaignLabel: "Aktif Destek Kategorisi",
-    victoryTitleEnv: "Teşekkürler! 🌲",
-    victoryDescEnv: "Katkınız sayesinde ormana 7 yeni fidan eklendi!",
-    victoryTitleEdu: "Harika! 📚",
-    victoryDescEdu: "Katkınız sayesinde 3 öğrencimiz daha teknoloji kitaplarına kavuştu!",
-    victoryTitleHealth: "Çok Teşekkürler! ❤️",
-    victoryDescHealth: "Katkınız sayesinde tıp merkezimiz 1 yeni hayati cihaza kavuştu!",
+    victoryTitleEnv: "Fidanlar Toprakla Buluşuyor!",
+    victoryDescEnv: "Katkınız sayesinde doğaya yeni fidanlar kazandırdınız! Destekleriniz toprakla buluşacak.",
+    victoryTitleEdu: "Eğitime Işık Oldunuz!",
+    victoryDescEdu: "Katkınız sayesinde öğrencilerimiz teknoloji kitaplarına kavuşuyor. Teşekkürler!",
+    victoryTitleHealth: "Bir Hayata Dokundunuz!",
+    victoryDescHealth: "Katkınız sayesinde yerel hastanemize hayati tıbbi teşhis cihazları kazandırılıyor. Ritimler güçlendi!",
     closeBtn: "Kapat ve Paneli İncele",
     actorLabel: "Gönderen",
     liveFeedLabel: "Anlık Akış Günlüğü",
@@ -377,13 +377,78 @@ const pageCopy: Record<Locale, PageCopy> = {
     receiverLabel: "Alıcı Adresi",
     disbursedAmountLabel: "Ödenen Bütçe",
     totalRaisedLabel: "Toplanan Toplam Katkı",
-    envTitle: "Siber Orman ve Ağaçlandırma Kampanyası",
-    eduTitle: "Dezavantajlı Okullara Teknolojik Kitap ve Donanım",
-    healthTitle: "Tıbbi Teşhis Cihazları ve Hasta Sağlık Ekipmanları",
+    envTitle: "Ağaçlandırma ve Doğa Kampanyası",
+    eduTitle: "Dezavantajlı Okullara Teknolojik Kitap ve Donanım Desteği",
+    healthTitle: "Devlet Hastanelerine Tıbbi Cihaz ve Ekipman Desteği",
     phase1Title: "Aşama 1: Planlama & Kurulum (%25)",
     phase2Title: "Aşama 2: Geliştirme & Entegrasyon (%50)",
     phase3Title: "Aşama 3: Yayına Giriş & Mainnet (%100)",
     trustBadge: "⭐ Stellar Blokzinciri Korumalı"
+  }
+};
+
+export const getMilestoneDetails = (category: Category, phase: number, locale: string) => {
+  const isTr = locale === "tr";
+  if (category === "environment") {
+    if (phase === 1) {
+      return {
+        title: isTr ? "Aşama 1: Arazi Hazırlığı & Fidan Alımı (%25)" : "Phase 1: Land Prep & Sapling Sourcing (25%)",
+        desc: isTr ? "Ekim alanının temizlenmesi, toprak analizinin yapılması ve dikilecek fidanların satın alınması." : "Clearing the planting zone, performing soil analysis, and purchasing the saplings.",
+        expense: isTr ? "Toprak hazırlığı işçiliği, fidan nakliyesi ve sertifikalı fidan alım bedelleri." : "Soil preparation labor, sapling logistics, and certified sapling purchase costs."
+      };
+    }
+    if (phase === 2) {
+      return {
+        title: isTr ? "Aşama 2: Dikim & İlk Can Suyu (%25)" : "Phase 2: Planting & Initial Watering (25%)",
+        desc: isTr ? "Fidanların dikiminin gönüllülerce tamamlanması ve ilk can sularının verilmesi." : "Volunteers planting the saplings and providing the initial water feeds.",
+        expense: isTr ? "Ekim ekipmanları kiralanması, gönüllü koordinasyon giderleri ve su tedariği." : "Planting tool rentals, volunteer coordination costs, and water supplies."
+      };
+    }
+    return {
+      title: isTr ? "Aşama 3: Koruma Çiti & 1 Yıllık Bakım (%50)" : "Phase 3: Fencing & 1-Year Care (50%)",
+      desc: isTr ? "Fidanların yaban hayatından korunması için etrafa çit çekilmesi ve damla sulama altyapısının kurulması." : "Installing protective fencing against wildlife and setting up drip-irrigation systems.",
+      expense: isTr ? "Koruma çit teli ve kazıkları, damla sulama boruları alımı ve 1 yıllık sulama/bakım bütçesi." : "Fencing materials, drip tubes, and 1-year periodic watering and care registry."
+    };
+  } else if (category === "education") {
+    if (phase === 1) {
+      return {
+        title: isTr ? "Aşama 1: İhtiyaç Tespiti & Kitap Siparişi (%25)" : "Phase 1: Needs Assessment & Book Orders (25%)",
+        desc: isTr ? "Okullarla görüşerek eksik kitap ve ders materyali listelerinin çıkarılması ve siparişlerin geçilmesi." : "Meeting with schools to list missing books and tech materials, and placing purchase orders.",
+        expense: isTr ? "Okul ziyaret lojistikleri, yayın evleri kitap sipariş avansları ve tablet tedarik kaparoları." : "School logistics, publisher booking fees, and initial hardware pre-orders."
+      };
+    }
+    if (phase === 2) {
+      return {
+        title: isTr ? "Aşama 2: Sevkiyat & Sınıf Kurulumları (%25)" : "Phase 2: Shipping & Classroom Setup (25%)",
+        desc: isTr ? "Satın alınan kitapların ve ders materyallerinin okullara nakledilmesi, sınıflardaki dolaplara yerleştirilmesi." : "Transporting the books and hardware to schools and setting up library/classroom shelves.",
+        expense: isTr ? "Kargo/nakliye ücretleri, kütüphane dolapları imalatı ve kurulum ekibi masrafları." : "Logistics freight fees, library furniture manufacturing, and installer daily wages."
+      };
+    }
+    return {
+      title: isTr ? "Aşama 3: Öğretmen Eğitimleri & Eğitim Üyelikleri (%50)" : "Phase 3: Teacher Training & Platform Access (50%)",
+      desc: isTr ? "Öğretmenlere kitapların ve tabletlerin müfredata uygun kullanımı için eğitimler verilmesi, 1 yıllık online üyelikler açılması." : "Providing curriculum training sessions for teachers and setting up 1-year educational platform memberships.",
+      expense: isTr ? "Eğitmen kaşeleri, 1 yıllık online eğitim platformu lisans ödemeleri ve teknik destek bütçesi." : "Trainer honorariums, 1-year online learning platform licenses, and customer support."
+    };
+  } else {
+    if (phase === 1) {
+      return {
+        title: isTr ? "Aşama 1: Tıbbi Cihaz Siparişi & Lojistik (%25)" : "Phase 1: Equipment Order & Logistics (25%)",
+        desc: isTr ? "Hastanelerin acil tıbbi cihaz ihtiyaçlarının kesinleştirilmesi, üretici siparişleri ve gümrük işlemleri." : "Finalizing urgent diagnostic device choices, ordering from medical manufacturers, and clearing customs.",
+        expense: isTr ? "Cihaz sipariş depozitoları, gümrük vergileri ve tıbbi nakliye sigorta poliçesi bedelleri." : "Medical device deposits, import customs clearances, and medical shipping insurances."
+      };
+    }
+    if (phase === 2) {
+      return {
+        title: isTr ? "Aşama 2: Hastane Teslimatı & Kurulum (%25)" : "Phase 2: Hospital Delivery & Calibration (25%)",
+        desc: isTr ? "Cihazların hastanelere teslim edilmesi, steril odalarda kurulumlarının yapılarak teknik testlerinin tamamlanması." : "Delivering equipment to clinics, setting up in sterile zones, and finalizing calibration tests.",
+        expense: isTr ? "Teknik ekip yol/konaklama masrafları, lisanslı kalibrasyon test kitleri ve onay harçları." : "Field engineer service fees, licensed calibration test runs, and official safety stamps."
+      };
+    }
+    return {
+      title: isTr ? "Aşama 3: Personel Eğitimi & 1 Yıllık Sarf Deposu (%50)" : "Phase 3: Staff Training & 1-Year Supplies (50%)",
+      desc: isTr ? "Doktor ve hemşirelere cihazların kullanım eğitimlerinin verilmesi, hastaların kabulü ve 1 yıllık sarf malzeme deposunun doldurulması." : "Providing device usage training for medical staff, admitting patients, and stocking 1 year of medical supplies.",
+      expense: isTr ? "Kullanıcı eğitimi sertifikasyon bedelleri, 1 yıllık filtre, iğne ve teşhis sarf malzemesi alım bütçesi." : "Staff training certifications, and a 1-year stock of filters, test kits, and diagnostic consumables."
+    };
   }
 };
 
@@ -886,18 +951,18 @@ export function CrowdfundPage() {
             <p className="text-sm text-slate-300 leading-relaxed mb-6 font-display px-2">
               {activeTab === "environment" && (
                 locale === "tr"
-                  ? `Katkınız sayesinde siber ormanımıza tam ${Math.max(1, Math.round(Number(victoryDonationAmount) * 0.7))} yeni fidan eklediniz! Doğaya can verdiniz.`
-                  : `With your support, you added exactly ${Math.max(1, Math.round(Number(victoryDonationAmount) * 0.7))} new saplings to our digital forest timeline!`
+                  ? `Katkınız sayesinde doğaya tam ${Math.max(1, Math.round(Number(victoryDonationAmount) * 0.7))} yeni fidan kazandırdınız! Fidanlarınız en kısa sürede toprakla buluşacak.`
+                  : `With your support, you added exactly ${Math.max(1, Math.round(Number(victoryDonationAmount) * 0.7))} new saplings to our real-world forestry project!`
               )}
               {activeTab === "education" && (
                 locale === "tr"
-                  ? `Katkınız sayesinde tam ${Math.max(1, Math.round(Number(victoryDonationAmount) * 0.15))} öğrencimiz daha teknoloji kitaplarına kavuştu. Eğitime ışık oldunuz!`
-                  : `With your support, ${Math.max(1, Math.round(Number(victoryDonationAmount) * 0.15))} more students got access to technology books!`
+                  ? `Katkınız sayesinde tam ${Math.max(1, Math.round(Number(victoryDonationAmount) * 0.15))} öğrencimiz teknoloji kitaplarına kavuşuyor. Eğitime ışık oldunuz!`
+                  : `With your support, ${Math.max(1, Math.round(Number(victoryDonationAmount) * 0.15))} more students received technology books in classroom projects!`
               )}
               {activeTab === "health" && (
                 locale === "tr"
-                  ? `Katkınız sayesinde tıp merkezimiz tam ${Math.max(1, Math.round(Number(victoryDonationAmount) * 0.2))} adet hayati tanı kiti ve teşhis desteği kazandı. Ritimler güçlendi!`
-                  : `With your support, our diagnostic center gained ${Math.max(1, Math.round(Number(victoryDonationAmount) * 0.2))} vital medical kits or diagnostic hours!`
+                  ? `Katkınız sayesinde yerel hastanelerimize tam ${Math.max(1, Math.round(Number(victoryDonationAmount) * 0.2))} adet hayati tıbbi teşhis kiti kazandırdınız. Destekleriniz hayat kurtaracak!`
+                  : `With your support, local hospitals gained ${Math.max(1, Math.round(Number(victoryDonationAmount) * 0.2))} vital medical diagnostic kits!`
               )}
             </p>
             
@@ -1058,7 +1123,7 @@ export function CrowdfundPage() {
           </p>
         </section>
 
-        {/* CATEGORY TABS (Çevre / Eğitim / Sağlık) */}
+        {/* CATEGORY TABS (Doğa / Eğitim / Sağlık) */}
         <div className="mb-12 flex flex-wrap justify-center gap-5 relative z-10">
           <button
             type="button"
@@ -1069,7 +1134,9 @@ export function CrowdfundPage() {
                 : "bg-slate-950/40 border-white/5 text-slate-400 hover:text-slate-200 hover:border-white/10"
             }`}
           >
-            <span className="text-lg">🌲</span>
+            <svg className="w-4 h-4 shrink-0 text-emerald-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+              <path strokeLinecap="round" strokeLinejoin="round" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
+            </svg>
             <span>{t.catEnvLabel}</span>
           </button>
           
@@ -1082,7 +1149,9 @@ export function CrowdfundPage() {
                 : "bg-slate-950/40 border-white/5 text-slate-400 hover:text-slate-200 hover:border-white/10"
             }`}
           >
-            <span className="text-lg">📚</span>
+            <svg className="w-4 h-4 shrink-0 text-amber-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+              <path strokeLinecap="round" strokeLinejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+            </svg>
             <span>{t.catEduLabel}</span>
           </button>
 
@@ -1095,7 +1164,9 @@ export function CrowdfundPage() {
                 : "bg-slate-950/40 border-white/5 text-slate-400 hover:text-slate-200 hover:border-white/10"
             }`}
           >
-            <span className="text-lg">❤️</span>
+            <svg className="w-4 h-4 shrink-0 text-rose-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+              <path strokeLinecap="round" strokeLinejoin="round" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+            </svg>
             <span>{t.catHealthLabel}</span>
           </button>
         </div>
@@ -1378,7 +1449,7 @@ export function CrowdfundPage() {
                       : "bg-slate-950 border-slate-700"
                   }`} />
                   <div className="flex items-center justify-between mb-1">
-                    <span className="text-xs font-black text-slate-300 font-display">🌱 {t.milestonePlanning}</span>
+                    <span className="text-xs font-black text-slate-300 font-display">{t.milestonePlanning}</span>
                     <span className={`text-[8px] font-black uppercase px-2 py-0.5 rounded font-mono ${
                       campaign?.m1_claimed ? "bg-emerald-500/10 text-emerald-400" : progressPercent >= 25 ? "bg-cyan-500/10 text-cyan-400 animate-pulse" : "bg-slate-950 text-slate-600 border border-white/5"
                     }`}>
@@ -1397,11 +1468,14 @@ export function CrowdfundPage() {
                   </div>
 
                   <p className="text-[11px] text-slate-400 leading-relaxed mb-2.5">
-                    {t.outflowM1Expense}
+                    {getMilestoneDetails(activeTab, 1, locale).expense}
+                    <span className="block text-[9px] text-slate-500 mt-1">
+                      {locale === "tr" ? "Açıklama: " : "Details: "}{getMilestoneDetails(activeTab, 1, locale).desc}
+                    </span>
                     {!campaign?.m1_claimed && (
                       <span className="block text-[9px] text-slate-500 mt-1 italic">
                         {progressPercent >= 25 
-                          ? (locale === "tr" ? "• Cüzdan yetkilisi bütçeyi çekebilir." : "• Wallet owner can disburse this release.")
+                          ? (locale === "tr" ? "• Aşamaya ulaşıldı, proje yöneticisi bütçeyi talep edebilir." : "• Target reached, project manager can request release.")
                           : (locale === "tr" ? "• Henüz kilitli • Proje sahibi bu parayı almak için kanıt sunmalı" : "• Locked • Creator must prove this step to unlock funds")}
                       </span>
                     )}
@@ -1439,7 +1513,7 @@ export function CrowdfundPage() {
                       : "bg-slate-950 border-slate-700"
                   }`} />
                   <div className="flex items-center justify-between mb-1">
-                    <span className="text-xs font-black text-slate-300 font-display">🛠️ {t.milestoneDevelopment}</span>
+                    <span className="text-xs font-black text-slate-300 font-display">{t.milestoneDevelopment}</span>
                     <span className={`text-[8px] font-black uppercase px-2 py-0.5 rounded font-mono ${
                       campaign?.m2_claimed ? "bg-emerald-500/10 text-emerald-400" : progressPercent >= 50 ? "bg-violet-500/10 text-violet-400 animate-pulse" : "bg-slate-950 text-slate-600 border border-white/5"
                     }`}>
@@ -1458,12 +1532,15 @@ export function CrowdfundPage() {
                   </div>
 
                   <p className="text-[11px] text-slate-400 leading-relaxed mb-2.5">
-                    {t.outflowM2Expense}
+                    {getMilestoneDetails(activeTab, 2, locale).expense}
+                    <span className="block text-[9px] text-slate-500 mt-1">
+                      {locale === "tr" ? "Açıklama: " : "Details: "}{getMilestoneDetails(activeTab, 2, locale).desc}
+                    </span>
                     {!campaign?.m2_claimed && (
                       <span className="block text-[9px] text-slate-500 mt-1 italic">
                         {progressPercent >= 50 
-                          ? (locale === "tr" ? "• Cüzdan yetkilisi bütçeyi çekebilir." : "• Wallet owner can disburse this release.")
-                          : (locale === "tr" ? "• Henüz kilitli • Proje sahibi bu parayı almak için kanıt sunmalı" : "• Locked • Creator must prove this step to unlock funds")}
+                          ? (locale === "tr" ? "• Aşamaya ulaşıldı, proje yöneticisi bütçeyi talep edebilir." : "• Target reached, project manager can request release.")
+                          : (locale === "tr" ? "• Kilitli • Serbest kalması için bağış hedefinin %50'ye ulaşması gerekir" : "• Locked • Requires 50% funding progress to unlock")}
                       </span>
                     )}
                   </p>
@@ -1500,7 +1577,7 @@ export function CrowdfundPage() {
                       : "bg-slate-950 border-slate-700"
                   }`} />
                   <div className="flex items-center justify-between mb-1">
-                    <span className="text-xs font-black text-slate-300 font-display">🚀 {t.milestoneProduction}</span>
+                    <span className="text-xs font-black text-slate-300 font-display">{t.milestoneProduction}</span>
                     <span className={`text-[8px] font-black uppercase px-2 py-0.5 rounded font-mono ${
                       campaign?.m3_claimed ? "bg-emerald-500/10 text-emerald-400" : progressPercent >= 100 ? "bg-indigo-500/10 text-indigo-400 animate-pulse" : "bg-slate-950 text-slate-600 border border-white/5"
                     }`}>
@@ -1519,7 +1596,10 @@ export function CrowdfundPage() {
                   </div>
 
                   <p className="text-[11px] text-slate-400 leading-relaxed mb-2.5">
-                    {t.outflowM3Expense}
+                    {getMilestoneDetails(activeTab, 3, locale).expense}
+                    <span className="block text-[9px] text-slate-500 mt-1">
+                      {locale === "tr" ? "Açıklama: " : "Details: "}{getMilestoneDetails(activeTab, 3, locale).desc}
+                    </span>
                     {!campaign?.m3_claimed && (
                       <span className="block text-[9px] text-slate-500 mt-1 italic">
                         {progressPercent >= 100 
@@ -1800,7 +1880,6 @@ export function CrowdfundPage() {
             <div className="glass rounded-3xl p-6 sm:p-8 border border-white/5 relative overflow-hidden shadow-xl cyber-scanline">
               <div className="absolute top-0 left-0 h-32 w-32 rounded-full bg-violet-600/5 blur-3xl" />
               <h3 className="text-md font-black tracking-widest text-white mb-6 flex items-center gap-2 border-b border-white/5 pb-3 font-display">
-                <span>👑</span>
                 <span>{t.leaderboardTitle}</span>
               </h3>
 
@@ -1809,8 +1888,7 @@ export function CrowdfundPage() {
               ) : (
                 <div className="space-y-3 mt-2 font-mono">
                   {campaign.top_donors.map((donor, idx) => {
-                    const medals = ["🥇", "🥈", "🥉"];
-                    const medal = medals[idx] || "⭐";
+                    const rank = `#${idx + 1}`;
                     const isSelf = publicKey && donor.address === publicKey;
                     
                     return (
@@ -1823,7 +1901,9 @@ export function CrowdfundPage() {
                         }`}
                       >
                         <div className="flex items-center gap-3">
-                          <span className="text-lg shrink-0">{medal}</span>
+                          <span className={`text-xs font-black tracking-widest font-mono ${
+                            idx === 0 ? "text-amber-400" : idx === 1 ? "text-slate-300" : idx === 2 ? "text-amber-600" : "text-slate-500"
+                          }`}>{rank}</span>
                           <Tooltip content={donor.address}>
                             <span className="text-xs text-slate-200 font-bold hover:underline cursor-help">
                               {formatAddress(donor.address, 6, 6)} ℹ️
@@ -1924,7 +2004,7 @@ export function CrowdfundPage() {
                 <div className="flex flex-col gap-2">
                   <div className="flex items-center justify-between text-xs py-2 border-b border-white/5 font-mono">
                     <div className="flex flex-col">
-                      <span className="font-bold text-slate-300 font-display">{t.phase1Title}</span>
+                      <span className="font-bold text-slate-300 font-display">{getMilestoneDetails(activeTab, 1, locale).title}</span>
                       <span className={`font-black uppercase text-[10px] ${campaign?.m1_claimed ? "text-slate-500" : progressPercent >= 25 ? "text-cyan-400" : "text-slate-600"}`}>
                         {campaign?.m1_claimed ? t.claimedStatus : progressPercent >= 25 ? "Available" : "Locked"}
                       </span>
@@ -1942,7 +2022,7 @@ export function CrowdfundPage() {
                   </div>
                   <div className="flex items-center justify-between text-xs py-2 border-b border-white/5 font-mono">
                     <div className="flex flex-col">
-                      <span className="font-bold text-slate-300 font-display">{t.phase2Title}</span>
+                      <span className="font-bold text-slate-300 font-display">{getMilestoneDetails(activeTab, 2, locale).title}</span>
                       <span className={`font-black uppercase text-[10px] ${campaign?.m2_claimed ? "text-slate-500" : progressPercent >= 50 ? "text-violet-400" : "text-slate-600"}`}>
                         {campaign?.m2_claimed ? t.claimedStatus : progressPercent >= 50 ? "Available" : "Locked"}
                       </span>
@@ -1960,7 +2040,7 @@ export function CrowdfundPage() {
                   </div>
                   <div className="flex items-center justify-between text-xs py-2 font-mono">
                     <div className="flex flex-col">
-                      <span className="font-bold text-slate-300 font-display">{t.phase3Title}</span>
+                      <span className="font-bold text-slate-300 font-display">{getMilestoneDetails(activeTab, 3, locale).title}</span>
                       <span className={`font-black uppercase text-[10px] ${campaign?.m3_claimed ? "text-slate-500" : progressPercent >= 100 ? "text-indigo-400" : "text-slate-600"}`}>
                         {campaign?.m3_claimed ? t.claimedStatus : progressPercent >= 100 ? "Available" : "Locked"}
                       </span>
