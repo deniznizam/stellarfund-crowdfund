@@ -88,25 +88,6 @@ flowchart TD
 
 ---
 
-## Local Setup
-
-### Prerequisites
-1. Node.js 18+
-2. Freighter, xBull, or Lobstr browser extension set to **Testnet**
-
-### Run locally
-```bash
-git clone https://github.com/deniznizam/stellarfund-crowdfund.git
-cd stellarfund-crowdfund
-npm install
-npm run dev
-```
-
-Open [http://localhost:3000/fund](http://localhost:3000/fund).
-
-> **TR Özet:** Projeyi yerelde kurmak için Node.js 18+ sürümünün kurulu olduğundan emin olup repoyu kopyalayın, `npm install` ve `npm run dev` komutlarını çalıştırın.
-
----
 
 ## Yellow Belt Checklist
 
