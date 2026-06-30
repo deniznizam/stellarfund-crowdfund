@@ -383,7 +383,7 @@ const pageCopy: Record<Locale, PageCopy> = {
     phase1Title: "Aşama 1: Planlama & Kurulum (%25)",
     phase2Title: "Aşama 2: Geliştirme & Entegrasyon (%50)",
     phase3Title: "Aşama 3: Yayına Giriş & Mainnet (%100)",
-    trustBadge: "Stellar Blokzinciri Korumalı"
+    trustBadge: "Stellar Blokzincir Korumalı"
   }
 };
 
@@ -1067,7 +1067,7 @@ export function CrowdfundPage() {
           </div>
           
           <div className="flex items-center gap-3.5 self-end sm:self-center">
-            <span className="inline-flex items-center gap-1.5 rounded-full border border-emerald-500/20 bg-emerald-500/5 px-3.5 py-1.5 text-[10px] font-black uppercase tracking-widest text-emerald-400/80 font-mono">
+            <span className="inline-flex items-center gap-1.5 rounded-full border border-emerald-500/20 bg-emerald-500/5 px-3.5 py-1.5 text-[10px] font-black uppercase tracking-widest text-emerald-400/80 font-mono whitespace-nowrap">
               {t.trustBadge}
             </span>
 
