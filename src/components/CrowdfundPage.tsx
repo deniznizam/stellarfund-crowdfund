@@ -1,3 +1,17 @@
+/**
+ * STELLARKIT / CROWDFUND PAGE (KİTLESEL FONLAMA SAYFASI)
+ * 
+ * Bu bileşen, Stellar Soroban akıllı sözleşmeleriyle entegre çalışan,
+ * dilden bağımsız (İngilizce/Türkçe destekli) güvenli bağış arayüzüdür.
+ * 
+ * Temel Özellikler & İş Akışı:
+ * 1. Üç Farklı Sosyal Kampanya Tabı (Doğa, Eğitim, Sağlık) - SVG animasyonlu monitörlerle progress takibi yapılır.
+ * 2. Simülasyon (Sandbox) Modu ve Gerçek Zamanlı Cüzdan Bağlantısı (Freighter, xBull, Lobstr).
+ * 3. Dinamik Bağış Etki Hesaplayıcı - Bağışlanan XLM tutarlarını gerçekçi çarpanlarla fiziksel çıktılara (Fidan, Kitap, Hasta) dönüştürür.
+ * 4. Çizgisel ve Animasyonlu Gelişmiş SVG Monitörler - Çam ağacı ve açık kitap geometrisi her progress aşamasında daimi şablon hatlarıyla görünür kalır.
+ * 5. Canlı İlk 3 Cömert Destekçi Sıralaması (leaderboard) ve Son İşlem Akışı (activities) deep-copy state güncellemeleriyle saniyesinde yenilenir.
+ */
+
 "use client";
 
 import { useCallback, useEffect, useState, useMemo } from "react";
