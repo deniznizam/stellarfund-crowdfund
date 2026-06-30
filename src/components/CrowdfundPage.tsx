@@ -914,11 +914,6 @@ export function CrowdfundPage() {
           ...catState.activities.map(a => ({ ...a }))
         ];
 
-        setMyDemoDonations(prevMy => ({
-          ...prevMy,
-          [activeTab]: prevMy[activeTab] + amount
-        }));
-
         return {
           ...prev,
           [activeTab]: {
@@ -927,6 +922,12 @@ export function CrowdfundPage() {
           }
         };
       });
+
+      // Update user's personal demo donation total separately (must be outside setDemoStates callback)
+      setMyDemoDonations(prevMy => ({
+        ...prevMy,
+        [activeTab]: prevMy[activeTab] + amount
+      }));
 
       setTxState({
         status: "success",
