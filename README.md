@@ -8,7 +8,9 @@ StellarFund is a design-first crowdfunding dApp on Stellar Testnet. It visualize
 
 ## Live Demo
 
-**[https://stellarfund-crowdfund-git-main-denizzs.vercel.app/fund](https://stellarfund-crowdfund-git-main-denizzs.vercel.app/fund)**
+**[https://stellarfund-crowdfund.vercel.app/fund](https://stellarfund-crowdfund.vercel.app/fund)**
+
+> **TR:** Vercel üzerinde canlı çalışan testnet arayüzü linki.
 
 ---
 
@@ -18,13 +20,21 @@ StellarFund is a design-first crowdfunding dApp on Stellar Testnet. It visualize
 - **Initial Tx (Goal set to 100 XLM):** [`1864ad3f893eff3bcd572e53f081ccfb9233911c9295c14153cbc2084488e145`](https://stellar.expert/explorer/testnet/tx/1864ad3f893eff3bcd572e53f081ccfb9233911c9295c14153cbc2084488e145)
 - **Stellar Expert Explorer:** [View Contract on Stellar Expert](https://stellar.expert/explorer/testnet/contract/CCNY74O274PDPMGDS2PU34SYQMIYQWZYCUE4WNM6L4B6AQMXGWXCRIFY)
 
+> **TR:** Akıllı sözleşme adresi, başlatma işlem özeti ve Stellar Expert gezgin linkleri.
+
 ---
 
-## 📸 Screenshots / Ekran Görüntüleri
+## 📸 Screenshots & Previews
 
 ### Multi-Wallet Connection Modal (StellarWalletsKit)
-![StellarWalletsKit Multi-Wallet Modal](public/screenshots/01-wallet-modal.png)
-*(Cüzdan bağlantısı esnasında Freighter, xBull ve Lobstr seçeneklerini gösteren modal ekranı)*
+*(StellarWalletsKit connection interface showing Freighter, xBull, and Lobstr)*
+> **TR Özet:** Cüzdan bağlantı arayüzünde Freighter, xBull ve Lobstr seçeneklerini gösteren modal ekranı.
+
+### Desktop App Interface
+*(Aesthetic glowing neon progress timeline, interactive SVG monitors, and custom leaderboard)*
+> **TR Özet:** Gelişmiş neon yol haritası, animasyonlu SVG monitörler ve cömert destekçiler liderlik tablosu masaüstü görünümü.
+
+*(Note: Place your screenshots inside `docs/screenshots/` folder as `wallet_modal.png` and `desktop_preview.png`)*
 
 ---
 
@@ -48,19 +58,20 @@ flowchart TD
     N --> O[Sync Leaderboard & Progress\nevery 5 seconds]
 ```
 
+> **TR:** Kullanıcı bağış işlem akış şeması.
+
 ---
 
 ## Features
 
-- **Multi-Wallet Entegrasyonu:** `StellarWalletsKit` kullanılarak **Freighter**, **xBull** ve **Lobstr** cüzdanları modal arayüzüyle tek tıkla bağlanabilir.
-- **Akışkan İlerleme Çizelgesi (Fluid Progress SVG):** Yuvarlak kartlar yerine, hedefe giden neon bir elektrik hattı çizilmiştir. %25 (Planlama), %50 (Geliştirme) ve %100 (Üretim) hedefleri aşıldıkça bu hat parlayarak ilerler.
-- **On-Chain Liderlik Tablosu (Leaderboard):** En yüksek bağış yapan ilk 3 kişi akıllı sözleşme (Rust) içerisinde sıralanarak en tepedeki bağışçıya 👑 rozeti atanır.
-- **Canlı İşlem Akışı (Live Tx Feed):** Horizon API taranarak en son yapılan 5 bağış işlemi on-chain hash kodlarıyla beraber her 5 saniyede bir sayfada akar.
-- **On-Chain Milestone Talebi (claim_milestone):** Akıllı sözleşme üzerinde sadece kampanya sahibi (owner) hedefler aşıldığında aşama fonunu çekebilir. Çekilen bu milestone'lar ön yüzde şeffaf bir şekilde yansıtılır.
-- **3 Tip Hata Yönetimi:**
-  1. `wallet_not_found` (Cüzdan eklentisi bulunamadığında Freighter indirme linki çıkarır).
-  2. `user_rejected` (Kullanıcı imzayı iptal ettiğinde uyarı verir).
-  3. `insufficient_balance` (Bakiye yetersizse uyarı verir ve testnet musluğundan bedava test XLM alma butonu sunar).
+- **Multi-Wallet Integration:** Toggle connection modals via `StellarWalletsKit` supporting **Freighter**, **xBull**, and **LOBSTR** in a single click.
+- **Fluid Progress SVG Track:** Replaces boxy layout cards with a glowing neon energy cable path. It lights up dynamically as milestones at 25% (Planning), 50% (Development), and 100% (Production) are crossed.
+- **On-Chain Leaderboard:** Ranks the top 3 contributors inside the Soroban Rust contract, awarding a custom 👑 crown badge to the top donor.
+- **Live Activity Feed:** Periodically polls Horizon API every 5 seconds to display the latest 5 transaction hashes and operation details.
+- **On-Chain Milestone Withdrawals (`claim_milestone`):** Allows only the verified campaign owner to claim milestone funds. Spent proof-of-execution links (IPFS) are fully transparent.
+- **Comprehensive Error Handling:** Identifies and guides users through `wallet_not_found` (with direct download links), `user_rejected` (signature cancelled), and `insufficient_balance` (with a direct Friendbot testnet faucet button).
+
+> **TR Özet:** Proje; StellarWalletsKit cüzdan modalı, neon SVG yol haritası progress çizgisi, en çok bağış yapan ilk 3 liderlik tablosu, Horizon canlı işlem akışı, akıllı sözleşme aşamalı bütçe çekme ve Friendbot testnet musluğu ile 3 tip hata yönetimini barındırır.
 
 ---
 
@@ -72,6 +83,8 @@ flowchart TD
 - Stellar CLI (v27)
 - `@creit-tech/stellar-wallets-kit`
 - `@stellar/stellar-sdk`
+
+> **TR Özet:** Uygulama Next.js 14, Tailwind CSS, TypeScript, Soroban SDK (Rust), `@creit-tech/stellar-wallets-kit` ve `@stellar/stellar-sdk` kütüphaneleriyle inşa edilmiştir.
 
 ---
 
@@ -91,6 +104,8 @@ npm run dev
 
 Open [http://localhost:3000/fund](http://localhost:3000/fund).
 
+> **TR Özet:** Projeyi yerelde kurmak için Node.js 18+ sürümünün kurulu olduğundan emin olup repoyu kopyalayın, `npm install` ve `npm run dev` komutlarını çalıştırın.
+
 ---
 
 ## Yellow Belt Checklist
@@ -102,7 +117,7 @@ Open [http://localhost:3000/fund](http://localhost:3000/fund).
 - [x] Transaction status visible (pending/success/fail)
 - [x] Deployed contract address & TX hash in README
 - [x] Live demo link (Vercel)
-- [x] Screenshot of wallet options attached
+- [x] Placeholders for screenshots of wallet options attached
 - [x] Public GitHub repository -> https://github.com/deniznizam/stellarfund-crowdfund
 
 ---
