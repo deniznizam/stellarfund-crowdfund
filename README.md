@@ -88,7 +88,6 @@ flowchart TD
 
 ---
 
-
 ## Yellow Belt Checklist
 
 - [x] StellarWalletsKit multi-wallet implementation (Freighter, xBull, Lobstr)
