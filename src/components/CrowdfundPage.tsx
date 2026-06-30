@@ -1044,33 +1044,9 @@ export function CrowdfundPage() {
 
       <div className="relative z-10 mx-auto max-w-6xl px-4 pt-8 sm:px-8">
         
-        {/* Fixed Top-Right Utility Corner for Language & Help */}
-        <div className="absolute top-6 right-4 sm:right-8 flex items-center gap-2.5 z-50">
-          <LanguageToggle locale={locale} onChange={setLocale} />
-          
-          {/* Global Trust Info Button (🔒 Nedir?) */}
-          <div className="relative group inline-block">
-            <button
-              type="button"
-              className="flex h-8 w-8 items-center justify-center rounded-full border border-cyan-500/40 bg-cyan-500/10 text-xs font-black text-cyan-300 shadow-[0_0_12px_rgba(6,182,212,0.25)] animate-glow-pulse transition hover:scale-105 hover:bg-cyan-500/20 cursor-help font-mono"
-            >
-              i
-            </button>
-            <div className="pointer-events-none absolute right-0 top-full mt-3 w-[260px] sm:w-72 rounded-2xl bg-slate-950 border border-white/10 p-5 text-xs text-slate-300 opacity-0 group-hover:opacity-100 transition-opacity duration-250 z-50 shadow-2xl leading-relaxed">
-              <span className="block font-black text-cyan-400 mb-1.5 font-display text-left">
-                {locale === "tr" ? "🔒 Blokzinciri & Güvenlik Nedir?" : "🔒 What is Blockchain & Security?"}
-              </span>
-              <p className="text-left font-sans text-[11px] leading-relaxed">
-                {locale === "tr" 
-                  ? "Blokzinciri, kimsenin müdahale edemeyeceği dijital bir güven defteridir. Bağışlarınız doğrudan akıllı sözleşme kasasında kilitlenir. Proje yöneticisi, yaptığı işlerin görsel kanıtlarını (fatura, fotoğraf vb.) sunmadan paranızı çekemez. Bu sayede desteğinizin her kuruşu güvence altındadır."
-                  : "Blockchain is a digital ledger of absolute trust. Your donations are locked directly inside a smart contract vault. The creator cannot withdraw your funds without submitting visual proof of work (receipts, photos, etc.). Your support is 100% secure."}
-              </p>
-            </div>
-          </div>
-        </div>
-
         {/* TOP HEADER */}
-        <header className="mb-12 flex flex-col gap-5 sm:flex-row sm:items-center sm:justify-between border-b border-white/5 pb-8">
+        <header className="mb-12 flex flex-col gap-6 sm:flex-row sm:items-center sm:justify-between border-b border-white/5 pb-8">
+          {/* Left Side: Logo & Brand Title */}
           <div className="flex flex-col gap-1.5 items-center sm:items-start text-center sm:text-left w-full sm:w-auto">
             <div className="flex flex-col sm:flex-row items-center gap-4">
               <div className={`relative flex h-12 w-12 items-center justify-center rounded-2xl border border-white/10 transition-all duration-700 ${
@@ -1091,16 +1067,44 @@ export function CrowdfundPage() {
             </div>
           </div>
           
-          <div className="flex flex-wrap items-center justify-center sm:justify-end gap-2 sm:gap-3.5 w-full sm:w-auto sm:self-center pr-28 sm:pr-0">
+          {/* Right Side: Badges, Controls, & Connect Button */}
+          <div className="flex flex-wrap items-center justify-center sm:justify-end gap-2.5 sm:gap-3.5 w-full sm:w-auto sm:self-center">
+            {/* Trust Badge */}
             <span className="inline-flex items-center gap-1.5 rounded-full border border-emerald-500/20 bg-emerald-500/5 px-3 py-1.5 text-[9px] font-black uppercase tracking-wider text-emerald-400/80 font-mono whitespace-nowrap">
               {t.trustBadge}
             </span>
 
+            {/* Testnet Status */}
             <span className="inline-flex items-center gap-1.5 rounded-full border border-cyan-400/30 bg-cyan-400/10 px-3.5 py-1.5 text-[10px] font-black uppercase tracking-widest text-cyan-300 font-mono">
               <span className="h-2 w-2 rounded-full bg-cyan-400 animate-ping" />
               Testnet
             </span>
 
+            {/* Language Switcher */}
+            <LanguageToggle locale={locale} onChange={setLocale} />
+
+            {/* Global Trust Info Button (🔒 Nedir?) */}
+            <div className="relative group inline-block">
+              <button
+                type="button"
+                className="flex h-8 w-8 items-center justify-center rounded-full border border-cyan-500/40 bg-cyan-500/10 text-xs font-black text-cyan-300 shadow-[0_0_12px_rgba(6,182,212,0.25)] animate-glow-pulse transition hover:scale-105 hover:bg-cyan-500/20 cursor-help font-mono"
+              >
+                i
+              </button>
+              <div className="pointer-events-none absolute right-[-40px] sm:right-0 top-full mt-3 w-[260px] sm:w-72 rounded-2xl bg-slate-950 border border-white/10 p-5 text-xs text-slate-300 opacity-0 group-hover:opacity-100 transition-opacity duration-250 z-50 shadow-2xl leading-relaxed">
+                <span className="block font-black text-cyan-400 mb-1.5 font-display text-left">
+                  {locale === "tr" ? "🔒 Blokzinciri & Güvenlik Nedir?" : "🔒 What is Blockchain & Security?"}
+                </span>
+                <p className="text-left font-sans text-[11px] leading-relaxed">
+                  {locale === "tr" 
+                    ? "Blokzinciri, kimsenin müdahale edemeyeceği dijital bir güven defteridir. Bağışlarınız doğrudan akıllı sözleşme kasasında kilitlenir. Proje yöneticisi, yaptığı işlerin görsel kanıtlarını (fatura, fotoğraf vb.) sunmadan paranızı çekemez. Bu sayede desteğinizin her kuruşu güvence altındadır."
+                    : "Blockchain is a digital ledger of absolute trust. Your donations are locked directly inside a smart contract vault. The creator cannot withdraw your funds without submitting visual proof of work (receipts, photos, etc.). Your support is 100% secure."}
+                </p>
+                <div className="absolute top-0 right-[48px] sm:right-3.5 -mt-1.5 h-3 w-3 rotate-45 border-l border-t border-white/10 bg-slate-950" />
+              </div>
+            </div>
+
+            {/* Connect Wallet Button */}
             {publicKey ? (
               <div className="flex items-center gap-2.5">
                 <code className="rounded-xl bg-slate-950 border border-white/5 px-4.5 py-2.5 text-xs text-slate-200 font-mono font-bold">
