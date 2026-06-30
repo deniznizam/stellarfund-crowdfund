@@ -37,3 +37,4 @@ next-env.d.ts
 
 # planning and agent logs
 .superpowers/
+docs/superpowers/
