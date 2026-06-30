@@ -383,7 +383,7 @@ const pageCopy: Record<Locale, PageCopy> = {
     phase1Title: "Aşama 1: Planlama & Kurulum (%25)",
     phase2Title: "Aşama 2: Geliştirme & Entegrasyon (%50)",
     phase3Title: "Aşama 3: Yayına Giriş & Mainnet (%100)",
-    trustBadge: "⭐ Stellar Blokzinciri Korumalı"
+    trustBadge: "Stellar Blokzinciri Korumalı"
   }
 };
 
