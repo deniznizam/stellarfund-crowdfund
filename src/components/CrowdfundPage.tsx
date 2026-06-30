@@ -1044,6 +1044,30 @@ export function CrowdfundPage() {
 
       <div className="relative z-10 mx-auto max-w-6xl px-4 pt-8 sm:px-8">
         
+        {/* Mobile-only Utility Corner (Dil & Info - Safe top right corner positioning on viewports < 640px) */}
+        <div className="absolute top-6 right-4 flex sm:hidden items-center gap-2 z-50">
+          <LanguageToggle locale={locale} onChange={setLocale} />
+          
+          <div className="relative group inline-block">
+            <button
+              type="button"
+              className="flex h-8 w-8 items-center justify-center rounded-full border border-cyan-500/40 bg-cyan-500/10 text-xs font-black text-cyan-300 shadow-[0_0_12px_rgba(6,182,212,0.25)] animate-glow-pulse transition hover:scale-105 hover:bg-cyan-500/20 cursor-help font-mono"
+            >
+              i
+            </button>
+            <div className="pointer-events-none absolute right-0 top-full mt-3 w-[260px] rounded-2xl bg-slate-950 border border-white/10 p-5 text-xs text-slate-300 opacity-0 group-hover:opacity-100 transition-opacity duration-250 z-50 shadow-2xl leading-relaxed">
+              <span className="block font-black text-cyan-400 mb-1.5 font-display text-left text-[11px]">
+                {locale === "tr" ? "🔒 Blokzinciri & Güvenlik Nedir?" : "🔒 What is Blockchain & Security?"}
+              </span>
+              <p className="text-left font-sans text-[10px] leading-relaxed">
+                {locale === "tr" 
+                  ? "Blokzinciri, kimsenin müdahale edemeyeceği dijital bir güven defteridir. Bağışlarınız doğrudan akıllı sözleşme kasasında kilitlenir. Proje yöneticisi, yaptığı işlerin görsel kanıtlarını (fatura, fotoğraf vb.) sunmadan paranızı çekemez. Bu sayede desteğinizin her kuruşu güvence altındadır."
+                  : "Blockchain is a digital ledger of absolute trust. Your donations are locked directly inside a smart contract vault. The creator cannot withdraw your funds without submitting visual proof of work (receipts, photos, etc.). Your support is 100% secure."}
+              </p>
+            </div>
+          </div>
+        </div>
+
         {/* TOP HEADER */}
         <header className="mb-12 flex flex-col gap-6 sm:flex-row sm:items-center sm:justify-between border-b border-white/5 pb-8">
           {/* Left Side: Logo & Brand Title */}
@@ -1080,27 +1104,29 @@ export function CrowdfundPage() {
               Testnet
             </span>
 
-            {/* Language Switcher */}
-            <LanguageToggle locale={locale} onChange={setLocale} />
+            {/* Language Switcher - Desktop Only */}
+            <div className="hidden sm:block">
+              <LanguageToggle locale={locale} onChange={setLocale} />
+            </div>
 
-            {/* Global Trust Info Button (🔒 Nedir?) */}
-            <div className="relative group inline-block">
+            {/* Global Trust Info Button (🔒 Nedir?) - Desktop Only */}
+            <div className="hidden sm:inline-block relative group">
               <button
                 type="button"
                 className="flex h-8 w-8 items-center justify-center rounded-full border border-cyan-500/40 bg-cyan-500/10 text-xs font-black text-cyan-300 shadow-[0_0_12px_rgba(6,182,212,0.25)] animate-glow-pulse transition hover:scale-105 hover:bg-cyan-500/20 cursor-help font-mono"
               >
                 i
               </button>
-              <div className="pointer-events-none absolute right-[-40px] sm:right-0 top-full mt-3 w-[260px] sm:w-72 rounded-2xl bg-slate-950 border border-white/10 p-5 text-xs text-slate-300 opacity-0 group-hover:opacity-100 transition-opacity duration-250 z-50 shadow-2xl leading-relaxed">
+              <div className="pointer-events-none absolute right-0 top-full mt-3 w-72 rounded-2xl bg-slate-950 border border-white/10 p-5 text-xs text-slate-300 opacity-0 group-hover:opacity-100 transition-opacity duration-250 z-50 shadow-2xl leading-relaxed">
                 <span className="block font-black text-cyan-400 mb-1.5 font-display text-left">
                   {locale === "tr" ? "🔒 Blokzinciri & Güvenlik Nedir?" : "🔒 What is Blockchain & Security?"}
                 </span>
-                <p className="text-left font-sans text-[11px] leading-relaxed">
+                <p className="text-left font-sans text-xs leading-relaxed">
                   {locale === "tr" 
                     ? "Blokzinciri, kimsenin müdahale edemeyeceği dijital bir güven defteridir. Bağışlarınız doğrudan akıllı sözleşme kasasında kilitlenir. Proje yöneticisi, yaptığı işlerin görsel kanıtlarını (fatura, fotoğraf vb.) sunmadan paranızı çekemez. Bu sayede desteğinizin her kuruşu güvence altındadır."
                     : "Blockchain is a digital ledger of absolute trust. Your donations are locked directly inside a smart contract vault. The creator cannot withdraw your funds without submitting visual proof of work (receipts, photos, etc.). Your support is 100% secure."}
                 </p>
-                <div className="absolute top-0 right-[48px] sm:right-3.5 -mt-1.5 h-3 w-3 rotate-45 border-l border-t border-white/10 bg-slate-950" />
+                <div className="absolute top-0 right-3.5 -mt-1.5 h-3 w-3 rotate-45 border-l border-t border-white/10 bg-slate-950" />
               </div>
             </div>
 
