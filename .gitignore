@@ -38,3 +38,8 @@ next-env.d.ts
 # planning and agent logs
 .superpowers/
 docs/superpowers/
+
+# Rust and Soroban
+/target/
+.soroban/
+.stellar/
